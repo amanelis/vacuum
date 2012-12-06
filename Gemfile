@@ -2,12 +2,24 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.9'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+# Database
+gem 'bson'
+gem 'bson_ext'
+gem 'mongoid'
 
-gem 'sqlite3'
+# JSON
+gem 'yajl-ruby'
+gem 'jbuilder'
+gem 'quiet_assets'
 
+# Other
+gem 'heroku'
+gem 'will_paginate_mongoid'
 
+# HTTP Servers
+gem 'thin'
+
+# Assets
 group :assets do
   gem 'haml-rails'
   gem 'jquery-rails'
@@ -35,4 +47,5 @@ group :development, :test do
   gem 'letter_opener'
   gem 'shoulda-matchers'
   gem 'debugger'
+  gem 'sqlite3'
 end
