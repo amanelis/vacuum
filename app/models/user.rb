@@ -1,8 +1,8 @@
 class User
   include Mongoid::Document
+  include DefaultAttributeSetters
   # Include default devise modules. Others available are:
-  # , :confirmable,
-  # :lockable, :timeoutable and :omniauthable
+  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :token_authenticatable,
     :recoverable, :rememberable, :trackable, :validatable
 
@@ -12,9 +12,9 @@ class User
   
   # Custom fields
   field :username, :type => String
-
-  validates_presence_of :email
-  validates_presence_of :encrypted_password
+  field :identifier, :type => String
+  field :created_at, type: DateTime
+  field :updated_at, type: DateTime
   
   ## Recoverable
   field :reset_password_token,   :type => String
@@ -43,4 +43,15 @@ class User
 
   ## Token authenticatable
   field :authentication_token, :type => String
+  
+  ### Validations
+  validates_presence_of :email
+  validates_presence_of :encrypted_password
+  
+  ### Associations
+  has_many :projects, autosave: true, :dependent => :destroy
+  
+  # Callbacks
+  before_create :set_identifier, :set_created_at, :set_api_key
+  after_update  :set_updated_at
 end

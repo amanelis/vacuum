@@ -13,6 +13,9 @@ Vacuum::Application.routes.draw do
     get '/forgot'        => 'devise/passwords#new',       as: 'forgot'
   end
 
+  # Standard Resourcing
+  resources :projects
+  
   # Root the application
   root to: 'home#index'
 end
