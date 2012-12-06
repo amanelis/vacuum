@@ -10,4 +10,12 @@
  *
  *= require_self
  *= require foundation_and_overrides
+ *= require general_foundicons
  */
+ 
+@import "foundicons";
+@import url(http://fonts.googleapis.com/css?family=Play);
+
+h1 {
+  font-family: 'Play', sans-serif;
+}
