@@ -33,8 +33,11 @@ group :assets do
 end
 
 group :development, :test do
-  gem 'ruby-graphviz'
-  gem 'railroady'
+  gem 'debugger'
+  gem 'sqlite3'
+  gem 'faker'
+  gem 'launchy'
+  gem 'fabrication'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'rspec-core'
@@ -43,13 +46,8 @@ group :development, :test do
   gem 'capybara'
   gem 'capybara-mechanize'
   gem 'capybara-webkit'
-  gem 'faker'
-  gem 'factory_girl_rails'
   gem 'quiet_assets'
   gem 'database_cleaner'
-  gem 'launchy'
   gem 'letter_opener'
   gem 'shoulda-matchers'
-  gem 'debugger'
-  gem 'sqlite3'
 end
