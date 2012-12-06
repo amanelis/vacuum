@@ -48,7 +48,6 @@ group :development, :test do
   gem 'capybara-mechanize'
   gem 'capybara-webkit'
   gem 'quiet_assets'
-  gem 'database_cleaner'
   gem 'letter_opener'
   gem 'shoulda-matchers'
 end

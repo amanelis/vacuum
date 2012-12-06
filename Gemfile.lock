@@ -69,7 +69,6 @@ GEM
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
     daemons (1.1.9)
-    database_cleaner (0.9.1)
     debugger (1.2.2)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.1.1)
@@ -274,7 +273,6 @@ DEPENDENCIES
   capybara-webkit
   coffee-rails
   compass-rails
-  database_cleaner
   debugger
   devise
   fabrication

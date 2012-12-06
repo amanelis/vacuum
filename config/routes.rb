@@ -1,4 +1,6 @@
 Vacuum::Application.routes.draw do
+  get "projects/index"
+
   # Devise model mapping
   devise_for :users
   
