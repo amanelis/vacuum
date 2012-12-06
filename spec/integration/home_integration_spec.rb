@@ -6,7 +6,7 @@ describe HomeController do
       visit '/'
       
       assert current_path == root_path
-      # assert page.has_content?('Welcome to Blog')
+      assert page.has_content?('Vacuum')
     end
   end
 end
