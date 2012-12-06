@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+# Rails
 gem 'rails', '3.2.9'
 
 # Database
@@ -13,6 +14,7 @@ gem 'jbuilder'
 gem 'quiet_assets'
 
 # Other
+gem 'devise'
 gem 'heroku'
 gem 'will_paginate_mongoid'
 
@@ -25,6 +27,7 @@ group :assets do
   gem 'jquery-rails'
   gem 'sass-rails'
   gem 'coffee-rails'
+  gem 'compass-rails'
   gem 'zurb-foundation'
   gem 'uglifier'
 end
