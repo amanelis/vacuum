@@ -34,11 +34,10 @@ group :assets do
 end
 
 group :development, :test do
-  gem 'debugger'
-  gem 'sqlite3'
+  # Testing and fixtures
   gem 'faker'
-  gem 'launchy'
   gem 'fabrication'
+  gem 'simplecov'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'rspec-core'
@@ -47,7 +46,13 @@ group :development, :test do
   gem 'capybara'
   gem 'capybara-mechanize'
   gem 'capybara-webkit'
+  gem 'shoulda-matchers'
+  gem 'database_cleaner'
+  
+  # Development specific gems
+  gem 'debugger'
+  gem 'sqlite3'
+  gem 'launchy'
   gem 'quiet_assets'
   gem 'letter_opener'
-  gem 'shoulda-matchers'
 end

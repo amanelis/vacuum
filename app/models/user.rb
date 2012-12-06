@@ -13,8 +13,10 @@ class User
   # Custom fields
   field :username, :type => String
   field :identifier, :type => String
-  field :created_at, type: DateTime
-  field :updated_at, type: DateTime
+  field :created_at, :type => DateTime
+  field :updated_at, :type => DateTime
+  field :active, :type => Boolean, :default => true
+  field :admin, :type => Boolean, :default => false
   
   ## Recoverable
   field :reset_password_token,   :type => String
@@ -52,6 +54,6 @@ class User
   has_many :projects, autosave: true, :dependent => :destroy
   
   # Callbacks
-  before_create :set_identifier, :set_created_at, :set_api_key
+  before_create :set_identifier, :set_created_at
   after_update  :set_updated_at
 end
