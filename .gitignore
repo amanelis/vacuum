@@ -9,6 +9,8 @@
 /.bundle
 /.idea
 
+coverage/
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 
