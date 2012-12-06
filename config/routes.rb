@@ -10,7 +10,7 @@ Vacuum::Application.routes.draw do
     get '/login'         => 'devise/sessions#new',        as: 'login'
     get '/logout'        => 'devise/sessions#destroy',    as: 'logout'
     get '/signup'        => 'devise/registrations#new',   as: 'signup'
-    get '/forgot'        => 'devise/passwords#new',       as: 'forgot'
+    get '/forgot'        => 'devise/passwords#new',       as: 'forgot_password'
   end
 
   # Standard Resourcing

@@ -248,6 +248,10 @@ GEM
     unf_ext (0.0.5)
     warden (1.2.1)
       rack (>= 1.0)
+    webrat (0.7.3)
+      nokogiri (>= 1.2.0)
+      rack (>= 1.0)
+      rack-test (>= 0.5.3)
     webrobots (0.0.13)
     websocket (1.0.4)
     will_paginate (3.0.3)
@@ -303,6 +307,7 @@ DEPENDENCIES
   sqlite3
   thin
   uglifier
+  webrat
   will_paginate_mongoid
   yajl-ruby
   zurb-foundation

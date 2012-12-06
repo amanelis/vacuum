@@ -38,6 +38,7 @@ group :development, :test do
   gem 'faker'
   gem 'fabrication'
   gem 'simplecov'
+  gem 'webrat'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'rspec-core'

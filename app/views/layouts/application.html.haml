@@ -6,6 +6,13 @@
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
+    / Header, contains the navigation logged in/logged out links
     = render partial: 'layouts/header/navigation'
-    = display_flash_messages
+    
+    / Css and styling for flash messages
+    .row
+      .twelve.columns
+        = display_flash_messages
+    
+    / Yield out main resourced content
     = yield
