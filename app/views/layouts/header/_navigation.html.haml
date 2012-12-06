@@ -1,0 +1,24 @@
+.row
+  .three.columns
+    %h1
+      %img{:src => "http://placehold.it/400x100&text=Logo"}
+  .nine.columns
+    - if user_signed_in?
+      %ul.nav-bar.right
+        %li
+          %a{href: root_path} Home 
+        %li
+          %a{href: account_path} Account
+        %li
+          %a{href: logout_path} Logout
+    - else
+      %ul.nav-bar.right
+        %li
+          %a{href: root_path} Home 
+        %li
+          %a{href: login_path} Login
+        %li
+          %a{href: signup_path} Sign up
+    
+  
+    

@@ -9,6 +9,9 @@ class User
   ## Database authenticatable
   field :email,              :type => String, :default => ""
   field :encrypted_password, :type => String, :default => ""
+  
+  # Custom fields
+  field :username, :type => String
 
   validates_presence_of :email
   validates_presence_of :encrypted_password

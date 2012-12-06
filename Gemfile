@@ -29,6 +29,7 @@ group :assets do
   gem 'coffee-rails'
   gem 'compass-rails'
   gem 'zurb-foundation'
+  gem 'zurb-rush'
   gem 'uglifier'
 end
 
