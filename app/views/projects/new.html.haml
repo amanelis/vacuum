@@ -1,0 +1,10 @@
+.row
+  .five.columns
+    %h2 Create a new project
+    = form_for @project do |f|
+      = f.label :name
+      = f.text_field :name
+      %br
+      = f.label :url
+      = f.text_field :url
+      = f.submit

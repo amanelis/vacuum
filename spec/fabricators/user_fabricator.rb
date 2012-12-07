@@ -7,7 +7,11 @@ Fabricator(:user) do
   identifier { SecureRandom.hex(25)[0...20] }
   created_at { DateTime.now }
   updated_at { DateTime.now }
-  active { true }  
+  active { true } 
+  
+  projects(count: 2) do |project, i|
+    Fabricate(:project, name: "#{i} proj")
+  end
 end
 
 Fabricator(:admin, :from => :user) do

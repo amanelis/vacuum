@@ -14,6 +14,8 @@ coverage/
 # Ignore the default SQLite database.
 /db/*.sqlite3
 
+webrat.log
+
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp

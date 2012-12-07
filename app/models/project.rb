@@ -2,6 +2,7 @@ class Project
   include Mongoid::Document
   include DefaultAttributeSetters
   
+  field :name, type: String
   field :url, type: String
   field :enabled, type: Boolean, default: true
   field :api_key, type: String
@@ -12,6 +13,10 @@ class Project
 
   ### Associations
   belongs_to :user
+
+  ### Validations
+  validates :name, :presence => true
+  validates :url,  :presence => true
 
   ### Callbacks
   before_create :set_identifier, :set_created_at, :set_api_key

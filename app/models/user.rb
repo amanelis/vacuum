@@ -47,8 +47,8 @@ class User
   field :authentication_token, :type => String
   
   ### Validations
-  validates_presence_of :email
-  validates_presence_of :encrypted_password
+  validates :email, :presence => true
+  validates :encrypted_password, :presence => true
   
   ### Associations
   has_many :projects, autosave: true, :dependent => :destroy

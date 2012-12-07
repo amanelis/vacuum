@@ -1,7 +1,7 @@
 require 'integration/integration_helper'
 
-describe Devise::RegistrationsController do
-  describe 'devise/registration#create' do
+describe 'UsersController' do
+  describe 'user/registration#create' do
     it "signs up a new user" do
       email = Faker::Internet.email
     
@@ -43,7 +43,7 @@ describe Devise::RegistrationsController do
     end
   end
 
-  describe 'devise/sessions#create' do
+  describe 'user/sessions#create' do
     it "signs in a signed up user" do
       user = Fabricate(:user, password: 'password123', password_confirmation: 'password123')
     
@@ -52,7 +52,7 @@ describe Devise::RegistrationsController do
       fill_in "user_password",  :with => 'password123'
       click_button 'Sign in'
     
-      assert current_path == root_path
+      assert current_path == new_project_path
       expect(page).to have_content("Vacuum")
       expect(page).to have_content("Logout")
     end
