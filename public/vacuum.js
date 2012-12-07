@@ -20,6 +20,11 @@ vacuum.undefined = vacuum.___undefined___;
  */
 vacuum.VERBOSE = false;
 
+/**
+ * API key - this will be set by user
+ */
+vacuum.api_key = null;
+
 /** 
   API URL of the server that accepts the log
  */
@@ -28,12 +33,7 @@ vacuum.api_url = 'http://localhost:3000'
 /**
  * API Path of the log method
  */
-vacuum.log_path = '/v1/logs';
-
-/**
- * API key - this will be set by user
- */
-vacuum.api_key = null;
+vacuum.log_path = '/api/v1/projects';
 
 /**
  * Full error coverage
@@ -87,12 +87,8 @@ vacuum.XMLHttpFactories = [
 vacuum.createXMLHTTPObject = function() {
 	var xmlhttp = false;
 	for (var i = 0; i < vacuum.XMLHttpFactories.length; i++) {
-		try {
-			xmlhttp = vacuum.XMLHttpFactories[i]();
-		}
-		catch (e) {
-			continue;
-		}
+		try { xmlhttp = vacuum.XMLHttpFactories[i](); }
+		catch (e) { continue; }
 		break;
 	}
 	return xmlhttp;
@@ -103,19 +99,22 @@ vacuum.createXMLHTTPObject = function() {
  */
 vacuum.post_request = function(level, message) {
   var request = vacuum.createXMLHTTPObject();
-  var params  = "&amp;message=" + escape(message) + "&amp;level=" + escape(level);
+  var params  = "&amp;message=" + escape(message) + 
+                "&amp;level=" + escape(level) + 
+                "&amp;parent_url=" + escape(document.location.href) +
+                "&amp;user_agent=" + escape(navigator.userAgent) +
+                "&amp;platform=" + escape(navigator.platform) +
+                "&amp;app_name=" + escape(navigator.appName) +
+                "&amp;parameters=" + escape(window.location.search) +
+                "&amp;cookie_enabled=" + escape(navigator.cookieEnabled);
     
   if ((level != null || level != "") && (message != null || message != "")) {
     request.open('POST', this.api_url + this.log_path + '?api_key=' + this.api_key + params, true);
   	request.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-
     request.onreadystatechange = function () {
       if (request.readyState != 4) return;
-      // callback(request);
     }
     if (request.readyState == 4) return;
-
-    // Make the request
     request.send();
   }
 };
@@ -124,16 +123,18 @@ vacuum.post_request = function(level, message) {
  * only enable this if the user sets for full error debugging
  */
 window.onerror = function(errorMessage, url, line) {
-  var loggerUrl = "https://www.xing.com/js/logger";
   var parameters = "?description=" + escape(errorMessage)
       + "&amp;url=" + escape(url)
       + "&amp;line=" + escape(line)
       + "&amp;parent_url=" + escape(document.location.href)
-      + "&amp;user_agent=" + escape(navigator.userAgent);
+      + "&amp;user_agent=" + escape(navigator.userAgent)
+      + "&amp;app_name=" + escape(navigator.appName) 
+      + "&amp;parameters=" + escape(window.location.search)
+      + "&amp;cookie_enabled=" + escape(navigator.cookieEnabled);
  
   /** Send error to server */
   if (this.window_error)
-    new Image().src = loggerUrl + parameters;
+    new Image().src = this.api_url + this.log_path + parameters;
 };
 
 /** 
@@ -158,15 +159,14 @@ vacuum.warn = function(message) {
 /** 
   * Log the data to user's account - this can also be custom
  */
-vacuum.log = function(level, message) {
-  var loggerUrl   = this.api_url + this.log_path;
-  var parameters  = "?level=" + escape(level)
-    + "&amp;message="     + escape(message)
-    + "&amp;url="         + escape(document.location.href)
-    + "&amp;user_agent="  + escape(navigator.userAgent)
-    + "&amp;api_key="     + this.api_key;
-  new Image().src = loggerUrl + parameters;
-};
+// vacuum.log = function(level, message) {
+//   var parameters  = "?level=" + escape(level)
+//     + "&amp;message="     + escape(message)
+//     + "&amp;url="         + escape(document.location.href)
+//     + "&amp;user_agent="  + escape(navigator.userAgent)
+//     + "&amp;api_key="     + this.api_key;
+//   new Image().src = this.api_url + this.log_path + parameters;
+// };
 
 
 
@@ -174,9 +174,9 @@ vacuum.log = function(level, message) {
 
 
 
-
-
-
+// 
+// 
+// 
 // vacuum.BrowserDetect = function() {
 //  init: function () {
 //    this.browser = this.searchString(this.dataBrowser) || "An unknown browser";

@@ -1,5 +1,12 @@
 Vacuum::Application.routes.draw do
-  get "projects/index"
+  # API Routes
+  namespace :api do
+    namespace :v1 do
+      resources :projects do
+        resources :errors
+      end
+    end
+  end
 
   # Devise model mapping
   devise_for :users,

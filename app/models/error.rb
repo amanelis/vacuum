@@ -14,10 +14,13 @@ class Error
 
   ### Associations
   belongs_to :project
+  
+  ### Embedding
+  embeds_many :occurrences
 
   ### Validations
-  validates :name, :presence => true
-  validates :url,  :presence => true
+  validates :name, presence: true
+  validates :url,  presence: true
   
   # Callbacks
   before_create :set_identifier, :set_created_at
