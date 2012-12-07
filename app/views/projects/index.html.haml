@@ -10,23 +10,23 @@
             %tr
               %th Name
               %th Last Error
-              %th Open
+              %th Resolved
               %th Total
               %th
           %tbody
             %tr
               %td= link_to project.name, project_path(project)
-              %td= project.errors
-              %td 2
-              %td 11
+              %td= time_ago_in_words(project.errors.desc(:updated_at).first.updated_at)
+              %td= project.errors.where(resolved: true).count
+              %td= project.errors.count
               %th
                 .small.button.dropdown{:href => "#"}
                   Configuration
                   %ul
                     %li
-                      %a{href: edit_project_path(project) } Settings
+                      %a{:href => project_errors_path(project)} Logs
                     %li
-                      %a{:href => project_path(project)} Logs
+                      %a{href: edit_project_path(project) } Settings
                     %li.divider
                     %li
                       = link_to "Delete", project_path(project), :method => :delete, :confirm => "Are you sure you want to delete this project?"

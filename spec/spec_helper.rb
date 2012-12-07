@@ -16,14 +16,14 @@ Fabrication.configure do |config|
   fabricator_dir = "spec/fabricators"
 end
 
-RSpec.configure do |config|
-  # Simplecov
-  SimpleCov.start do
-    add_group "Controllers",    "app/controllers"
-    add_group "Models",         "app/models"
-    add_group "Mailers",        "app/mailers"
-  end
-  
+# Simplecov
+SimpleCov.start do
+  add_group "Controllers",    "app/controllers"
+  add_group "Models",         "app/models"
+  add_group "Mailers",        "app/mailers"
+end
+
+RSpec.configure do |config|  
   # If true, the base class of anonymous controllers will be inferred
   # automatically. This will be the default behavior in future versions of
   # rspec-rails.

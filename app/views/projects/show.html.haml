@@ -1,28 +1,40 @@
 .row
   .twelve.columns
-    %h1= @project.name + " errors"
-    - if @project.errors.empty?
-      .panel
-        %h3 No errors yet. Guess thats a good thing?
-      %p 
-        Be sure to install this js after the 
-        %code= "<head>"
-        tag in your application.
-        %textarea{rows: 3}
-          = @project.to_js
-    - else
-      .panel        
-        %table.twelve
-          %thead
-            %tr
-              %th Error
-              %th Last Error
-              %th Occurrences
-              %th Level
-          - @project.errors.each do |error|
-            %tbody
-              %tr
-                %td= error.message
-                %td= time_ago_in_words(error.updated_at)
-                %td= error.occurrences.count
-                %td= error.level
+    %h3= @project.name + " errors"
+    .panel
+      %dl.tabs
+        %dd.active
+          %a{:href => "#setup"} Setup
+        %dd
+          %a{:href => "#notification"} Notification
+        %dd.hide-for-small
+          %a{:href => "#collaborators"} Collaborators
+      %ul.tabs-content
+        %li#simple1Tab.active 
+          %h3 Javascript Installation
+          %p 
+            Add this snippet directly after the 
+            %code= "<head>"
+            tag in your application.
+            %pre
+              = @project.to_js
+          %p
+            Start logging errors manually
+            %br
+            %pre
+              vacuum.warn('wonky redirect right here, watch the response'); 
+            %br
+            %pre
+              vacuum.error('.ajax.complete never returns');
+          
+          %p
+            Start logging errors automatically - simply set 
+            %code vacuum.window_error = true;
+            in your snippet and it will log all window.error messages. We set this to false for you by default.
+            %br
+            
+            
+        %li#simple2Tab This is simple tab 2s content. Now you see it!
+        %li#simple3Tab This is simple tab 3s content
+    
+    %a{href: request.referrer, class: 'button'} Back

@@ -1,15 +1,13 @@
 class Error
   include Mongoid::Document
+  include Mongoid::Timestamps
   include DefaultAttributeSetters
   
-  field :level, type: String
-  field :message, type: String
-  field :resolved, type: Boolean
-  field :count, type: Integer, default: 0
-  
-  field :identifier, type: String
-  field :created_at, type: DateTime
-  field :updated_at, type: DateTime
+  field :level,       type: String
+  field :message,     type: String
+  field :resolved,    type: Boolean
+  field :count,       type: Integer, default: 0
+  field :identifier,  type: String
 
   ### Associations
   belongs_to :project
@@ -18,6 +16,5 @@ class Error
   embeds_many :occurrences
   
   # Callbacks
-  before_create :set_identifier, :set_created_at
-  after_update  :set_updated_at
+  before_create :set_identifier
 end

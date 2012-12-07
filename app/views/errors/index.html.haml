@@ -1,0 +1,40 @@
+.row
+  .twelve.columns
+    %h3= @project.name + " errors"
+    - if @errors.empty?
+      .panel
+        %h3 No errors yet. Guess thats a good thing?
+      %p 
+        Be sure to install this js after the 
+        %code= "<head>"
+        tag in your application.
+        %textarea{rows: 3}
+          = @project.to_js
+    - else
+      .panel        
+        %table.twelve
+          %thead
+            %tr
+              %th Error
+              %th Last Error
+              %th Occurrences
+              %th Level
+          - @errors.each do |error|
+            %tbody
+              %tr
+                %td
+                  = error.message
+                  %br
+                  %em= error.occurrences.last.try(:parent_url) + ':' + error.occurrences.last.try(:line) unless error.occurrences.last.line.nil?
+                %td= time_ago_in_words(error.updated_at)
+                %td= error.occurrences.count
+                %td
+                  - if error.level == 'system'
+                    %span{class: 'label'}= error.level
+                  - elsif error.level == 'error'
+                    %span{class: 'alert label'}= error.level
+                  - elsif error.level == 'warn'
+                    %span{class: 'warn label'}= error.level
+                  - else
+                    = error.level
+      = will_paginate(@errors)

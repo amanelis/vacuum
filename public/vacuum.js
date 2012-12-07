@@ -123,18 +123,28 @@ vacuum.post_request = function(level, message) {
  * only enable this if the user sets for full error debugging
  */
 window.onerror = function(errorMessage, url, line) {
-  var parameters = "?description=" + escape(errorMessage)
+  var params = "&amp;?description=" + escape(errorMessage)
       + "&amp;url=" + escape(url)
       + "&amp;line=" + escape(line)
       + "&amp;parent_url=" + escape(document.location.href)
       + "&amp;user_agent=" + escape(navigator.userAgent)
       + "&amp;app_name=" + escape(navigator.appName) 
       + "&amp;parameters=" + escape(window.location.search)
+      + "&amp;cookie_enabled=" + escape(navigator.cookieEnabled)
+      + "&amp;message=" + escape(errorMessage) 
+      + "&amp;level=" + escape('system')
+      + "&amp;platform=" + escape(navigator.platform)
       + "&amp;cookie_enabled=" + escape(navigator.cookieEnabled);
  
   /** Send error to server */
-  if (this.window_error)
-    new Image().src = this.api_url + this.log_path + parameters;
+  var request = vacuum.createXMLHTTPObject();
+  request.open('POST', vacuum.api_url + vacuum.log_path + '?api_key=' + vacuum.api_key + params, true);
+	request.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+  request.onreadystatechange = function () {
+    if (request.readyState != 4) return;
+  }
+  if (request.readyState == 4) return;
+  request.send();
 };
 
 /** 

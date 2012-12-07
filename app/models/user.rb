@@ -1,6 +1,8 @@
 class User
   include Mongoid::Document
+  include Mongoid::Timestamps
   include DefaultAttributeSetters
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :token_authenticatable,
@@ -13,8 +15,6 @@ class User
   # Custom fields
   field :username, :type => String
   field :identifier, :type => String
-  field :created_at, :type => DateTime
-  field :updated_at, :type => DateTime
   field :active, :type => Boolean, :default => true
   field :admin, :type => Boolean, :default => false
   
