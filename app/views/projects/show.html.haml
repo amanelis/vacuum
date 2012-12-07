@@ -1,6 +1,6 @@
 .row
   .twelve.columns
-    %h1= @project.name
+    %h1= @project.name + " errors"
     - if @project.errors.empty?
       .panel
         %h3 No errors yet. Guess thats a good thing?
@@ -10,4 +10,19 @@
         tag in your application.
         %textarea{rows: 3}
           = @project.to_js
-      
+    - else
+      .panel        
+        %table.twelve
+          %thead
+            %tr
+              %th Error
+              %th Last Error
+              %th Occurrences
+              %th Level
+          - @project.errors.each do |error|
+            %tbody
+              %tr
+                %td= error.message
+                %td= time_ago_in_words(error.updated_at)
+                %td= error.occurrences.count
+                %td= error.level

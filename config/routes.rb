@@ -29,7 +29,9 @@ Vacuum::Application.routes.draw do
   end
 
   # Standard Resourcing
-  resources :projects
+  resources :projects do
+    resources :errors
+  end
   
   # Root the application
   root to: 'home#index'

@@ -4,7 +4,6 @@ class Error
   
   field :level, type: String
   field :message, type: String
-  field :parameters, type: String
   field :resolved, type: Boolean
   field :count, type: Integer, default: 0
   
@@ -17,10 +16,6 @@ class Error
   
   ### Embedding
   embeds_many :occurrences
-
-  ### Validations
-  validates :name, presence: true
-  validates :url,  presence: true
   
   # Callbacks
   before_create :set_identifier, :set_created_at
