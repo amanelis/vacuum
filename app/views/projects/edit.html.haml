@@ -1,0 +1,23 @@
+.row
+  .four.columns
+    %h2= "Edit #{@project.name}"
+    = form_for @project do |f|
+      = f.label :name
+      = f.text_field :name
+      %br
+      = f.label :url
+      = f.text_field :url
+      = f.submit 'Update', :class => 'button'
+      = link_to 'Cancel', request.referrer
+ 
+  .seven.columns  
+    %h2 Configuration
+    %p 
+      Be sure to install this js after the 
+      %code= "<head>"
+      tag in your application.
+      %textarea{rows: 4}
+        = @project.to_js
+        
+    %h2 API Key
+    %p= @project.api_key

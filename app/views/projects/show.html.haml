@@ -1,4 +1,13 @@
 .row
-  .five.columns
+  .twelve.columns
     %h1= @project.name
-    %em= @project.url
+    - if @project.errors.empty?
+      .panel
+        %h3 No errors yet. Guess thats a good thing?
+      %p 
+        Be sure to install this js after the 
+        %code= "<head>"
+        tag in your application.
+        %textarea{rows: 3}
+          = @project.to_js
+      

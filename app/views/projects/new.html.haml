@@ -1,5 +1,5 @@
 .row
-  .five.columns
+  .six.columns
     %h2 Create a new project
     = form_for @project do |f|
       = f.label :name
@@ -7,4 +7,5 @@
       %br
       = f.label :url
       = f.text_field :url
-      = f.submit
+      = f.submit 'Create', :class => 'button'
+      = link_to 'Cancel', request.referrer
