@@ -82,4 +82,10 @@ test:
 production:
   sessions:
     default:
-      uri: <%= ENV['MONGOHQ_URL'] %>
+      database: app9868490
+      username: heroku
+      password: ccdfed329d7e0700f355b82b131012a8
+      host: linus.mongohq.com
+      port: 10040
+      options:
+        consistency: :strong
