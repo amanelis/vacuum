@@ -43,7 +43,7 @@ group :development, :test do
   gem 'rspec-core'
   gem 'rspec-expectations'
   gem 'rspec-mocks'
-  gem 'capybara'# , :git => 'git://github.com/jnicklas/capybara.git'
+  gem 'capybara'
   gem 'capybara-mechanize'
   gem 'capybara-webkit'
   gem 'shoulda'

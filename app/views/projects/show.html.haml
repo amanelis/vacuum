@@ -6,8 +6,10 @@
           %a{:href => "#setup"} Setup
         %dd
           %a{:href => "#notification"} Notification
-        %dd.hide-for-small
+        %dd
           %a{:href => "#collaborators"} Collaborators
+        %dd
+          %a{:href => "#settings"} Settings
       %ul.tabs-content
         %li#setupTab.active 
           %h2 Javascript Installation
@@ -52,4 +54,28 @@
           %h2 Collaborators
           %p
             Coming soon...
+        %li#settingsTab
+          .row
+            .five.columns
+              %h2= "Edit #{@project.name}"
+              = form_for @project do |f|
+                = f.label :name
+                = f.text_field :name
+                %br
+                = f.label :url
+                = f.text_field :url
+                = f.submit 'Update', :class => 'button'
+                = link_to 'Cancel', request.referrer
+            .six.columns
+              %h2 Configuration
+              %p 
+                Be sure to install this js after the 
+                %code= "<head>"
+                tag in your application.
+                %textarea{rows: 4}
+                  = @project.to_js
+
+              %h2 API Key
+              %p= @project.api_key
+        
     %a{href: request.referrer, class: 'button'} Back

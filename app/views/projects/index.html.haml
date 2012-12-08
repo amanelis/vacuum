@@ -22,7 +22,7 @@
                   %em n/a
               - else 
                 %td= time_ago_in_words(project.errors.desc(:updated_at).first.updated_at)
-              %td= project.errors.where(resolved: false).count
+              %td= project.errors.where(resolved: nil).count
               %td= project.errors.count
               %th
                 .small.button.dropdown{:href => "#"}
@@ -31,7 +31,7 @@
                     %li
                       %a{:href => project_errors_path(project)} Logs
                     %li
-                      %a{href: edit_project_path(project) } Settings
+                      %a{href: "/projects/#{project.id}/edit#settings" } Settings
                     %li.divider
                     %li
                       = link_to "Delete", project_path(project), :method => :delete, :confirm => "Are you sure you want to delete this project?"
