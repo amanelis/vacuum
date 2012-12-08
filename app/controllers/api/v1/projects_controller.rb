@@ -36,7 +36,9 @@ class Api::V1::ProjectsController < Api::V1::ApiController
       platform:         @params['platform'],
       parameters:       @params['parameters'],
       cookie_enabled:   @params['cookie_enabled'],
-      line:             @params['line']
+      line:             @params['line'],
+      created_at:       DateTime.now,
+      updated_at:       DateTime.now
     }
     
     # Build the occurrence

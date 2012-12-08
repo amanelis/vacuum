@@ -1,0 +1,21 @@
+.row
+  .twelve.columns
+    .panel
+      %h3
+        = @occurrences.count
+        occurrences
+      %p
+        %table.twelve
+          %thead
+            %tr
+              %th Agent
+              %th Last Error
+              %th Seen At
+          - @occurrences.each do |occurrence|
+            %tbody
+              %tr
+                %td= image_tag "/assets/#{occurrence.human_agent}.png", width: '16px', height: '16px'
+                %td= occurrence.error.message
+                %td= occurrence.created_at
+      
+    %a{href: project_errors_path(@project), class: 'button'} Back

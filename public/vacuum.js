@@ -124,17 +124,17 @@ vacuum.post_request = function(level, message) {
  */
 window.onerror = function(errorMessage, url, line) {
   var params = "&amp;?description=" + escape(errorMessage)
-      + "&amp;url=" + escape(url)
-      + "&amp;line=" + escape(line)
-      + "&amp;parent_url=" + escape(document.location.href)
-      + "&amp;user_agent=" + escape(navigator.userAgent)
-      + "&amp;app_name=" + escape(navigator.appName) 
-      + "&amp;parameters=" + escape(window.location.search)
-      + "&amp;cookie_enabled=" + escape(navigator.cookieEnabled)
-      + "&amp;message=" + escape(errorMessage) 
-      + "&amp;level=" + escape('system')
-      + "&amp;platform=" + escape(navigator.platform)
-      + "&amp;cookie_enabled=" + escape(navigator.cookieEnabled);
+      + "&amp;url="             + escape(url)
+      + "&amp;line="            + escape(line)
+      + "&amp;parent_url="      + escape(document.location.href)
+      + "&amp;user_agent="      + escape(navigator.userAgent)
+      + "&amp;app_name="        + escape(navigator.appName) 
+      + "&amp;parameters="      + escape(window.location.search)
+      + "&amp;cookie_enabled="  + escape(navigator.cookieEnabled)
+      + "&amp;message="         + escape(errorMessage) 
+      + "&amp;level="           + escape('window')
+      + "&amp;platform="        + escape(navigator.platform)
+      + "&amp;cookie_enabled="  + escape(navigator.cookieEnabled);
  
   /** Send error to server */
   var request = vacuum.createXMLHTTPObject();

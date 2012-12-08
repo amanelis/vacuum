@@ -10,14 +10,19 @@
             %tr
               %th Name
               %th Last Error
-              %th Resolved
+              %th Unesolved
               %th Total
               %th
           %tbody
             %tr
-              %td= link_to project.name, project_path(project)
-              %td= time_ago_in_words(project.errors.desc(:updated_at).first.updated_at)
-              %td= project.errors.where(resolved: true).count
+              %td
+                %strong= link_to project.name, project_path(project)
+              - if project.errors.count == 0
+                %td 
+                  %em n/a
+              - else 
+                %td= time_ago_in_words(project.errors.desc(:updated_at).first.updated_at)
+              %td= project.errors.where(resolved: false).count
               %td= project.errors.count
               %th
                 .small.button.dropdown{:href => "#"}

@@ -2,42 +2,15 @@
 %html
   %head
     %title Vacuum
-    = stylesheet_link_tag    'application', media: 'all'
+    = stylesheet_link_tag    'application', 'resets', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
-    
-    / Google Fonts
-    %link{href: "http://fonts.googleapis.com/css?family=Montserrat+Alternates", rel: "stylesheet", type: "text/css"}
-    :css
-      h1, h2, h3, h4, h5, h6, p {
-        font-family: 'Montserrat Alternates', sans-serif;
-      }
-      pre {
-        display: block;
-        background: white;
-        color: black;
-        border: 1px solid #CCC;
-        padding: 15px;
-        white-space: pre-wrap; /* css-3 */
-        white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
-        white-space: -pre-wrap; /* Opera 4-6 */
-        white-space: -o-pre-wrap; /* Opera 7 */
-        word-wrap: break-word; /* Internet Explorer 5.5+ */
-      }
-      .label.warn {
-        background-color: #F18D0C;
-      }
   %body
-    / Header, contains the navigation logged in/logged out links
     = render partial: 'layouts/header/navigation'
     
-    / Css and styling for flash messages
     .row
       .twelve.columns
         = display_flash_messages
     
-    / Yield out main resourced content
-    = yield
-    
-    / Footer, contains info links and bottom hr
+    = yield    
     = render partial: 'layouts/footer/navigation'

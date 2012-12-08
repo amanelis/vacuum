@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   before_filter :authenticate_user!
   
   def index
-    @projects = current_user.projects.paginate(page: params[:page], per_page: 5)
+    @projects = current_user.projects.paginate(page: params[:page], per_page: 10)
   end
   
   def new

@@ -1,6 +1,5 @@
 .row
   .twelve.columns
-    %h3= @project.name + " errors"
     .panel
       %dl.tabs
         %dd.active
@@ -10,31 +9,47 @@
         %dd.hide-for-small
           %a{:href => "#collaborators"} Collaborators
       %ul.tabs-content
-        %li#simple1Tab.active 
-          %h3 Javascript Installation
+        %li#setupTab.active 
+          %h2 Javascript Installation
           %p 
             Add this snippet directly after the 
             %code= "<head>"
             tag in your application.
             %pre
               = @project.to_js
+          %div{align: 'right'}
+            = link_to "I've completed this step", project_errors_path(@project), :class => 'success button'
+           
+          %h4 Automatic Logging   
           %p
-            Start logging errors manually
+            Start logging errors automatically, these will trigger the 
+            %span{class: 'label'} system
+            notification.
+            %br
+            %pre
+              vacuum.window_error = true;
+              
+          %h4 Manual Logging
+          %p
+            Start logging errors manually, these will trigger the 
+            %span{class: 'alert label'} error
+            or
+            %span{class: 'warn label'} warn
+            notification.
             %br
             %pre
               vacuum.warn('wonky redirect right here, watch the response'); 
             %br
             %pre
               vacuum.error('.ajax.complete never returns');
-          
+            
+            
+        %li#notificationTab 
+          %h2 Get Notified
+          %p 
+            Coming soon...
+        %li#collaboratorsTab 
+          %h2 Collaborators
           %p
-            Start logging errors automatically - simply set 
-            %code vacuum.window_error = true;
-            in your snippet and it will log all window.error messages. We set this to false for you by default.
-            %br
-            
-            
-        %li#simple2Tab This is simple tab 2s content. Now you see it!
-        %li#simple3Tab This is simple tab 3s content
-    
+            Coming soon...
     %a{href: request.referrer, class: 'button'} Back

@@ -17,4 +17,13 @@ class Occurrence
   
   ### Callbacks
   before_create :set_identifier
+  
+  # human_agent
+  # @param:
+  # @return: String[human readable version of the User agent]
+  # Tired of ready complicated user agents strings. This function
+  # returns a readble version for our user to see.
+  def human_agent
+    ['chrome', 'firefox', 'explorer', 'ie', 'netscape', 'opera', 'safari'].collect { |a| return a if self.user_agent.downcase.include?(a) }
+  end
 end

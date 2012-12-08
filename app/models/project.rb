@@ -26,7 +26,7 @@ class Project
                  "<script type=\"text/javascript\">" + 
                    "try {" +
                       "vacuum.api_key = '" + self.api_key + "';" +
-                      "vacuum.window_error = false;" +
+                      "vacuum.window_error = true;" +
                       "console.log(vacuum.status());" +
                    "} catch(err) {}" +
                  "</script>"
