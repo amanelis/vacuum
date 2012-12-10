@@ -82,14 +82,19 @@ test:
 production:
   sessions:
     default:
-      database: app9868490
-      username: heroku
-      password: a1a3151de2ef1347fa61d21cead600a4
-      hosts:  
-        - mars.mongohq.com
-      port: 10040
-      options:
-        consistency: :strong
+      uri: <%= ENV['MONGOHQ_URL'] %>
+
+# production:
+#   sessions:
+#     default:
+#       database: app9868490
+#       username: heroku
+#       password: a1a3151de2ef1347fa61d21cead600a4
+#       hosts:  
+#         - mars.mongohq.com
+#       port: 10040
+#       options:
+#         consistency: :strong
 
 # production:
 #   hosts:
