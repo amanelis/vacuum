@@ -22,7 +22,14 @@ class Project
   before_create :set_identifier, :set_api_key
   
   def to_js
-    javascript = "<script type=\"text/javascript\" src=\"http://localhost:3000/vacuum.js\"></script>" +
+    case Rails.env
+    when "development" || "test"
+      host = "htt://localhost:3000"
+    when "production"
+      host = "http://vacuumhq.herokuapp.com"
+    when
+    
+    javascript = "<script type=\"text/javascript\" src=\"#{host}/vacuum.js\"></script>" +
                  "<script type=\"text/javascript\">" + 
                    "try {" +
                       "vacuum.api_key = '" + self.api_key + "';" +
