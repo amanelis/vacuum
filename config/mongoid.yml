@@ -87,7 +87,6 @@ production:
       password: a1a3151de2ef1347fa61d21cead600a4
       hosts:  
         - mars.mongohq.com
-        - linus.mongohq.com
       port: 10040
       options:
         consistency: :strong

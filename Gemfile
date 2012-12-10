@@ -20,6 +20,7 @@ gem 'quiet_assets'
 gem 'haml'
 gem 'devise'
 gem 'heroku'
+gem 'zurb-rush'
 gem 'will_paginate_mongoid'
 
 # Assets
@@ -30,7 +31,6 @@ group :assets do
   gem 'coffee-rails'
   gem 'compass-rails'
   gem 'zurb-foundation'
-  gem 'zurb-rush'
   gem 'uglifier'
 end
 
