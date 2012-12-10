@@ -56,7 +56,7 @@ module Vacuum
     # config.active_record.whitelist_attributes = true
     
     # Turn off asset compliation on rakes
-    config.assets.initialize_on_precompile = false
+    config.assets.initialize_on_precompile = true
 
     # Enable the asset pipeline
     config.assets.enabled = true
