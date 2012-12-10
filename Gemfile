@@ -17,6 +17,7 @@ gem 'jbuilder'
 gem 'quiet_assets'
 
 # Other
+gem 'haml'
 gem 'devise'
 gem 'heroku'
 gem 'will_paginate_mongoid'
