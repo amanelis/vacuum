@@ -79,28 +79,28 @@ test:
         max_retries: 1
         retry_interval: 0
 
-# production:
-#   sessions:
-#     default:
-#       database: app9868490
-#       username: heroku
-#       password: a1a3151de2ef1347fa61d21cead600a4
-#       hosts:  
-#         - mars.mongohq.com
-#         - linus.mongohq.com
-#       port: 10040
-#       options:
-#         consistency: :strong
-
 production:
-  hosts:
-    - - mars.mongohq.com
-      - 10085
-  database: app9868490
-  username: heroku
-  password: a1a3151de2ef1347fa61d21cead600a4
-  allow_dynamic_fields: false
-  raise_not_found_error: false
-  logger: false
-  persist_in_safe_mode: true
-  max_retries_on_connection_failure: 15
+  sessions:
+    default:
+      database: app9868490
+      username: heroku
+      password: a1a3151de2ef1347fa61d21cead600a4
+      hosts:  
+        - mars.mongohq.com
+        - linus.mongohq.com
+      port: 10040
+      options:
+        consistency: :strong
+
+# production:
+#   hosts:
+#     - - mars.mongohq.com
+#       - 10085
+#   database: app9868490
+#   username: heroku
+#   password: a1a3151de2ef1347fa61d21cead600a4
+#   allow_dynamic_fields: false
+#   raise_not_found_error: false
+#   logger: false
+#   persist_in_safe_mode: true
+#   max_retries_on_connection_failure: 15
