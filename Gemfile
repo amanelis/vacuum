@@ -21,9 +21,6 @@ gem 'devise'
 gem 'heroku'
 gem 'will_paginate_mongoid'
 
-# HTTP Servers
-gem 'thin'
-
 # Assets
 group :assets do
   gem 'haml-rails'
