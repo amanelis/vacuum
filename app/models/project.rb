@@ -27,7 +27,7 @@ class Project
       host = "htt://localhost:3000"
     when "production"
       host = "http://vacuumhq.herokuapp.com"
-    when
+    end
     
     javascript = "<script type=\"text/javascript\" src=\"#{host}/vacuum.js\"></script>" +
                  "<script type=\"text/javascript\">" + 
