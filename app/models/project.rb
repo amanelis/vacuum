@@ -35,7 +35,7 @@ class Project
                       "vacuum.api_key = '" + self.api_key + "';" +
                       "vacuum.window_error = true;" +
                       "console.log(vacuum.status());" +
-                   "} catch(err) {}" +
+                   "} catch(e) {}" +
                  "</script>"
     javascript   
   end

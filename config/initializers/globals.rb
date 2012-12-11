@@ -11,6 +11,7 @@ DEFAULT_ALLOWED_PARAMETERS_ON_LOGGING =
     'parameters',
     'parent_url', 
     'platform',
+    'stack_trace',
     'user_agent', 
     'url' 
   ]

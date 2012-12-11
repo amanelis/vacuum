@@ -5,6 +5,7 @@ class Error
   
   field :level,       type: String
   field :message,     type: String
+  
   field :resolved,    type: Boolean
   field :count,       type: Integer, default: 0
   field :identifier,  type: String
