@@ -28,7 +28,7 @@ vacuum.api_key = null;
 /** 
   API URL of the server that accepts the log
  */
-vacuum.api_url = 'http://localhost:3000'
+vacuum.api_url = 'http://vacuumhq.herokuapp.com'
 
 /**
  * API Path of the log method
