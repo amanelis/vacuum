@@ -4,37 +4,37 @@
       .panel
         %h2= link_to "Create your first project", new_project_path
     - else
-      - @projects.each do |project|
-        %table.twelve
-          %thead
-            %tr
-              %th Name
-              %th Last Error
-              %th Unesolved
-              %th Total
-              %th
-          %tbody
-            %tr
-              %td
-                %strong= link_to project.name, project_path(project)
-              - if project.errors.count == 0
-                %td 
-                  %em n/a
-              - else 
-                %td= time_ago_in_words(project.errors.desc(:updated_at).first.updated_at)
-              %td= project.errors.where(resolved: nil).count
-              %td= project.errors.count
-              %th
-                .small.button.dropdown{:href => "#"}
-                  Configuration
-                  %ul
-                    %li
-                      %a{:href => project_errors_path(project)} Logs
-                    %li
-                      %a{href: "/projects/#{project.id}/edit#settings" } Settings
-                    %li.divider
-                    %li
-                      = link_to "Delete", project_path(project), :method => :delete, :confirm => "Are you sure you want to delete this project?"
+      %table.twelve
+        %thead
+          %tr
+            %th Name
+            %th Last Error
+            %th Unesolved
+            %th Total
+            %th
+          - @projects.each do |project|
+            %tbody
+              %tr
+                %td
+                  %strong= link_to project.name, project_path(project)
+                - if project.errors.count == 0
+                  %td 
+                    %em n/a
+                - else 
+                  %td= time_ago_in_words(project.errors.desc(:updated_at).first.updated_at)
+                %td= project.errors.where(resolved: nil).count
+                %td= project.errors.count
+                %th
+                  .small.button.dropdown{:href => "#"}
+                    Configuration
+                    %ul
+                      %li
+                        %a{:href => project_errors_path(project)} Logs
+                      %li
+                        %a{href: "/projects/#{project.id}/edit#settings" } Settings
+                      %li.divider
+                      %li
+                        = link_to "Delete", project_path(project), :method => :delete, :confirm => "Are you sure you want to delete this project?"
       %div{:align => 'left'}
         %a.success.button{:href => new_project_path} Create a project
         = will_paginate(@projects)
