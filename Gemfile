@@ -6,6 +6,9 @@ ruby '1.9.3'
 # Rails
 gem 'rails', '3.2.9'
 
+# Server
+gem 'thin'
+
 # Database
 gem 'bson'
 gem 'bson_ext'
@@ -50,7 +53,7 @@ group :development, :test do
   gem 'shoulda'
   gem 'shoulda-matchers'
   gem 'database_cleaner'
-  
+
   # Development specific gems
   gem 'debugger'
   gem 'sqlite3'
