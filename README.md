@@ -10,6 +10,5 @@ To get started with the application make sure you have mongodb installed and run
 
 2) Should not have to run any migrations of any sort to get going. Start your server:
 
-	thin start
-
+    thin start
 

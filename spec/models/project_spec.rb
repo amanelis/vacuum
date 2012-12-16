@@ -6,7 +6,7 @@ describe Project do
       Fabricate(:project).should be_valid
     end
   end
-  
+
   it { should respond_to :name }
   it { should respond_to :url }
   it { should respond_to :enabled }

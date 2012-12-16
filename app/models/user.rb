@@ -2,7 +2,7 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
   include DefaultAttributeSetters
-  
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :token_authenticatable,
@@ -11,13 +11,13 @@ class User
   ## Database authenticatable
   field :email,              :type => String, :default => ""
   field :encrypted_password, :type => String, :default => ""
-  
+
   # Custom fields
   field :username, :type => String
   field :identifier, :type => String
   field :active, :type => Boolean, :default => true
   field :admin, :type => Boolean, :default => false
-  
+
   ## Recoverable
   field :reset_password_token,   :type => String
   field :reset_password_sent_at, :type => Time
@@ -45,14 +45,14 @@ class User
 
   ## Token authenticatable
   field :authentication_token, :type => String
-  
+
   ### Validations
   validates :email, :presence => true
   validates :encrypted_password, :presence => true
-  
+
   ### Associations
   has_many :projects, autosave: true, :dependent => :destroy
-  
+
   # Callbacks
   before_create :set_identifier, :set_created_at
   after_update  :set_updated_at
