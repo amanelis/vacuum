@@ -8,6 +8,7 @@ Fabricator(:user) do
   created_at { DateTime.now }
   updated_at { DateTime.now }
   active { true } 
+  admin { false }
   
   projects(count: 2) do |project, i|
     Fabricate(:project, name: "#{i} proj")

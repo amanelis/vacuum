@@ -27,4 +27,19 @@ describe User do
   it { should respond_to :authentication_token }
   it { should respond_to :admin }
   it { should respond_to :active }
+  
+  describe ".admin" do
+    before(:all) do
+      @admin = Fabricate(:user, admin: true)
+      @user  = Fabricate(:user)
+    end
+    
+    it "includes users with admin flag" do 
+      User.admin.to_a.should include(@admin) 
+    end
+
+    it "excludes users without admin flag" do 
+      User.admin.to_a.should_not include(@user) 
+    end
+  end
 end

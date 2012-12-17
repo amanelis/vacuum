@@ -56,4 +56,7 @@ class User
   # Callbacks
   before_create :set_identifier, :set_created_at
   after_update  :set_updated_at
+  
+  ### Scopes
+  scope :admin, where(admin: true)
 end
