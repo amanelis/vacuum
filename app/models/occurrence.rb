@@ -13,6 +13,7 @@ class Occurrence
   field :parameters,      type: String # ?api_key=helokey
   field :cookie_enabled,  type: String # true/false
   field :identifier,      type: String # 20318jh30114thgsdlkj3
+  field :stack_trace,     type: String
   
   ### Embedding
   embedded_in :error
