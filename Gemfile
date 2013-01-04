@@ -17,8 +17,8 @@ gem 'jbuilder'
 gem 'quiet_assets'
 
 # Other
-gem 'haml'
 gem 'thin'
+gem 'haml'
 gem 'devise'
 gem 'heroku'
 gem 'foreman'
