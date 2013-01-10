@@ -1,26 +1,8 @@
-
-
-/**
- * Main function giving a function stack trace with a forced or passed in Error
- *
- * @cfg {Error} e The error to create a stacktrace from (optional)
- * @cfg {Boolean} guess If we should try to resolve the names of anonymous functions
- * @return {Array} of Strings with functions, lines, files, and arguments where possible
- */
-function printStackTrace(options) {
-    options = options || {guess: true};
-    var ex = options.e || null, guess = !!options.guess;
-    var p = new printStackTrace.implementation(), result = p.run(ex);
-    return (guess) ? p.guessAnonymousFunctions(result) : result;
-}
-
+/* Stack Trace JS */
 if (typeof module !== "undefined" && module.exports) {
     module.exports = printStackTrace;
 }
-
-printStackTrace.implementation = function() {
-};
-
+printStackTrace.implementation = function() { };
 printStackTrace.implementation.prototype = {
     /**
      * @param {Error} ex The error to create a stacktrace from (optional)
@@ -501,6 +483,20 @@ vacuum.unimplementedMethod_ = function() {
 };
 
 /**
+ * Main function giving a function stack trace with a forced or passed in Error
+ *
+ * @cfg {Error} e The error to create a stacktrace from (optional)
+ * @cfg {Boolean} guess If we should try to resolve the names of anonymous functions
+ * @return {Array} of Strings with functions, lines, files, and arguments where possible
+ */
+function printStackTrace(options) {
+    options = options || {guess: true};
+    var ex = options.e || null, guess = !!options.guess;
+    var p = new printStackTrace.implementation(), result = p.run(ex);
+    return (guess) ? p.guessAnonymousFunctions(result) : result;
+}
+
+/**
  * Check the status of vacuum is ready to log errors
  */
 vacuum.status = function() {
@@ -605,8 +601,5 @@ window.onerror = function(errorMessage, url, line) {
     if (request.readyState != 4) return;
   }
   if (request.readyState == 4) return;
-  request.send();
-
-  console.log('stack trace');
-  
+  request.send();  
 };
