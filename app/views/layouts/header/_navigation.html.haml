@@ -1,23 +1,12 @@
-.row
-  .three.columns
-    %h1
-      Vacuum
-  .nine.columns
-    - if user_signed_in?
-      %ul.nav-bar.right
-        %li
-          %a{href: projects_path} Home 
-        %li
-          %a{href: account_path} Account
-        %li
-          %a{href: projects_path} My Projects
-        %li
-          %a{href: logout_path} Logout
-    - else
-      %ul.nav-bar.right
-        %li
-          %a{href: root_path} Home 
-        %li
-          %a{href: login_path} Login
-        %li
-          %a{href: signup_path} Sign up
+- if user_signed_in?
+  %ul.nav.right
+    %li
+      %a.button.round.small{href: account_path} Account
+    %li
+      %a.button.round.small{href: projects_path} My Projects
+    %li
+      %a.button.round.small{href: logout_path} Logout
+- else
+  %ul.nav.right
+    %li
+      %a.button.round.faint{href: login_path} Login

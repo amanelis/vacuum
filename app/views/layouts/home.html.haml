@@ -3,7 +3,13 @@
   = render partial: 'layouts/header/head'
   %body
     = render partial: 'layouts/header/stripes'
-    = render partial: 'layouts/header/header'
+
+    %header.row
+      .nine.columns.offset-by-three
+        = render partial: 'layouts/header/navigation'
+
     = render partial: 'layouts/header/flash'
+
     = yield
+
     = render partial: 'layouts/footer/navigation'

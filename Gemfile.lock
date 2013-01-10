@@ -34,6 +34,9 @@ GEM
     better_errors (0.3.2)
       coderay (>= 1.0.0)
       erubis (>= 2.7.0)
+    bourbon (3.0.1)
+      sass (>= 3.2.0)
+      thor
     bourne (1.1.2)
       mocha (= 0.10.5)
     bson (1.8.1)
@@ -258,6 +261,7 @@ PLATFORMS
 
 DEPENDENCIES
   better_errors
+  bourbon (>= 3.0.1)
   bson
   bson_ext
   capybara
@@ -283,7 +287,8 @@ DEPENDENCIES
   rspec-expectations
   rspec-mocks
   rspec-rails
-  sass-rails
+  sass (~> 3.2.0.alpha.95)
+  sass-rails (~> 3.2.0.alpha.95)
   shoulda
   shoulda-matchers
   simplecov
