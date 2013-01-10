@@ -11,22 +11,11 @@ gem 'bson'
 gem 'bson_ext'
 gem 'mongoid'
 
-# JSON
-gem 'yajl-ruby'
-gem 'jbuilder'
-gem 'quiet_assets'
-
 # Other
-gem 'thin'
 gem 'haml'
 gem 'devise'
-gem 'heroku'
-gem 'foreman'
 gem 'zurb-rush'
 gem 'will_paginate_mongoid'
-
-gem 'heroku-forward', '~> 0.1'
-gem 'em-proxy', '>= 0.1.8'
 
 # Assets
 group :assets do
@@ -55,6 +44,8 @@ group :development, :test do
   gem 'shoulda'
   gem 'shoulda-matchers'
   gem 'database_cleaner'
+  
+  gem 'better_errors'
   
   # Development specific gems
   gem 'debugger'
