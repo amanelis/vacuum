@@ -32,8 +32,10 @@ gem 'em-proxy', '>= 0.1.8'
 group :assets do
   gem 'haml-rails'
   gem 'jquery-rails'
-  gem 'sass-rails'
+  gem 'sass',   '~> 3.2.0.alpha.95'
+  gem 'sass-rails',   '~> 3.2.0.alpha.95'
   gem 'coffee-rails'
+  gem 'bourbon', '>= 3.0.1'
   gem 'compass-rails'
   gem 'zurb-foundation'
   gem 'uglifier'
@@ -55,7 +57,7 @@ group :development, :test do
   gem 'shoulda'
   gem 'shoulda-matchers'
   gem 'database_cleaner'
-  
+
   # Development specific gems
   gem 'debugger'
   gem 'sqlite3'

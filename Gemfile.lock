@@ -31,6 +31,9 @@ GEM
     addressable (2.3.2)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
+    bourbon (3.0.1)
+      sass (>= 3.2.0)
+      thor
     bourne (1.1.2)
       mocha (= 0.10.5)
     bson (1.8.1)
@@ -283,6 +286,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bourbon (>= 3.0.1)
   bson
   bson_ext
   capybara
@@ -313,7 +317,8 @@ DEPENDENCIES
   rspec-expectations
   rspec-mocks
   rspec-rails
-  sass-rails
+  sass (~> 3.2.0.alpha.95)
+  sass-rails (~> 3.2.0.alpha.95)
   shoulda
   shoulda-matchers
   simplecov

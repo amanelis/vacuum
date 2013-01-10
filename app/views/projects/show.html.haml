@@ -11,46 +11,46 @@
         %dd
           %a{:href => "#settings"} Settings
       %ul.tabs-content
-        %li#setupTab.active 
+        %li#setupTab.active
           %h2 Javascript Installation
-          %p 
-            Add this snippet directly after the 
+          %p
+            Add this snippet directly after the
             %code= "<head>"
             tag in your application.
             %pre
               = @project.to_js
           %div{align: 'right'}
-            = link_to "I've completed this step", project_errors_path(@project), :class => 'success button'
-           
-          %h4 Automatic Logging   
+            = link_to "I've completed this step", project_errors_path(@project), :class => 'success button round'
+
+          %h4 Automatic Logging
           %p
-            Start logging errors automatically, these will trigger the 
+            Start logging errors automatically, these will trigger the
             %span{class: 'label'} system
             notification.
             %br
             %pre
               vacuum.window_error = true;
-              
+
           %h4 Manual Logging
           %p
-            Start logging errors manually, these will trigger the 
+            Start logging errors manually, these will trigger the
             %span{class: 'alert label'} error
             or
             %span{class: 'warn label'} warn
             notification.
             %br
             %pre
-              vacuum.warn('wonky redirect right here, watch the response'); 
+              vacuum.warn('wonky redirect right here, watch the response');
             %br
             %pre
               vacuum.error('.ajax.complete never returns');
-            
-            
-        %li#notificationTab 
+
+
+        %li#notificationTab
           %h2 Get Notified
-          %p 
+          %p
             Coming soon...
-        %li#collaboratorsTab 
+        %li#collaboratorsTab
           %h2 Collaborators
           %p
             Coming soon...
@@ -68,8 +68,8 @@
                 = link_to 'Cancel', request.referrer
             .six.columns
               %h2 Configuration
-              %p 
-                Be sure to install this js after the 
+              %p
+                Be sure to install this js after the
                 %code= "<head>"
                 tag in your application.
                 %textarea{rows: 4}
@@ -77,5 +77,5 @@
 
               %h2 API Key
               %p= @project.api_key
-        
-    %a{href: request.referrer, class: 'button'} Back
+
+    %a.button.round{href: request.referrer} Back
