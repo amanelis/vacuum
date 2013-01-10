@@ -1,26 +1,8 @@
-
-
-/**
- * Main function giving a function stack trace with a forced or passed in Error
- *
- * @cfg {Error} e The error to create a stacktrace from (optional)
- * @cfg {Boolean} guess If we should try to resolve the names of anonymous functions
- * @return {Array} of Strings with functions, lines, files, and arguments where possible
- */
-function printStackTrace(options) {
-    options = options || {guess: true};
-    var ex = options.e || null, guess = !!options.guess;
-    var p = new printStackTrace.implementation(), result = p.run(ex);
-    return (guess) ? p.guessAnonymousFunctions(result) : result;
-}
-
+/* Stack Trace JS */
 if (typeof module !== "undefined" && module.exports) {
     module.exports = printStackTrace;
 }
-
-printStackTrace.implementation = function() {
-};
-
+printStackTrace.implementation = function() { };
 printStackTrace.implementation.prototype = {
     /**
      * @param {Error} ex The error to create a stacktrace from (optional)
@@ -467,10 +449,10 @@ vacuum.VERBOSE = false;
  */
 vacuum.api_key = null;
 
-/**
+/** 
   API URL of the server that accepts the log
  */
-vacuum.api_url = 'http://localhost:3000';
+vacuum.api_url = 'http://vacuumhq.herokuapp.com';
 
 /**
  * API Path of the log method
@@ -483,7 +465,7 @@ vacuum.log_path = '/api/v1/projects';
 vacuum.window_error = false;
 
 /**
- * Default interval in milliseconds for event loop yields (e.g. to allow network activity or to refresh the screen with the HTML-based runner).
+ * Default interval in milliseconds for event loop yields (e.g. to allow network activity or to refresh the screen with the HTML-based runner). 
  * Small values here may result in slow test running. Zero means no updates until all tests have completed.
  */
 vacuum.DEFAULT_UPDATE_INTERVAL = 250;
@@ -499,6 +481,20 @@ vacuum.DEFAULT_TIMEOUT_INTERVAL = 5000;
 vacuum.unimplementedMethod_ = function() {
   throw new Error("unimplemented method");
 };
+
+/**
+ * Main function giving a function stack trace with a forced or passed in Error
+ *
+ * @cfg {Error} e The error to create a stacktrace from (optional)
+ * @cfg {Boolean} guess If we should try to resolve the names of anonymous functions
+ * @return {Array} of Strings with functions, lines, files, and arguments where possible
+ */
+function printStackTrace(options) {
+    options = options || {guess: true};
+    var ex = options.e || null, guess = !!options.guess;
+    var p = new printStackTrace.implementation(), result = p.run(ex);
+    return (guess) ? p.guessAnonymousFunctions(result) : result;
+}
 
 /**
  * Check the status of vacuum is ready to log errors
@@ -541,8 +537,8 @@ vacuum.createXMLHTTPObject = function() {
  */
 vacuum.post_request = function(level, message) {
   var request = vacuum.createXMLHTTPObject();
-  var params  = "&amp;message=" + escape(message) +
-                "&amp;level=" + escape(level) +
+  var params  = "&amp;message=" + escape(message) + 
+                "&amp;level=" + escape(level) + 
                 "&amp;parent_url=" + escape(document.location.href) +
                 "&amp;user_agent=" + escape(navigator.userAgent) +
                 "&amp;platform=" + escape(navigator.platform) +
@@ -561,7 +557,7 @@ vacuum.post_request = function(level, message) {
   }
 };
 
-/**
+/** 
  * Custom error logging function
  */
 vacuum.debug = function(message) {
@@ -580,7 +576,7 @@ vacuum.warn = function(message) {
  this.post_request('warn', message);
 };
 
-/**
+/** 
  * only enable this if the user sets for full error debugging
  */
 window.onerror = function(errorMessage, url, line) {
@@ -589,10 +585,10 @@ window.onerror = function(errorMessage, url, line) {
       + "&amp;line="            + escape(line)
       + "&amp;parent_url="      + escape(document.location.href)
       + "&amp;user_agent="      + escape(navigator.userAgent)
-      + "&amp;app_name="        + escape(navigator.appName)
+      + "&amp;app_name="        + escape(navigator.appName) 
       + "&amp;parameters="      + escape(window.location.search)
       + "&amp;cookie_enabled="  + escape(navigator.cookieEnabled)
-      + "&amp;message="         + escape(errorMessage)
+      + "&amp;message="         + escape(errorMessage) 
       + "&amp;level="           + escape('window')
       + "&amp;platform="        + escape(navigator.platform)
       + "&amp;cookie_enabled="  + escape(navigator.cookieEnabled)
@@ -605,8 +601,5 @@ window.onerror = function(errorMessage, url, line) {
     if (request.readyState != 4) return;
   }
   if (request.readyState == 4) return;
-  request.send();
-
-  console.log('stack trace');
-
+  request.send();  
 };
