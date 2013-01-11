@@ -37,6 +37,7 @@ end
 
 group :development, :test do
   # Testing and fixtures
+  gem 'zeus'
   gem 'faker'
   gem 'fabrication'
   gem 'simplecov'

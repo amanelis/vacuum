@@ -24,10 +24,10 @@ class Project
   def to_js
     case Rails.env
     when "development" || "test"
-      host = "htt://localhost:3000"
+      host = "http://localhost:3000"
     when "production"
-      # host = "http://vacuumhq.herokuapp.com"
-      host = "http://s3.amazonaws.com/vacuum"
+      host = "http://vacuumhq.herokuapp.com"
+      # host = "http://s3.amazonaws.com/vacuum"
     end
     
     javascript = "<script type=\"text/javascript\" src=\"#{host}/vacuum.js\"></script>" +

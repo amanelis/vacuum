@@ -37,6 +37,7 @@ class Api::V1::ProjectsController < Api::V1::ApiController
       parameters:       @params['parameters'],
       cookie_enabled:   @params['cookie_enabled'],
       line:             @params['line'],
+      stack_trace:      @params['stack_trace'],
       created_at:       DateTime.now,
       updated_at:       DateTime.now
     }
