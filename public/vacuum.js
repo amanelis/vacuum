@@ -423,7 +423,7 @@ printStackTrace.implementation.prototype = {
 };
 
 /**
- * Top level namespace for Vacuum.
+ * Top level namespace for Vacuum **************************************************************************
  *
  * @namespace
  */
