@@ -31,9 +31,6 @@ RSpec.configure do |config|
   
   # Render all the Views.
   config.render_views
-
-  # Devise modules in test
-  config.include Devise::TestHelpers, :type => :controller
   
   # Clean up the database
   config.before(:suite) do
