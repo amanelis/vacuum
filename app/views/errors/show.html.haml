@@ -18,5 +18,25 @@
               %td= occurrence.parameters
               %td= occurrence.line
               %td= occurrence.created_at
+          
+      %div{align: 'right'}
+        %a{href: '#', class: 'alert button', 'data-reveal-id' => 'stack-trace-modal'} Stack Trace
 
+      = will_paginate(@occurrences)
     %a.button.round{href: project_errors_path(@project)} Back
+    
+    #stack-trace-modal.reveal-modal{:class => "[expand, xlarge, large, medium, small]"}
+      %h3= "Error #{@error.id}"
+      - if @error.level == 'system' || @error.level == 'window'
+        %span{class: 'label'}= @error.level
+      - elsif @error.level == 'error'
+        %span{class: 'alert label'}= @error.level
+      - elsif @error.level == 'warn'
+        %span{class: 'warn label'}= @error.level
+      - else
+        = @error.level
+      %p
+        Stack trace:
+        %code
+          = @occurrences.first.stack_trace
+      %a.close-reveal-modal ×

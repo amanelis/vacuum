@@ -423,7 +423,7 @@ printStackTrace.implementation.prototype = {
 };
 
 /**
- * Top level namespace for Vacuum.
+ * Top level namespace for Vacuum **************************************************************************
  *
  * @namespace
  */
@@ -452,12 +452,12 @@ vacuum.api_key = null;
 /**
   API URL of the server that accepts the log
  */
-vacuum.api_url = 'http://localhost:3000';
+vacuum.api_url = window.location.hostname == "" || window.location.hostname != "vacuumhq.herokuapp.com" ? 'http://localhost:3000' : 'http://vacuumhq.herokuapp.com';
 
 /**
  * API Path of the log method
  */
-vacuum.log_path = '/api/v1/projects';
+vacuum.log_path = '/api/v1/errors';
 
 /**
  * Full error coverage

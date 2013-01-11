@@ -2,14 +2,13 @@ Vacuum::Application.routes.draw do
   # API Routes
   namespace :api do
     namespace :v1 do
-      resources :projects do
-        resources :errors
-      end
+      resources :errors
+      resources :projects
     end
   end
 
   # Devise model mapping
-  devise_for :users,
+  devise_for :users,  
     :controllers => {
       :confirmations      => 'user/confirmations',
       :omniauth_callbacks => 'user/omniauth_callbacks',
