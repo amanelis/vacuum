@@ -464,7 +464,7 @@ vacuum.api_key = null;
 /**
   API URL of the server that accepts the log
  */
-vacuum.api_url = window.location.hostname == "" || window.location.hostname != "vacuumhq.herokuapp.com" ? 'http://localhost:3000' : 'http://vacuumhq.herokuapp.com';
+vacuum.api_url = window.location.hostname == "" || window.location.hostname == 'localhost' ? 'http://localhost:3000' : 'http://vacuumhq.herokuapp.com';
 
 /**
  * API Path of the log method
