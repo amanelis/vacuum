@@ -442,8 +442,7 @@ function printStackTrace(options) {
  * @namespace
  */
 var vacuum = {};
-var isCommonJS = typeof window == "undefined";
-if (isCommonJS) exports.vacuum = vacuum;
+if (typeof window == "undefined") exports.vacuum = vacuum;
 
 /**
  * Use <code>vacuum.undefined</code> instead of <code>undefined</code>, since <code>undefined</code> is just
@@ -490,6 +489,16 @@ vacuum.DEFAULT_UPDATE_INTERVAL = 250;
 vacuum.DEFAULT_TIMEOUT_INTERVAL = 5000;
 
 /**
+ Browser agnostic XMLHttpRequests
+ */
+vacuum.XMLHttpFactories = [
+  function () {return new XMLHttpRequest()},
+  function () {return new ActiveXObject("Msxml2.XMLHTTP")},
+  function () {return new ActiveXObject("Msxml3.XMLHTTP")},
+  function () {return new ActiveXObject("Microsoft.XMLHTTP")}
+];
+
+/**
  * @private
  */
 vacuum.unimplementedMethod_ = function() {
@@ -502,20 +511,18 @@ vacuum.unimplementedMethod_ = function() {
  * @param
  * @return String
  */
-vacuum.client_ip_address = function() {
+vacuum.getClientIP = function() {
     if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
     else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 
     xmlhttp.open("GET","http://api.hostip.info/get_html.php",false);
     xmlhttp.send();
-
     hostipInfo = xmlhttp.responseText.split("\n");
 
     for (i=0; hostipInfo.length >= i; i++) {
         ipAddress = hostipInfo[i].split(":");
         if ( ipAddress[0] == "IP" ) return ipAddress[1];
     }
-
     return false;
 };
 
@@ -526,21 +533,11 @@ vacuum.status = function() {
   if ((this.api_key === null || this.api_key === '' || typeof this.api_key === 'undefined') ||
      (this.log_path === null || this.log_path === '' || typeof this.log_path === 'undefined') ||
      (this.api_url === null || this.api_url === '' || typeof this.api_url === 'undefined')) {
-    return " == Error initializing vacuum";
+    return "Vacuum.js -> Error initializing vacuum";
   } else {
-    return " == Vaccum is ready";
+    return "Vaccum.js -> ready and loaded";
   }
 };
-
-/**
- Browser agnostic XMLHttpRequests
- */
-vacuum.XMLHttpFactories = [
-  function () {return new XMLHttpRequest()},
-  function () {return new ActiveXObject("Msxml2.XMLHTTP")},
-  function () {return new ActiveXObject("Msxml3.XMLHTTP")},
-  function () {return new ActiveXObject("Microsoft.XMLHTTP")}
-];
 
 /**
  * AJAX setup to create request object
@@ -602,7 +599,8 @@ vacuum.warn = function(message) {
 /**
  * only enable this if the user sets for full error debugging
  */
-window.onerror = function(errorMessage, url, line) {
+window.onerror = function(errorMessage, url, line) {  
+  var stack  = printStackTrace({e: errorMessage});  
   var params = "&amp;?description=" + escape(errorMessage)
       + "&amp;url="             + escape(url)
       + "&amp;line="            + escape(line)
@@ -615,7 +613,17 @@ window.onerror = function(errorMessage, url, line) {
       + "&amp;level="           + escape('window')
       + "&amp;platform="        + escape(navigator.platform)
       + "&amp;cookie_enabled="  + escape(navigator.cookieEnabled)
-      + "&amp;stack_trace="     + escape(printStackTrace({e: errorMessage}));
+      + "&amp;stack_trace="     + escape(stack[2]);
+      
+  
+  if (vacuum.VERBOSE) {
+    console.log('VACUUM -> window.onerror');
+    console.log(' errorMessage    -> ' + errorMessage);
+    console.log(' url             -> ' + url);
+    console.log(' line            -> ' + line);
+    console.log(' stack_trace     -> ' + stack[2]);
+  }   
+  
   /** Send error to server */
   var request = vacuum.createXMLHTTPObject();
   request.open('POST', vacuum.api_url + vacuum.log_path + '?api_key=' + vacuum.api_key + params, true);
