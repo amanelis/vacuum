@@ -457,7 +457,7 @@ vacuum.api_url = window.location.hostname == "" || window.location.hostname != "
 /**
  * API Path of the log method
  */
-vacuum.log_path = '/api/v1/projects';
+vacuum.log_path = '/api/v1/errors';
 
 /**
  * Full error coverage
