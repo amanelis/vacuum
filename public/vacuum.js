@@ -423,6 +423,20 @@ printStackTrace.implementation.prototype = {
 };
 
 /**
+ * Main function giving a function stack trace with a forced or passed in Error
+ *
+ * @cfg {Error} e The error to create a stacktrace from (optional)
+ * @cfg {Boolean} guess If we should try to resolve the names of anonymous functions
+ * @return {Array} of Strings with functions, lines, files, and arguments where possible
+ */
+function printStackTrace(options) {
+    options = options || {guess: true};
+    var ex = options.e || null, guess = !!options.guess;
+    var p = new printStackTrace.implementation(), result = p.run(ex);
+    return (guess) ? p.guessAnonymousFunctions(result) : result;
+}
+
+/**
  * Top level namespace for Vacuum **************************************************************************
  *
  * @namespace
@@ -483,18 +497,27 @@ vacuum.unimplementedMethod_ = function() {
 };
 
 /**
- * Main function giving a function stack trace with a forced or passed in Error
+ * Main function for returning a users IP address
  *
- * @cfg {Error} e The error to create a stacktrace from (optional)
- * @cfg {Boolean} guess If we should try to resolve the names of anonymous functions
- * @return {Array} of Strings with functions, lines, files, and arguments where possible
+ * @param
+ * @return String
  */
-function printStackTrace(options) {
-    options = options || {guess: true};
-    var ex = options.e || null, guess = !!options.guess;
-    var p = new printStackTrace.implementation(), result = p.run(ex);
-    return (guess) ? p.guessAnonymousFunctions(result) : result;
-}
+vacuum.client_ip_address = function() {
+    if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
+    else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+
+    xmlhttp.open("GET","http://api.hostip.info/get_html.php",false);
+    xmlhttp.send();
+
+    hostipInfo = xmlhttp.responseText.split("\n");
+
+    for (i=0; hostipInfo.length >= i; i++) {
+        ipAddress = hostipInfo[i].split(":");
+        if ( ipAddress[0] == "IP" ) return ipAddress[1];
+    }
+
+    return false;
+};
 
 /**
  * Check the status of vacuum is ready to log errors
