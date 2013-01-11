@@ -421,7 +421,6 @@ printStackTrace.implementation.prototype = {
         return '(?)';
     }
 };
-
 /**
  * Main function giving a function stack trace with a forced or passed in Error
  *
@@ -434,7 +433,7 @@ function printStackTrace(options) {
     var ex = options.e || null, guess = !!options.guess;
     var p = new printStackTrace.implementation(), result = p.run(ex);
     return (guess) ? p.guessAnonymousFunctions(result) : result;
-}
+};
 
 /**
  * Top level namespace for Vacuum **************************************************************************
@@ -503,6 +502,20 @@ vacuum.XMLHttpFactories = [
  */
 vacuum.unimplementedMethod_ = function() {
   throw new Error("unimplemented method");
+};
+
+/**
+ * Main function giving a function stack trace with a forced or passed in Error
+ *
+ * @cfg {Error} e The error to create a stacktrace from (optional)
+ * @cfg {Boolean} guess If we should try to resolve the names of anonymous functions
+ * @return {Array} of Strings with functions, lines, files, and arguments where possible
+ */
+vacuum.printStackTrace = function(options) {
+    options = options || {guess: true};
+    var ex = options.e || null, guess = !!options.guess;
+    var p = new printStackTrace.implementation(), result = p.run(ex);
+    return (guess) ? p.guessAnonymousFunctions(result) : result;
 };
 
 /**
@@ -600,7 +613,7 @@ vacuum.warn = function(message) {
  * only enable this if the user sets for full error debugging
  */
 window.onerror = function(errorMessage, url, line) {  
-  var stack  = printStackTrace({e: errorMessage});  
+  var stack  = vacuum.printStackTrace({e: errorMessage});  
   var params = "&amp;?description=" + escape(errorMessage)
       + "&amp;url="             + escape(url)
       + "&amp;line="            + escape(line)
@@ -622,6 +635,7 @@ window.onerror = function(errorMessage, url, line) {
     console.log(' url             -> ' + url);
     console.log(' line            -> ' + line);
     console.log(' stack_trace     -> ' + stack[2]);
+    console.log(' window.event    -> ' + window.event)
   }   
   
   /** Send error to server */
