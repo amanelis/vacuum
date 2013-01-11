@@ -2,12 +2,12 @@ class Occurrence
   include Mongoid::Document
   include Mongoid::Timestamps
   include DefaultAttributeSetters
-  
-  
+
+
   field :url,             type: String # file:///Users/arm/Development/Rails/tmp/index.html
   field :parent_url,      type: String # file:///Users/arm/Development/Rails/tmp/index.html
   field :line,            type: String # 17
-  field :user_agent,      type: String # Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11  
+  field :user_agent,      type: String # Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11
   field :app_name,        type: String # Netscape
   field :platform,        type: String # MacIntel
   field :parameters,      type: String # ?api_key=helokey
@@ -17,10 +17,10 @@ class Occurrence
   
   ### Embedding
   embedded_in :error
-  
+
   ### Callbacks
   before_create :set_identifier
-  
+
   # human_agent
   # @param:
   # @return: String[human readable version of the User agent]

@@ -4,28 +4,29 @@
       .panel
         %h2= link_to "Create your first project", new_project_path
     - else
-      %table.twelve
+      %h2 Your Projects
+      %table.table
         %thead
           %tr
             %th Name
             %th Last Error
             %th Unesolved
             %th Total
-            %th
-          - @projects.each do |project|
-            %tbody
+            %th{width: 150}
+          %tbody
+            - @projects.each do |project|
               %tr
                 %td
-                  %strong= link_to project.name, project_path(project)
+                  %strong= link_to project.name, project_errors_path(project)
                 - if project.errors.count == 0
-                  %td 
+                  %td
                     %em n/a
-                - else 
+                - else
                   %td= time_ago_in_words(project.errors.desc(:updated_at).first.updated_at)
                 %td= project.errors.where(resolved: nil).count
                 %td= project.errors.count
                 %th
-                  .small.button.dropdown{:href => "#"}
+                  .small.button.dropdown.round{:href => "#"}
                     Configuration
                     %ul
                       %li
@@ -36,5 +37,7 @@
                       %li
                         = link_to "Delete", project_path(project), :method => :delete, :confirm => "Are you sure you want to delete this project?"
       %div{:align => 'left'}
-        %a.success.button{:href => new_project_path} Create a project
+        %a.success.button.round{:href => new_project_path}
+          %i.foundicon-plus
+          Create a project
         = will_paginate(@projects)

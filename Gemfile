@@ -11,16 +11,9 @@ gem 'bson'
 gem 'bson_ext'
 gem 'mongoid'
 
-# JSON
-gem 'yajl-ruby'
-gem 'jbuilder'
-gem 'quiet_assets'
-
 # Other
 gem 'haml'
 gem 'devise'
-gem 'heroku'
-gem 'foreman'
 gem 'zurb-rush'
 gem 'will_paginate_mongoid'
 
@@ -28,8 +21,10 @@ gem 'will_paginate_mongoid'
 group :assets do
   gem 'haml-rails'
   gem 'jquery-rails'
-  gem 'sass-rails'
+  gem 'sass',   '~> 3.2.0.alpha.95'
+  gem 'sass-rails',   '~> 3.2.0.alpha.95'
   gem 'coffee-rails'
+  gem 'bourbon', '>= 3.0.1'
   gem 'compass-rails'
   gem 'zurb-foundation'
   gem 'uglifier'
@@ -51,7 +46,8 @@ group :development, :test do
   gem 'capybara-webkit'
   gem 'shoulda'
   gem 'shoulda-matchers'
-  gem 'database_cleaner'
+  gem 'database_cleaner'  
+  gem 'better_errors'
   
   # Development specific gems
   gem 'debugger'

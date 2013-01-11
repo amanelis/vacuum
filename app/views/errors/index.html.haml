@@ -3,47 +3,53 @@
     - if @errors.empty?
       .panel
         %h3 No errors yet. Guess thats a good thing?
-      %p 
-        Be sure to install this js after the 
+      %p
+        Be sure to install this js after the
         %code= "<head>"
         tag in your application.
         %textarea{rows: 3}
           = @project.to_js
     - else
-      .panel        
-        %h3= "#{@project.name} errors"
-        %table.twelve
-          %thead
-            %tr
-              %th Agent
-              %th Error
-              %th Last Error
-              %th Occurrences
-              %th Level
+      %h2
+        = "#{@project.name} errors"
+        %a.settings-link{href: "/projects/#{@project.id}/edit#settings"}
+          %i.foundicon-settings
+      %table.table.twelve
+        %thead
+          %tr
+            %th Level
+            %th Agent
+            %th Error
+            %th Last Error
+            %th Occurrences
+        %tbody
           - @errors.each do |error|
-            %tbody
-              %tr
-                %td= image_tag "/assets/#{error.occurrences.collect(&:human_agent).uniq.first}.png", width: '16px', height: '16px'
-                %td
-                  = error.message
-                  %br
-                  %em= error.occurrences.last.try(:parent_url) + ':' + error.occurrences.last.try(:line)  unless error.occurrences.last.line.nil?
-                %td= time_ago_in_words(error.updated_at)
-                %td= link_to error.occurrences.count, project_error_path(@project, error)
-                %td
-                  - if error.level == 'system' || error.level == 'window'
-                    %span{class: 'label'}= error.level
-                  - elsif error.level == 'error'
-                    %span{class: 'alert label'}= error.level
-                  - elsif error.level == 'warn'
-                    %span{class: 'warn label'}= error.level
-                  - else
-                    = error.level
+            %tr
+              %td
+                - if error.level == 'system' || error.level == 'window'
+                  %span{class: 'label'}= error.level
+                - elsif error.level == 'error'
+                  %span{class: 'alert label'}= error.level
+                - elsif error.level == 'warn'
+                  %span{class: 'warn label'}= error.level
+                - else
+                  = error.level
+              %td= image_tag "/assets/#{error.occurrences.collect(&:human_agent).uniq.first}.png", width: '16px', height: '16px'
+              %td
+                = error.message
+                %br
+                %em= error.occurrences.last.try(:parent_url) + ':' + error.occurrences.last.try(:line)  unless error.occurrences.last.line.nil?
+              %td= time_ago_in_words(error.updated_at)
+              %td
+                %a{href: project_error_path(@project, error)}
+                  = error.occurrences.count
+                  (view all)
+
 .row
   .six.columns
     %div{align: 'left'}
-      = link_to 'Back', projects_path, :class => 'button'
+      %a.button.round{href: projects_path} Back
   .six.columns
     %div{align: 'right'}
       = will_paginate(@errors)
-    
+

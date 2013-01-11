@@ -1,0 +1,70 @@
++keyframes(stripe-wave)
+  0%
+    margin-top: -50px
+  // 50%
+  //   margin-top: 20px
+  // 80%
+  //   margin-top: -10px
+  100%
+    margin-top: 0px
+
+=stripe-box-shadow($white-opacity, $black-opacity: .13)
+  +box-shadow((0 -2px 3px rgba(#000, $black-opacity), inset 0 1px 0 rgba(#fff, $white-opacity)))
+
+.stripes
+  position: absolute
+  top: -20px
+  bottom: 0
+  left: 0
+  right: 0
+
+  .stripe
+    position: absolute
+    width: 100%
+    height: 50px
+    background: #f48677
+    +stripe-box-shadow(.14)
+    +animation(stripe-wave 1s 1 cubic-bezier(0.770, 0.000, 0.175, 1.000) both)
+
+  $delay_increment: -.05s
+  .stripe1
+    top: 0
+    background: #b23423
+    +stripe-box-shadow(.07)
+    +animation-delay(0)
+  .stripe2
+    top: 10px
+    background: #d65240
+    +stripe-box-shadow(.09)
+    +animation-delay($delay_increment)
+  .stripe3
+    top: 20px
+    +animation-delay($delay_increment * 2)
+  .stripe4
+    top: 30px
+    background: #ffc6be
+    +stripe-box-shadow(.43)
+    +animation-delay($delay_increment * 3)
+  .stripe5
+    top: 40px
+    background: #fff2f0
+    +stripe-box-shadow(1)
+    +animation-delay($delay_increment * 4)
+  .stripe-page
+    top: 50px
+    bottom: 0
+    background: #fff
+    height: auto
+    +animation-delay($delay_increment * 5)
+
+header
+  padding-top: 30px
+  margin: 0 0 30px
+
+  #logo
+    width: 242px
+    height: 54px
+    background: url(image_path('logo-main.png')) no-repeat
+    text-indent: -999em
+    margin: 17px 0 0
+    display: block

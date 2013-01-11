@@ -1,28 +1,29 @@
 .row
   .twelve.columns
-    .panel
-      %h3
-        = @occurrences.count
-        occurrences
-      %p
-        %table.twelve
-          %thead
-            %tr
-              %th Agent
-              %th Last Error
-              %th Seen At
+    %h3 #{@occurrences.count} occurrences of "#{@occurrences.first.error.message}"
+    %p
+      %table.table.twelve
+        %thead
+          %tr
+            %th Agent
+            %th URL
+            %th Parameters
+            %th Line #
+            %th Seen At
+        %tbody
           - @occurrences.each do |occurrence|
-            %tbody
-              %tr
-                %td= image_tag "/assets/#{occurrence.human_agent}.png", width: '16px', height: '16px'
-                %td= occurrence.error.message
-                %td= occurrence.created_at
-        %div{align: 'right'}
-          %a{href: '#', class: 'alert button', 'data-reveal-id' => 'stack-trace-modal'} Stack Trace
+            %tr
+              %td= image_tag "/assets/#{occurrence.human_agent}.png", width: '16px', height: '16px'
+              %td= occurrence.parent_url
+              %td= occurrence.parameters
+              %td= occurrence.line
+              %td= occurrence.created_at
           
-        = will_paginate(@occurrences)
-    %a{href: project_errors_path(@project), class: 'button'} Back
-    
+      %div{align: 'right'}
+        %a{href: '#', class: 'alert button', 'data-reveal-id' => 'stack-trace-modal'} Stack Trace
+
+      = will_paginate(@occurrences)
+    %a.button.round{href: project_errors_path(@project)} Back
     
     #stack-trace-modal.reveal-modal{:class => "[expand, xlarge, large, medium, small]"}
       %h3= "Error #{@error.id}"

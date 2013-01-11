@@ -13,4 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-//= require_tree .
+//= require lib/encapsulatedPlugin
+//= require lib/toggle
+//= require main
