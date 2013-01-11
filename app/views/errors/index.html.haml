@@ -41,28 +41,9 @@
                 %em= error.occurrences.last.try(:parent_url) + ':' + error.occurrences.last.try(:line)  unless error.occurrences.last.line.nil?
               %td= time_ago_in_words(error.updated_at)
               %td
-                %a{href: '#', 'data-toggle' => "#occurrences_#{error.id}"}
+                %a{href: project_error_path(@project, error)}
                   = error.occurrences.count
-                  %i.foundicon-plus
-
-            %tr.occurences{id: "occurrences_#{error.id}"}
-              %td{colspan: 5}
-                %table.table
-                  %thead
-                    %tr
-                      %th Browser version
-                      %th Line #
-                      %th URL
-                      %th Parameters
-                      %th Stack Trace
-                  %tbody
-                    - error.occurrences.each do |occurrence|
-                      %tr
-                        %td= occurrence.user_agent
-                        %td= occurrence.line
-                        %td= occurrence.parent_url
-                        %td= occurrence.parameters
-                        %td= occurrence.stack_trace
+                  (view all)
 
 .row
   .six.columns

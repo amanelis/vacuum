@@ -1,21 +1,22 @@
 .row
   .twelve.columns
-    .panel
-      %h3
-        = @occurrences.count
-        occurrences
-      %p
-        %table.twelve
-          %thead
-            %tr
-              %th Agent
-              %th Last Error
-              %th Seen At
+    %h3 #{@occurrences.count} occurrences of "#{@occurrences.first.error.message}"
+    %p
+      %table.table.twelve
+        %thead
+          %tr
+            %th Agent
+            %th URL
+            %th Parameters
+            %th Line #
+            %th Seen At
+        %tbody
           - @occurrences.each do |occurrence|
-            %tbody
-              %tr
-                %td= image_tag "/assets/#{occurrence.human_agent}.png", width: '16px', height: '16px'
-                %td= occurrence.error.message
-                %td= occurrence.created_at
+            %tr
+              %td= image_tag "/assets/#{occurrence.human_agent}.png", width: '16px', height: '16px'
+              %td= occurrence.parent_url
+              %td= occurrence.parameters
+              %td= occurrence.line
+              %td= occurrence.created_at
 
-    %a{href: project_errors_path(@project), class: 'button'} Back
+    %a.button.round{href: project_errors_path(@project)} Back
