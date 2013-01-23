@@ -10,10 +10,10 @@
         %textarea{rows: 3}
           = @project.to_js
     - else
+      %a.settings-link.button.round.small.right{href: "/projects/#{@project.id}/edit#settings"}
+        %i.foundicon-settings
       %h2
         = "#{@project.name} errors"
-        %a.settings-link{href: "/projects/#{@project.id}/edit#settings"}
-          %i.foundicon-settings
       %table.table.twelve
         %thead
           %tr
@@ -47,8 +47,7 @@
 
 .row
   .six.columns
-    %div{align: 'left'}
-      %a.button.round{href: projects_path} Back
+    %a.button.round.small.left{href: projects_path} Back
   .six.columns
     %div{align: 'right'}
       = will_paginate(@errors)

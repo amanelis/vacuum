@@ -45,9 +45,9 @@ group :development, :test do
   gem 'capybara-webkit'
   gem 'shoulda'
   gem 'shoulda-matchers'
-  gem 'database_cleaner'  
+  gem 'database_cleaner'
   gem 'better_errors'
-  
+
   # Development specific gems
   gem 'debugger'
   gem 'sqlite3'
