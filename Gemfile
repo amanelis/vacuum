@@ -32,7 +32,6 @@ end
 
 group :development, :test do
   # Testing and fixtures
-  gem 'zeus'
   gem 'faker'
   gem 'fabrication'
   gem 'simplecov'
@@ -50,7 +49,6 @@ group :development, :test do
   gem 'better_errors'
   
   # Development specific gems
-  gem 'debugger'
   gem 'sqlite3'
   gem 'launchy'
   gem 'quiet_assets'
