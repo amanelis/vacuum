@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-#Script to run a ci build on the local computer after a commit is made
 
 require 'securerandom'
 require 'fileutils'
