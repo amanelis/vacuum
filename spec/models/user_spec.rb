@@ -14,6 +14,7 @@ describe User do
     end
   end
   
+  it { should respond_to :radix }
   it { should respond_to :id }
   it { should respond_to :email }
   it { should respond_to :password }
