@@ -41,7 +41,7 @@ run("rvm rvmrc trust #{Tmpdir}")
 run("git checkout #{CommitHash} -b #{Buildid}")
 run("bundle install")
 #tweak database.yml
-File.write(DbConfig, File.readlines(DbConfig).map {|x| x =~ /database:/ ? x.gsub('test', "test_#{Buildid}") :x }.join)
+#File.write(DbConfig, File.readlines(DbConfig).map {|x| x =~ /database:/ ? x.gsub('test', "test_#{Buildid}") :x }.join)
 #migrate db
 run("RAILS_ENV=test bundle exec rake db:create db:migrate")
 #run specs
