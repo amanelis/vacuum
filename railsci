@@ -1,8 +1,6 @@
 #!/usr/bin/env ruby
-#Author: Khaja Minhajuddin
 #Date: 2012 Dec 24
 #Script to run a ci build on the local computer after a commit is made
-
 
 require 'securerandom'
 require 'fileutils'
