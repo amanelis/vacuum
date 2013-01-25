@@ -8,7 +8,7 @@ require 'fileutils'
 CommitHash = ARGV.shift
 Repodir    = ARGV.shift
 Buildid    = SecureRandom.hex
-DbConfig   = "config/database.yml"
+DbConfig   = 'config/database.yml'
 Tmpdir     = File.join('/tmp', Buildid)
 
 FileUtils.mkdir(Tmpdir)
