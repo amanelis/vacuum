@@ -56,7 +56,7 @@ else
   #tag the commit as a failure
   tag "failed-#{Buildid}" , "Failed build"
   system("notify-send --urgency=low -i 'error' 'Tests failed for - #{CommitHash}'")
-  system('terminal-notifier -message "Tests: FAILED" -title "Vacuum HQ"'
+  system('terminal-notifier -message "Tests: FAILED" -title "Vacuum HQ"')
 end
 untag "processing-#{Buildid}"
 
