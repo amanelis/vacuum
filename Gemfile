@@ -48,7 +48,6 @@ group :development, :test do
   gem 'database_cleaner'  
   gem 'better_errors'
   
-  # Development specific gems
   gem 'sqlite3'
   gem 'launchy'
   gem 'quiet_assets'
