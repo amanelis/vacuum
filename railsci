@@ -51,10 +51,12 @@ run("RAILS_ENV=test bundle exec rake db:create db:migrate")
 puts "Running tests"
 if run("RAILS_ENV=test bundle exec rspec spec")
   system("notify-send --urgency=low -i 'terminal' 'Tests passed for the commit - #{CommitHash}'")
+  terminal-notifier -message "Tests: PASSED" -title "Vacuum HQ"
 else
   #tag the commit as a failure
   tag "failed-#{Buildid}" , "Failed build"
   system("notify-send --urgency=low -i 'error' 'Tests failed for - #{CommitHash}'")
+  terminal-notifier -message "Tests: FAILED" -title "Vacuum HQ"
 end
 untag "processing-#{Buildid}"
 
