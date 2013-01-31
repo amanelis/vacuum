@@ -47,6 +47,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'database_cleaner'  
   gem 'better_errors'
+  gem 'terminal-notifier'
   
   gem 'sqlite3'
   gem 'launchy'
