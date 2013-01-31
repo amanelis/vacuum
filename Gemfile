@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 ruby '1.9.3'
 
 # Rails
-gem 'rails', '3.2.9'
+gem 'rails', '3.2.11'
 
 # Database
 gem 'bson'
@@ -48,6 +48,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'database_cleaner'  
   gem 'better_errors'
+  gem 'rack-mini-profiler'
   
   # Development specific gems
   gem 'debugger'
