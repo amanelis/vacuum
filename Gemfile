@@ -10,6 +10,7 @@ gem 'rails', '3.2.9'
 gem 'bson'
 gem 'bson_ext'
 gem 'mongoid'
+gem 'thin'
 
 # Other
 gem 'haml'
@@ -48,6 +49,10 @@ group :development, :test do
   gem 'database_cleaner'  
   gem 'better_errors'
   gem 'terminal-notifier'
+  gem 'pry-rails'
+  gem 'awesome_print'
+  gem 'binding_of_caller'
+  gem 'rack-mini-profiler'
   
   gem 'sqlite3'
   gem 'launchy'
