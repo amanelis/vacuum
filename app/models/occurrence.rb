@@ -12,7 +12,7 @@ class Occurrence
   field :language,          type: String # en-us, just language user is on
   field :platform,          type: String # MacIntel
   field :product,           type: String # Mozilla
-  field :product,           type: String # http/https
+  field :protocol,           type: String # http/https
 
   field :app_name,          type: String # Firefox
   field :cookie_enabled,    type: String # true/false
@@ -22,7 +22,7 @@ class Occurrence
   field :window_event,      type: String # Try and parse out the event found in error
   field :stack_trace,       type: String # For when possible
 
-  field :browers_time,      type: String # Return the actual time recorded in browser at time of error
+  field :browser_time,      type: String # Return the actual time recorded in browser at time of error
   
   ### Embedding
   embedded_in :error

@@ -1,11 +1,16 @@
+# Simplecov
+require 'simplecov'
+SimpleCov.start do
+  add_group "Controllers",    "app/controllers"
+  add_group "Models",         "app/models"
+  add_group "Mailers",        "app/mailers"
+end
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
-require 'database_cleaner'
-require 'simplecov'
-require 'shoulda'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -14,13 +19,6 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 # Fabrication fixtures
 Fabrication.configure do |config|
   fabricator_dir = "spec/fabricators"
-end
-
-# Simplecov
-SimpleCov.start do
-  add_group "Controllers",    "app/controllers"
-  add_group "Models",         "app/models"
-  add_group "Mailers",        "app/mailers"
 end
 
 RSpec.configure do |config|  
