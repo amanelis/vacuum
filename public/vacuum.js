@@ -238,7 +238,7 @@ window.onerror = function(message, file, line) {
         "&amp;app_name="         + escape(navigator.appName) +
         "&amp;cookie_enabled="   + escape(navigator.cookieEnabled) +
         "&amp;user_agent="       + escape(navigator.userAgent) +
-        "&amp;user_address="     + escape(vacuum.getClientIP()j) +
+        "&amp;user_address="     + escape(vacuum.getClientIP()) +
 
         "&amp;window_event="     + escape(window.event) +
         "&amp;stack_trace="      + escape('coming soon') +

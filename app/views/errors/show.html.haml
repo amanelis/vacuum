@@ -15,8 +15,16 @@
             %tr
               %td= image_tag "/assets/#{occurrence.human_agent}.png", width: '16px', height: '16px'
               %td= occurrence.href.gsub(/\?(.*)$/, '')
-              %td= occurrence.parameters
-              %td= occurrence.line
+              %td
+                - if occurrence.parameters.nil? || occurrence.parameters.empty?
+                  = '{}'
+                - else 
+                  = occurrence.parameters
+              %td
+                - if occurrence.line.nil? || occurrence.line.empty?
+                  n/a
+                - else 
+                  = occurrence.line
               %td= occurrence.created_at                
           
       %div{align: 'right'}

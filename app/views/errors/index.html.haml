@@ -11,7 +11,7 @@
           = @project.to_js
     - else
       %h2
-        = "#{@project.name} errors"
+        = "Errors for #{@project.name}"
         %a.settings-link{href: "/projects/#{@project.id}/edit#settings"}
           %i.foundicon-settings
       %table.table.twelve
