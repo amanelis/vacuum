@@ -38,12 +38,26 @@
             or
             %span{class: 'warn label'} warn
             notification.
+              
+            %br
+            %pre
+              vacuum.info('.ajax.complete never returns');
+              
+            %br
+            %pre
+              vacuum.debug('.ajax.complete never returns');
+              
             %br
             %pre
               vacuum.warn('wonky redirect right here, watch the response');
+              
             %br
             %pre
               vacuum.error('.ajax.complete never returns');
+
+            %br
+            %pre
+              vacuum.fatal('.ajax.complete never returns');
 
 
         %li#notificationTab
