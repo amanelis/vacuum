@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Occurrence do
   context "when creating a user" do
     it "has a valid fabrication" do
-      Fabricate(:occurrence).should be_valid
+      Fabricate(:occurrence, :error => Fabricate(:error)).should be_valid
     end
   end
   

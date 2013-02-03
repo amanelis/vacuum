@@ -7,5 +7,5 @@ Fabricator(:error) do
   created_at { DateTime.now }
   updated_at { DateTime.now }
   
-  after_build { |error| error.occurrences << Fabricate(:occurrence) } 
+  after_create  { |error| Fabricate(:occurrence, :error => self)} 
 end
