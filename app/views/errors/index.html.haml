@@ -11,7 +11,7 @@
           = @project.to_js
     - else
       %h2
-        = "#{@project.name} errors"
+        = "Errors for #{@project.name}"
         %a.settings-link{href: "/projects/#{@project.id}/edit#settings"}
           %i.foundicon-settings
       %table.table.twelve
@@ -38,7 +38,7 @@
               %td
                 = error.message
                 %br
-                %em= error.occurrences.last.try(:parent_url) + ':' + error.occurrences.last.try(:line)  unless error.occurrences.last.line.nil?
+                %em= error.occurrences.last.try(:file) + ':' + error.occurrences.last.try(:line)  unless error.occurrences.last.line.nil?
               %td= time_ago_in_words(error.updated_at)
               %td
                 %a{href: project_error_path(@project, error)}

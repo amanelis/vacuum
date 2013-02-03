@@ -32,6 +32,9 @@ Vacuum::Application.routes.draw do
     resources :errors
   end
   
+  match '/logger/:id/err'   => 'home#errors'
+  match '/logger'           => 'home#errors'
+  
   # Root the application
   root to: 'home#index'
 end

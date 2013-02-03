@@ -18,14 +18,21 @@ class Api::V1::ErrorsController < Api::V1::ApiController
     
     # Occurrence attributes
     occurrence_attributes = {
-      app_name:         @params['app_name'],
-      user_agent:       @params['user_agent'],
-      parent_url:       @params['parent_url'],
-      platform:         @params['platform'],
-      parameters:       @params['parameters'],
-      cookie_enabled:   @params['cookie_enabled'],
+      file:             @params['file'],
       line:             @params['line'],
+      href:             @params['href'],
+      parameters:       @params['parameters'],
+      language:         @params['language'],
+      platform:         @params['platform'],
+      product:          @params['product'],
+      protocol:         @params['protocol'],
+      app_name:         @params['app_name'],
+      cookie_enabled:   @params['cookie_enabled'],
+      user_agent:       @params['user_agent'],
+      user_address:     @params['user_address'],
+      window_event:     @params['window_event'],
       stack_trace:      @params['stack_trace'],
+      browers_time:     @params['browers_time'],
       created_at:       DateTime.now,
       updated_at:       DateTime.now
     }
