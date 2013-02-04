@@ -13,6 +13,9 @@ class Project
   ### Associations
   has_many :errors, autosave: true, :dependent => :destroy
   belongs_to :user
+  
+  ### Embedding
+  embeds_many :notifications
 
   ### Validations
   validates :name, :presence => true

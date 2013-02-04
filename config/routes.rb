@@ -30,6 +30,7 @@ Vacuum::Application.routes.draw do
   # Standard Resourcing
   resources :projects do
     resources :errors
+    resources :notifications
   end
   
   match '/logger/:id/err'   => 'home#errors'

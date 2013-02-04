@@ -11,9 +11,4 @@ class ErrorsController < ApplicationController
     @error = Error.find(params[:id])
     @occurrences = @error.occurrences.desc(:updated_at).paginate(page: params[:page], per: 10)
   end
-  
-  protected
-    def load_project
-      @project = Project.find(params[:project_id])
-    end
 end

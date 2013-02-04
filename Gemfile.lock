@@ -133,7 +133,7 @@ GEM
       compass (>= 0.12.1)
       sass (>= 3.2.0)
       sassy-math (>= 1.5)
-    mongoid (3.0.19)
+    mongoid (3.0.20)
       activemodel (~> 3.1)
       moped (~> 1.2)
       origin (~> 1.0)

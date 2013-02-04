@@ -3,7 +3,6 @@ class Occurrence
   include Mongoid::Timestamps
   include DefaultAttributeSetters
 
-
   field :file,              type: String # Should return a url of the file containing the error caught
   field :line,              type: String # Line number the error is on and found at
 

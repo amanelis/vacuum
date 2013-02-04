@@ -10,7 +10,6 @@ gem 'rails', '3.2.11'
 gem 'bson'
 gem 'bson_ext'
 gem 'mongoid'
-gem 'thin'
 
 # Other
 gem 'haml'
@@ -29,6 +28,10 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.0.alpha.95'
   gem 'uglifier'
   gem 'zurb-foundation'
+end
+
+group :production do
+  gem 'thin'
 end
 
 group :development, :test do
