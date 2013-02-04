@@ -18,9 +18,4 @@ class Error
 
   ### Callbacks
   before_create :set_identifier
-  after_create :send_notification
-  
-  # def send_notification
-  #   ErrorMailer.report_error(self).deliver
-  # end
 end
