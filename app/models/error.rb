@@ -20,7 +20,7 @@ class Error
   before_create :set_identifier
   after_create :send_notification
   
-  def send_notification
-    ErrorMailer.report_error(self).deliver
-  end
+  # def send_notification
+  #   ErrorMailer.report_error(self).deliver
+  # end
 end
