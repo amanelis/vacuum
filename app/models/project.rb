@@ -27,9 +27,8 @@ class Project
       host = "http://localhost:3000"
       verb = true
     when "production"
-      host = "http://vacuumhq.herokuapp.com"
+      host = "http://vacuum.io"
       verb = false
-      # host = "http://s3.amazonaws.com/vacuum"
     end
 
     javascript = "<script type=\"text/javascript\" src=\"#{host}/vacuum.js\"></script>" +
