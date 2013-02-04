@@ -38,7 +38,7 @@
               %td
                 = error.message
                 %br
-                %em= error.occurrences.last.try(:file) + ':' + error.occurrences.last.try(:line)  unless error.occurrences.last.line.nil?
+                %em= error.occurrences.last.try(:file) + ':' + error.occurrences.last.try(:line)  unless error.occurrences.last.try(:line).nil?
               %td= time_ago_in_words(error.updated_at)
               %td
                 %a{href: project_error_path(@project, error)}
