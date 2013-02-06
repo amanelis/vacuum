@@ -32,9 +32,7 @@ class Api::V1::ErrorsController < Api::V1::ApiController
       user_address:     @params['user_address'],
       window_event:     @params['window_event'],
       stack_trace:      @params['stack_trace'],
-      browers_time:     @params['browers_time'],
-      created_at:       DateTime.now,
-      updated_at:       DateTime.now
+      browser_time:     @params['browers_time'].to_s
     }
     
     # Build the occurrence
@@ -42,6 +40,11 @@ class Api::V1::ErrorsController < Api::V1::ApiController
     
     # Save the resource, account for errors
     @error.save && @occurrence.save
+    
+    logger.debug 'ERRORS --------------------------------------------------------------------------'
+    logger.debug @error.errors.messages
+    logger.debug @occurrence.errors.messages
+    logger.debug 'ERRORS --------------------------------------------------------------------------'
     
     json = {
       error: @error.as_json(only: error_permissions(:only))

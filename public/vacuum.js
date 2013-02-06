@@ -50,7 +50,7 @@ vacuum.api_key = null;
   * @param
   * @return
  */
-vacuum.api_url = window.location.hostname == "" || window.location.hostname == 'localhost' ? 'http://localhost:3000' : 'http://vacuumhq.herokuapp.com';
+vacuum.api_url = window.location.hostname == "" || window.location.hostname == 'localhost' ? 'http://localhost:3000' : 'http://vacuum.io';
 
 /**
  * API Path of the log method
