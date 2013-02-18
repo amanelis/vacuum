@@ -13,6 +13,9 @@ class Project
   ### Associations
   has_many :errors, autosave: true, :dependent => :destroy
   belongs_to :user
+  
+  ### Embedding
+  embeds_many :notifications
 
   ### Validations
   validates :name, :presence => true
@@ -25,9 +28,10 @@ class Project
     case Rails.env
     when "development" || "test"
       host = "http://localhost:3000"
+      verb = true
     when "production"
-      # host = "http://vacuumhq.herokuapp.com"
-      host = "http://s3.amazonaws.com/vacuum"
+      host = "http://vacuum.io"
+      verb = false
     end
 
     javascript = "<script type=\"text/javascript\" src=\"#{host}/vacuum.js\"></script>" +
@@ -35,6 +39,7 @@ class Project
                    "try {" +
                       "vacuum.api_key = '" + self.api_key + "';" +
                       "vacuum.window_error = true;" +
+                      "vacuum.VERBOSE = #{verb};" + 
                       "console.log(vacuum.status());" +
                    "} catch(e) {}" +
                  "</script>"

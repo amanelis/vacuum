@@ -8,6 +8,9 @@
   100%
     margin-top: 0px
 
+=stripe-box-shadow($white-opacity, $black-opacity: .13)
+  +box-shadow((0 -2px 3px rgba(#000, $black-opacity), inset 0 1px 0 rgba(#fff, $white-opacity)))
+
 .stripes
   position: absolute
   top: -20px
@@ -20,19 +23,19 @@
     width: 100%
     height: 50px
     background: #f48677
-    +box-shadow((0 -2px 8px rgba(#000, .08), inset 0 1px 0 rgba(#fff, .14)))
+    +stripe-box-shadow(.14)
     +animation(stripe-wave 1s 1 cubic-bezier(0.770, 0.000, 0.175, 1.000) both)
 
   $delay_increment: -.05s
   .stripe1
     top: 0
     background: #b23423
-    +box-shadow((0 -2px 8px rgba(#000, .08), inset 0 1px 0 rgba(#fff, .07)))
+    +stripe-box-shadow(.07)
     +animation-delay(0)
   .stripe2
     top: 10px
     background: #d65240
-    +box-shadow((0 -2px 8px rgba(#000, .08), inset 0 1px 0 rgba(#fff, .09)))
+    +stripe-box-shadow(.09)
     +animation-delay($delay_increment)
   .stripe3
     top: 20px
@@ -40,12 +43,12 @@
   .stripe4
     top: 30px
     background: #ffc6be
-    +box-shadow((0 -2px 8px rgba(#000, .08), inset 0 1px 0 rgba(#fff, .43)))
+    +stripe-box-shadow(.43)
     +animation-delay($delay_increment * 3)
   .stripe5
     top: 40px
     background: #fff2f0
-    +box-shadow((0 -2px 8px rgba(#000, .08), inset 0 1px 0 rgba(#fff, 1)))
+    +stripe-box-shadow(1)
     +animation-delay($delay_increment * 4)
   .stripe-page
     top: 50px

@@ -1,5 +1,5 @@
-require 'spec_helper'
+require "spec_helper"
 
-describe "projects/index.html.haml" do
+describe ErrorMailer do
   pending "add some examples to (or delete) #{__FILE__}"
 end

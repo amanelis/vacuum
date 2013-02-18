@@ -19,7 +19,6 @@ describe User do
   it { should respond_to :password }
   it { should respond_to :password_confirmation }
   it { should respond_to :encrypted_password }
-  
   it { should respond_to :username }
   it { should respond_to :identifier }
   it { should respond_to :created_at }
@@ -30,12 +29,12 @@ describe User do
   
   describe ".admin" do
     before(:all) do
-      @admin = Fabricate(:user, admin: true)
       @user  = Fabricate(:user)
+      @admin = Fabricate(:user, admin: true)
     end
     
     it "includes users with admin flag" do 
-      User.admin.to_a.should include(@admin) 
+      User.admin.to_a.include?(@admin) 
     end
 
     it "excludes users without admin flag" do 

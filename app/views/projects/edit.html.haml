@@ -1,81 +1,122 @@
 .row
   .twelve.columns
-    .panel
-      %dl.tabs
-        %dd.active
-          %a{:href => "#setup"} Setup
-        %dd
-          %a{:href => "#notification"} Notification
-        %dd
-          %a{:href => "#collaborators"} Collaborators
-        %dd
-          %a{:href => "#settings"} Settings
-      %ul.tabs-content
-        %li#setupTab.active 
-          %h2 Javascript Installation
-          %p 
-            Add this snippet directly after the 
-            %code= "<head>"
-            tag in your application.
-            %pre
-              = @project.to_js
-          %div{align: 'right'}
-            = link_to "I've completed this step", project_errors_path(@project), :class => 'success button'
-           
-          %h4 Automatic Logging   
-          %p
-            Start logging errors automatically, these will trigger the 
-            %span{class: 'label'} system
-            notification.
-            %br
-            %pre
-              vacuum.window_error = true;
-              
-          %h4 Manual Logging
-          %p
-            Start logging errors manually, these will trigger the 
-            %span{class: 'alert label'} error
-            or
-            %span{class: 'warn label'} warn
-            notification.
-            %br
-            %pre
-              vacuum.warn('wonky redirect right here, watch the response'); 
-            %br
-            %pre
-              vacuum.error('.ajax.complete never returns');
-            
-            
-        %li#notificationTab 
-          %h2 Get Notified
-          %p 
-            Coming soon...
-        %li#collaboratorsTab 
-          %h2 Collaborators
-          %p
-            Coming soon...
-        %li#settingsTab
-          .row
-            .five.columns
-              %h2= "Edit #{@project.name}"
-              = form_for @project do |f|
-                = f.label :name
-                = f.text_field :name
-                %br
-                = f.label :url
-                = f.text_field :url
-                = f.submit 'Update', :class => 'button'
-                = link_to 'Cancel', request.referrer
-            .six.columns
-              %h2 Configuration
-              %p 
-                Be sure to install this js after the 
-                %code= "<head>"
-                tag in your application.
-                %textarea{rows: 4}
-                  = @project.to_js
+    %h2 Manage #{@project.name}
+    %dl.tabs
+      %dd.active
+        %a{:href => "#setup"} Setup
+      %dd
+        %a{:href => "#notification"} Notification
+      %dd
+        %a{:href => "#collaborators"} Collaborators
+      %dd
+        %a{:href => "#settings"} Settings
+    %ul.tabs-content
+      %li#setupTab.active
+        %h3 Javascript Installation
+        %p
+          Add this snippet directly after the
+          %code= "<head>"
+          tag in your application.
+          %pre
+            = @project.to_js
+        %div{align: 'right'}
+          = link_to "I've completed this step", project_errors_path(@project), :class => 'success button'
 
-              %h2 API Key
-              %p= @project.api_key
-        
-    %a{href: request.referrer, class: 'button'} Back
+        %h4 Automatic Logging
+        %p
+          Start logging errors automatically, these will trigger the
+          %span{class: 'label'} system
+          notification.
+          %br
+          %pre
+            vacuum.window_error = true;
+
+        %h4 Manual Logging
+        %p
+          Start logging errors manually, these will trigger the
+          %span{class: 'alert label'} error
+          or
+          %span{class: 'warn label'} warn
+          notification.
+          %br
+          %pre
+            vacuum.warn('wonky redirect right here, watch the response');
+          %br
+          %pre
+            vacuum.error('.ajax.complete never returns');
+
+
+      %li#notificationTab
+        %h2 Notify the correct people
+        %p
+          - unless @project.notifications.empty?
+            %h4 People who will be notified for errors
+            #notification_members
+              %table.table
+                %thead
+                  %tr
+                    %th Name
+                    %th Email
+                    %th Options
+                  %tbody
+                    - @project.notifications.each do |notifier|
+                      %tr
+                        %td= notifier.name
+                        %td= notifier.email
+                        %th
+                          .small.button.dropdown.round{:href => "#"}
+                            Configuration
+                            %ul
+                              %li
+                                %a{:href => edit_project_notification_path(@project, notifier)} Edit
+                              %li.divider
+                              %li
+                                = link_to "Delete", project_notification_path(@project, notifier), :method => :delete, :confirm => "Are you sure you want to delete this person?"
+
+            
+        %p
+          #notifications_error
+        %p
+          %h4 Add a new contact
+          #notifications_new
+            - @notification = @project.notifications.build
+            = form_for @notification, :url => project_notifications_path(@project.id), :html => { :id => "notifications_form" } do |f|
+              = f.label :name
+              = f.text_field :name
+              #notifications_name_error
+              %br
+              = f.label :email
+              = f.text_field :email
+              #notifications_email_error
+              = hidden_field_tag 'notification_project_id', @project.id
+              = f.submit 'Create', :class => 'button round'
+              = link_to 'Cancel', request.referrer
+      %li#collaboratorsTab
+        %h3 Collaborators
+        %p
+          Coming soon...
+      %li#settingsTab
+        .row
+          .five.columns
+            %h3= "Edit #{@project.name}"
+            = form_for @project do |f|
+              = f.label :name
+              = f.text_field :name
+              %br
+              = f.label :url
+              = f.text_field :url
+              = f.submit 'Update', :class => 'button round'
+              = link_to 'Cancel', request.referrer
+          .six.columns
+            %h3 Configuration
+            %p
+              Be sure to install this js after the
+              %code= "<head>"
+              tag in your application.
+              %textarea{rows: 4}
+                = @project.to_js
+
+            %h3 API Key
+            %p= @project.api_key
+
+    %a.button.round.small{href: request.referrer} Back
