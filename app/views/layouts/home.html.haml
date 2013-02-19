@@ -1,12 +1,12 @@
 !!!
 %html
   = render partial: 'layouts/header/head'
-  %body
-    = render partial: 'layouts/header/stripes'
-
-    %header.row
-      .nine.columns.offset-by-three
-        = render partial: 'layouts/header/navigation'
+  %body#landing
+    / = render partial: 'layouts/header/stripes'
+    %header
+      .row
+        .nine.columns.offset-by-three
+          = render partial: 'layouts/header/navigation'
 
     = render partial: 'layouts/header/flash'
 

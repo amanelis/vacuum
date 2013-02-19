@@ -2,8 +2,10 @@
 %html
   = render partial: 'layouts/header/head'
   %body
-    = render partial: 'layouts/header/stripes'
-    = render partial: 'layouts/header/header'
-    = render partial: 'layouts/header/flash'
-    = yield
+    #wrap
+      #main
+        / = render partial: 'layouts/header/stripes'
+        = render partial: 'layouts/header/header'
+        = render partial: 'layouts/header/flash'
+        = yield
     = render partial: 'layouts/footer/navigation'
