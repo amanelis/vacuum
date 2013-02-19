@@ -8,7 +8,7 @@ Vacuum::Application.routes.draw do
   end
 
   # Devise model mapping
-  devise_for :users,  
+  devise_for :users,
     :controllers => {
       :confirmations      => 'user/confirmations',
       :omniauth_callbacks => 'user/omniauth_callbacks',
@@ -17,7 +17,7 @@ Vacuum::Application.routes.draw do
       :sessions           => 'user/sessions',
       :unlocks            => 'user/unlocks'
   }
-  
+
   # Devise scoped routes
   devise_scope :user do
     get '/account'       => 'user/registrations#edit',  as: 'account'
@@ -32,10 +32,13 @@ Vacuum::Application.routes.draw do
     resources :errors
     resources :notifications
   end
-  
+
   match '/logger/:id/err'   => 'home#errors'
   match '/logger'           => 'home#errors'
-  
+
   # Root the application
+  authenticated :user do
+    root :to => "projects#index"
+  end
   root to: 'home#index'
 end
