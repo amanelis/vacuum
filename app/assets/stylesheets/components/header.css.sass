@@ -8,6 +8,14 @@
   100%
     margin-top: 0px
 
++keyframes(stripe-loading)
+  0%
+    margin-top: 0px
+  50%
+    margin-top: -20px
+  100%
+    margin-top: 0px
+
 =stripe-box-shadow($white-opacity, $black-opacity: .13)
   +box-shadow((0 -2px 3px rgba(#000, $black-opacity), inset 0 1px 0 rgba(#fff, $white-opacity)))
 
@@ -17,6 +25,7 @@
   bottom: 0
   left: 0
   right: 0
+  z-index: -1
 
   .stripe
     position: absolute
@@ -24,30 +33,35 @@
     height: 50px
     background: #f48677
     +stripe-box-shadow(.14)
-    +animation(stripe-wave 1s 1 cubic-bezier(0.770, 0.000, 0.175, 1.000) both)
+    +animation((stripe-wave 1s 1 cubic-bezier(0.770, 0.000, 0.175, 1.000) both, stripe-loading 0 0 ease-in-out))
 
   $delay_increment: -.05s
   .stripe1
     top: 0
     background: #b23423
+    z-index: 1
     +stripe-box-shadow(.07)
     +animation-delay(0)
   .stripe2
     top: 10px
     background: #d65240
+    z-index: 2
     +stripe-box-shadow(.09)
     +animation-delay($delay_increment)
   .stripe3
     top: 20px
+    z-index: 3
     +animation-delay($delay_increment * 2)
   .stripe4
     top: 30px
     background: #ffc6be
+    z-index: 4
     +stripe-box-shadow(.43)
     +animation-delay($delay_increment * 3)
   .stripe5
     top: 40px
     background: #fff2f0
+    z-index: 5
     +stripe-box-shadow(1)
     +animation-delay($delay_increment * 4)
   .stripe-page
@@ -55,7 +69,26 @@
     bottom: 0
     background: #fff
     height: auto
+    z-index: 6
     +animation-delay($delay_increment * 5)
+  $delay_increment_loading: .15s
+  &.loading
+    .stripe
+      // +animation-name(stripe-loading)
+      +animation-duration((1s, 2s))
+      +animation-iteration-count((1, infinite))
+    .stripe1
+      +animation-delay($delay_increment_loading * 5)
+    .stripe2
+      +animation-delay($delay_increment_loading * 4)
+    .stripe3
+      +animation-delay($delay_increment_loading * 3)
+    .stripe4
+      +animation-delay($delay_increment_loading * 2)
+    .stripe5
+      +animation-delay($delay_increment_loading * 1)
+    .stripe-page
+      +animation-delay($delay_increment_loading * 0)
 
 header
   padding-top: 30px
