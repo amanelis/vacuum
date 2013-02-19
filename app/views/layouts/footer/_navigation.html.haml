@@ -1,17 +1,21 @@
-%footer
+%footer#footer
   .row
-    .twelve.columns
-      %hr
-      .row
-        .six.columns
-          %p © Copyright Vacuum. All rights reserved.
-        .six.columns
-          %ul.link-list.right
-            %li
-              %a{:href => "#"} About
-            %li
-              %a{:href => "#"} Info
-            %li
-              %a{:href => "#"} Team
-            %li
-              %a{:href => "#"} Contact
+    .five.columns
+      / %ul.link-list
+      /   %li
+      /     %a{:href => "#"} About
+      /   %li
+      /     %a{:href => "#"} Info
+      /   %li
+      /     %a{:href => "#"} Team
+      /   %li
+      /     %a{:href => "#"} Contact
+    .two.columns
+      %p.copyright Vacuum &copy; 2013
+    .five.columns
+      %p.credits
+        Vacuum was lovingly crafted by
+        %br/
+        %a{href: 'http://twitter.com/amanelis', target: '_blank'} @amanelis
+        and
+        %a{href: 'http://twitter.com/mattsjohnston', target: '_blank'} @mattsjohnston
