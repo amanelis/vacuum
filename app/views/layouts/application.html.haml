@@ -2,6 +2,9 @@
 %html
   = render partial: 'layouts/header/head'
   %body
+    - if content_for?(:modals)
+      .row#modals
+        = yield(:modals)
     #wrap
       #main
         / = render partial: 'layouts/header/stripes'

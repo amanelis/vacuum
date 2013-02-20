@@ -11,7 +11,7 @@
           = @project.to_js
     - else
       %a.settings-link.button.round.small.right{href: "/projects/#{@project.id}/edit#settings"}
-        %i.foundicon-settings
+        %i.icon-cog
       %h2= "#{@project.name} errors"
       %table.table.twelve
         %thead
@@ -19,30 +19,27 @@
             %th Level
             %th Agent
             %th Error
-            %th Last Error
             %th Occurrences
+            %th Last Error
         %tbody
           - @errors.each do |error|
             %tr
               %td
                 - if error.level == 'system' || error.level == 'window'
-                  %span{class: 'label'}= error.level
+                  %span{class: 'label radius'}= error.level
                 - elsif error.level == 'error'
-                  %span{class: 'alert label'}= error.level
+                  %span{class: 'alert label radius'}= error.level
                 - elsif error.level == 'warn'
-                  %span{class: 'warn label'}= error.level
+                  %span{class: 'warn label radius'}= error.level
                 - else
                   = error.level
               %td= image_tag "/assets/#{error.occurrences.collect(&:human_agent).uniq.first}.png", width: '16px', height: '16px'
               %td
-                = error.message
+                %a{href: project_error_path(@project, error)}= error.message
                 %br
                 %em= error.occurrences.last.try(:file) + ':' + error.occurrences.last.try(:line)  unless error.occurrences.last.try(:line).nil?
+              %td= error.occurrences.count
               %td= time_ago_in_words(error.updated_at)
-              %td
-                %a{href: project_error_path(@project, error)}
-                  = error.occurrences.count
-                  (view all)
 
 .row
   .six.columns

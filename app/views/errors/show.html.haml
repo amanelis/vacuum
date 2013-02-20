@@ -1,6 +1,9 @@
 .row
   .twelve.columns
-    %h3 #{@occurrences.count} occurrences of "#{@occurrences.first.error.message}"
+    .panel.radius.right.count
+      %h5= @occurrences.count
+      occurrences
+    %h3 #{@occurrences.first.error.message}
     %p
       %table.table.twelve
         %thead
@@ -18,86 +21,87 @@
               %td
                 - if occurrence.parameters.nil? || occurrence.parameters.empty?
                   = '{}'
-                - else 
+                - else
                   = occurrence.parameters
               %td
                 - if occurrence.line.nil? || occurrence.line.empty?
                   n/a
-                - else 
+                - else
                   = occurrence.line
-              %td= occurrence.created_at                
-          
+              %td= occurrence.created_at
+
       %div{align: 'right'}
-        %a{href: '#', class: 'alert button', 'data-reveal-id' => 'stack-trace-modal'} Stack Trace
+        %a{href: '#', class: 'alert button round', 'data-reveal-id' => 'stack-trace-modal'} Stack Trace
 
       = will_paginate(@occurrences)
     %a.button.round{href: project_errors_path(@project)} Back
-    
-    #stack-trace-modal.reveal-modal{:class => "[expand, xlarge, large, medium, small]"}
-      %h3= "Error #{@error.id}"
-      %p
-        Level:
-        %br
-        - if @error.level == 'system' || @error.level == 'window'
-          %span{class: 'label'}= @error.level
-        - elsif @error.level == 'error'
-          %span{class: 'alert label'}= @error.level
-        - elsif @error.level == 'warn'
-          %span{class: 'warn label'}= @error.level
-        - else
-          = @error.level
-        
-        %br
-        User Agent:
-        %br
-        %code
-          = @occurrences.first.user_agent
-      
-        %br
-        Window Event: 
-        %br
-        %code
-          = @occurrences.first.window_event
-      
-        %br
-        IP Address: 
-        %br
-        %code
-          = @occurrences.first.user_address
-          
-        %br
-        Cookie Enabled: 
-        %br
-        %code
-          = @occurrences.first.cookie_enabled
-          
-        %br
-        Protocol: 
-        %br
-        %code
-          = @occurrences.first.protocol
-          
-        %br
-        Platform: 
-        %br
-        %code
-          = @occurrences.first.platform
-          
-        %br
-        Product: 
-        %br
-        %code
-          = @occurrences.first.product
-          
-        %br
-        Language: 
-        %br
-        %code
-          = @occurrences.first.language
-      
-        %br
-        Stack trace:
-        %br
-        %code
-          = @occurrences.first.stack_trace
-      %a.close-reveal-modal ×
+
+- content_for :modals do
+  #stack-trace-modal.reveal-modal.expand.xlarge.large.medium.small
+    %h3= "Error #{@error.id}"
+    %p
+      Level:
+      %br
+      - if @error.level == 'system' || @error.level == 'window'
+        %span{class: 'label'}= @error.level
+      - elsif @error.level == 'error'
+        %span{class: 'alert label'}= @error.level
+      - elsif @error.level == 'warn'
+        %span{class: 'warn label'}= @error.level
+      - else
+        = @error.level
+
+      %br
+      User Agent:
+      %br
+      %code
+        = @occurrences.first.user_agent
+
+      %br
+      Window Event:
+      %br
+      %code
+        = @occurrences.first.window_event
+
+      %br
+      IP Address:
+      %br
+      %code
+        = @occurrences.first.user_address
+
+      %br
+      Cookie Enabled:
+      %br
+      %code
+        = @occurrences.first.cookie_enabled
+
+      %br
+      Protocol:
+      %br
+      %code
+        = @occurrences.first.protocol
+
+      %br
+      Platform:
+      %br
+      %code
+        = @occurrences.first.platform
+
+      %br
+      Product:
+      %br
+      %code
+        = @occurrences.first.product
+
+      %br
+      Language:
+      %br
+      %code
+        = @occurrences.first.language
+
+      %br
+      Stack trace:
+      %br
+      %code
+        = @occurrences.first.stack_trace
+    %a.close-reveal-modal ×

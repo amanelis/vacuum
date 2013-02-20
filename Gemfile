@@ -28,6 +28,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.0.alpha.95'
   gem 'uglifier'
   gem 'zurb-foundation'
+  gem 'font-awesome-rails'
 end
 
 group :production do
@@ -48,14 +49,14 @@ group :development, :test do
   gem 'capybara-mechanize'
   gem 'capybara-webkit'
   gem 'shoulda'
-  gem 'shoulda-matchers'  
+  gem 'shoulda-matchers'
   gem 'pry-rails'
   gem 'awesome_print'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'terminal-notifier'
   gem 'rack-mini-profiler'
-  
+
   gem 'launchy'
   gem 'quiet_assets'
   gem 'letter_opener'
