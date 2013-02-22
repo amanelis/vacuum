@@ -5,8 +5,6 @@ Fabricator(:user) do
   password_confirmation { 'password' }
   authentication_token { (0...8).map{65.+(rand(26)).chr}.join.downcase }
   identifier { SecureRandom.hex(25)[0...20] }
-  created_at { DateTime.now }
-  updated_at { DateTime.now }
   active { true } 
   admin { false }
   

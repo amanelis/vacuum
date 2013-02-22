@@ -4,8 +4,6 @@ Fabricator(:project) do
   enabled { true }
   api_key { SecureRandom.hex(25)[0...35] }
   identifier { SecureRandom.hex(25)[0...20] }
-  created_at { DateTime.now }
-  updated_at { DateTime.now }  
   
   Fabricate(:user)
 end

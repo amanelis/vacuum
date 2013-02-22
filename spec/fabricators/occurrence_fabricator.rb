@@ -15,6 +15,4 @@ Fabricator(:occurrence) do
   stack_trace { '' }
   browser_time { '' }
   identifier { SecureRandom.hex(25)[0...20] }
-  created_at { DateTime.now }
-  updated_at { DateTime.now }  
 end

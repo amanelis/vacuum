@@ -1,19 +1,6 @@
 require 'spec_helper'
 
-describe User do
-  context "when creating a user" do
-    it "has a valid fabrication" do
-      Fabricate(:user).should be_valid
-    end
-  end
-  
-  context "when creating an admin" do
-    it "has a valid fabrication" do
-      user = Fabricate(:user, admin: true)
-      assert(user.admin == true)
-    end
-  end
-  
+describe User do  
   it { should respond_to :id }
   it { should respond_to :email }
   it { should respond_to :password }
