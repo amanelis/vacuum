@@ -14,7 +14,7 @@ class Error
   belongs_to :project
 
   ### Embedding
-  embeds_many :occurrences
+  embeds_many :occurrences, cascade_callbacks: true
 
   ### Callbacks
   before_create :set_identifier
