@@ -29,7 +29,11 @@ Vacuum::Application.routes.draw do
 
   # Standard Resourcing
   resources :projects do
-    resources :errors
+    resources :errors do
+      member do
+        get :resolve
+      end
+    end
     resources :notifications
   end
 
