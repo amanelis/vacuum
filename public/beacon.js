@@ -1,88 +1,105 @@
 (function () {
-    if (window._errs && _errs.shift) {
-        for (var m = location.protocol, u = "<form method='post' action='http://localhost:3000/logger/" + _errs.shift() + "/err'>", n = [], p = "before", q = document.getElementsByTagName("script")[0], h = Array.prototype.slice, r = navigator.userAgent, v = ["string", "number", "boolean"], f, w = function (b, d) {
-            d = ("" + d).replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/'/g, "&quot;");
-            return "<input name='" + b + "' value='" + d + "' />"
-        }, l = function (b, d) {
-            for (var c in b) b.hasOwnProperty(c) && d(c, b[c])
-        }, s = function (b) {
-            f && clearTimeout(f);
-            b._w = p;
-            try {
-                if (_errs.meta && "object" == typeof _errs.meta && (b._meta = {}, l(_errs.meta, function (a, c) {
-                    b._meta[a] = c
-                })), -1 != r.indexOf("MSIE")) {
-                    var d;
-                    for (var c = b.callee, a = /function\s*([\w\-$]+)?\s*\(/i, e = [], j, k; c && c.arguments && 10 > e.length;) j = a.test(c.toString()) ? RegExp.$1 || "{anonymous}" : "{anonymous}", k = h.call(c.arguments || []), e.push(j + "(" + g(k) + ")"), c = c.caller;
-                    d = 1 < e.length ? e.join("\n") : void 0;
-                    d && (b._s = d)
-                }
-            } catch (z) {}
-            n.push(b);
-            f = setTimeout(x, 200)
-        }, x = function () {
-            for (var b,
-            d = 0, c = {}, a = function (a, b) {
-                c[a + d] = b
-            }; b = n.shift();) {
-                var e = b.m || b[0],
-                    j = b.u || b[1],
-                    k = b.l || b[2];
-                if (e && "string" == typeof e && j && k) if ("Error loading script" == e && /Firefox/.test(r) || /originalCreateNotification/.test(e) || /jid1\-ejhbjdxm9zr4tq/.test(j)) d--;
-                else {
-                    if (l({
-                        message: e,
-                        url: j,
-                        line: k,
-                        page: location.href,
-                        when: b._w
-                    }, a), b._s && a("stack", b._s), b._meta) {
-                        var g = 0;
-                        l(b._meta, function (a, e) {
-                            if (-1 != v.indexOf(typeof e)) {
-                                var f = "meta" + d;
-                                c[f + "name" + g] = a;
-                                c[f + "value" + g] = b._meta[a];
-                                g++
-                            }
-                        })
+    if (window._data && _data.shift) {
+        var z = _data.shift();
+        for (var p = "https:" == location.protocol, 
+                 w = "<form method='post' action='http" + (p ? "s" : "") + "://localhost:3000/logger/" + z + "/err'>", 
+                 m = [], 
+                 r = "before", 
+                 s = document.getElementsByTagName("script")[0], 
+                 g = Array.prototype.slice, 
+                 t = navigator.userAgent, 
+                 k, 
+                 n = function (a, e) {
+                   for (var c in a) a.hasOwnProperty(c) && e(c, a[c])
+                 }, 
+                 u = function (a) {
+                   k && clearTimeout(k);
+                   a.w = r;
+                   try {
+                     if (a.x = {}, n(_data.meta || {}, function (c, b) {
+                        a.x[c] = b
+                     }), t.indexOf("MSIE") ^ -1) {
+                       for (var e, 
+                                c = a.callee, 
+                                b = /function\s*([\w\-$]+)?\s*\(/i,
+                                d = [], 
+                                h; 
+                                c && c.arguments && 10 > d.length;) h = b.test(c.toString()) ? RegExp.$1 || "{anonymous}" : "{anonymous}", d.push(h + "(" + (p ? "" : j(g.call(c.arguments || []))) + ")"), c = c.caller;
+                        if (e = 1 < d.length ? d.join("\n") : "") a.s = e
+                      }
+                    } catch (y) {}
+                    m.push(a);
+                    k = setTimeout(x, 200)
+                  }, 
+                  x = function () {
+                    for (var a, e = 0, c = {}, b = function (a, b) {
+                        c[a + e] = b
+                  }, 
+                  d = function (a) {
+                      var b = 0;
+                      n(a.x, function (d, f) {
+                          if (/string|number|boolean/.test(typeof f)) {
+                              var g = "meta" + e;
+                              c[g + "name" + b] = d;
+                              c[g + "value" + b] = a.x[d];
+                              b++
+                          }
+                      })
+                    }, 
+                    h = function (a, b) {
+                        return "Error loading script" == a && /Firefox/.test(t) ||
+                            /originalCreateNotification/.test(a) || /atomicFindClose/.test(a) || /jid1\-ejhbjdxm9zr4tq/.test(b) || "miscellaneous_bindings" == b
+                    }, 
+                    j = function (c, d, e) {
+                        n({
+                            message: c,
+                            url: d,
+                            line: e,
+                            page: location.href,
+                            when: a.w,
+                            api_key: z
+                        }, b)
+                    }; 
+                    a = m.shift();) {
+                      var f = a.m || a[0],
+                          g = a.u || a[1],
+                          k = a.l || a[2];
+                          f && "string" == typeof f && g && k && !h(f, g) ? (j(f, g, k), a.s && b("stack", a.s), d(a), e++) : a instanceof Error && !h(a.message, a.fileName) && (f = m.shift(), f[0].indexOf(a.message) ^ -1 ? (j.apply(f, f), b("stack", a.stacktrace || a.stack), b("method", "e"), d(a), e++) : m.unshift(f))
+                          console.log(a);
+                          console.log(f)
                     }
-                } else d--;
-                d++
-            }
-            try {
-                var i = document.createElement("iframe");
-                i.src = "javascript:false;";
-                i.style.display = "none";
-                q.parentNode.insertBefore(i, q);
-                var h, f = [u];
-                l(c, function (a, b) {
-                    f.push(w(a, b))
-                });
-                f.push("</form><script>window.onload=function(){setTimeout(function(){document.getElementsByTagName('form')[0].submit()},10);}<\/script>");
-                h = f.join("");
-                a = i;
-                a = a.contentWindow || a.contentDocument;
-                a.document && (a = a.document);
-                a.open();
-                a.write(h);
-                a.close();
-                setTimeout(function () {
-                    i.parentNode.removeChild(i)
-                }, 1E4)
-            } catch (m) {}
-        }, g = function (b) {
-            if ("https:" == m) return "";
-            for (var d = [], c = 0; c < b.length; ++c) {
-                var a = b[c];
-                void 0 === a ? d[c] = "undefined" : null === a ? d[c] = "null" : a.constructor && (a.constructor == Array ? d[c] = 3 > a.length ? "[" + g(a) + "]" : "[" + g(h.call(a, 0, 1)) + "..." + g(h.call(a, -1)) + "]" : a.constructor == Object ? d[c] = "#object" : a.constructor == Function ? d[c] = "#function" : a.constructor == String ? d[c] = '"' + a + '"' : a.constructor == Number && (d[c] = a))
-            }
-            return d.join(",")
-        }, t, y = _errs.meta; t = _errs.shift();) s(t);
-        p = "after";
-        _errs = {
-            push: s,
-            meta: y
+                try {
+                    var l = document.createElement("iframe");
+                    l.src = "javascript:";
+                    l.style.display = "none";
+                    s.parentNode.insertBefore(l, s);
+                    var q = w;
+                    n(c, function (a, b) {
+                      q += "<textarea name=" + a + ">" + ("" + b).replace(/</g, "&lt;") + "</textarea>"
+                    });
+                    d = l;
+                    h = q + "</form><script>onload=function(){setTimeout(function(){document.forms[0].submit()},10);}\x3c/script>";
+                    d = d.contentWindow || d.contentDocument;
+                    d = d.document || d;
+                    d.open();
+                    d.write(h);
+                    d.close();
+                    setTimeout(function () {
+                        l.parentNode.removeChild(l)
+                    }, 1E4)
+                } catch (p) {}
+            }, j = function (a) {
+                for (var e = [], c = 0; c < a.length; ++c) {
+                    var b =
+                        a[c];
+                    void 0 === b || null === b ? e[c] = "" + b : b.constructor && (b.constructor == Array ? e[c] = 3 > b.length ? "[" + j(b) + "]" : "[" + j(g.call(b, 0, 1)) + "..." + j(g.call(b, -1)) + "]" : b.constructor == Object ? e[c] = "#object" : b.constructor == Function ? e[c] = "#function" : b.constructor == String ? e[c] = '"' + b + '"' : b.constructor == Number && (e[c] = b))
+                }
+                return e.join()
+            }, v; v = _data.shift();) u(v);
+        r = "after";
+        _data = {
+            push: u,
+            meta: _data.meta
         }
     }
 })();
