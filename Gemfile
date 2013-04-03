@@ -35,30 +35,36 @@ group :production do
   gem 'thin'
 end
 
-group :development, :test do
-  # Testing and fixtures
+group :development do
+  gem 'foreman'
+  gem 'annotate'
+  gem 'pry-rails'
+  gem 'quiet_assets'
+  gem 'better_errors'
+  gem 'awesome_print'
+  gem 'binding_of_caller'
+  gem 'rack-mini-profiler'
+end
+
+group :test, :development do
   gem 'faker'
-  gem 'capybara'
-  gem 'simplecov'
-  gem 'fabrication'
   gem 'rspec'
   gem 'rspec-core'
   gem 'rspec-rails'
   gem 'rspec-mocks'
   gem 'rspec-expectations'
-  gem 'capybara-mechanize'
-  gem 'capybara-webkit'
-  gem 'shoulda'
-  gem 'shoulda-matchers'
-  gem 'pry-rails'
-  gem 'awesome_print'
-  gem 'better_errors'
-  gem 'binding_of_caller'
   gem 'terminal-notifier'
-  gem 'rack-mini-profiler'
+  gem 'debugger'
+  gem 'turn', :require => false
+end
 
+group :test do
+  gem 'minitest'
   gem 'launchy'
-  gem 'quiet_assets'
-  gem 'letter_opener'
+  gem 'webmock'
+  gem 'capybara'
+  gem 'simplecov'
+  gem 'fabrication'
   gem 'database_cleaner'
+  gem 'shoulda-matchers'
 end
