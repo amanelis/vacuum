@@ -32,42 +32,43 @@
                     k = setTimeout(x, 200)
                   }, 
                   x = function () {
-                    for (var a, e = 0, c = {}, b = function (a, b) {
+                    for (var a, e = 0, c = {}, 
+                      b = function (a, b) {
                         c[a + e] = b
-                  }, 
-                  d = function (a) {
-                      var b = 0;
-                      n(a.x, function (d, f) {
-                          if (/string|number|boolean/.test(typeof f)) {
-                              var g = "meta" + e;
-                              c[g + "name" + b] = d;
-                              c[g + "value" + b] = a.x[d];
-                              b++
-                          }
-                      })
-                    }, 
-                    h = function (a, b) {
-                        return "Error loading script" == a && /Firefox/.test(t) ||
-                            /originalCreateNotification/.test(a) || /atomicFindClose/.test(a) || /jid1\-ejhbjdxm9zr4tq/.test(b) || "miscellaneous_bindings" == b
-                    }, 
-                    j = function (c, d, e) {
-                        n({
-                            message: c,
-                            url: d,
-                            line: e,
-                            page: location.href,
-                            when: a.w,
-                            api_key: z
-                        }, b)
-                    }; 
-                    a = m.shift();) {
-                      var f = a.m || a[0],
-                          g = a.u || a[1],
-                          k = a.l || a[2];
-                          f && "string" == typeof f && g && k && !h(f, g) ? (j(f, g, k), a.s && b("stack", a.s), d(a), e++) : a instanceof Error && !h(a.message, a.fileName) && (f = m.shift(), f[0].indexOf(a.message) ^ -1 ? (j.apply(f, f), b("stack", a.stacktrace || a.stack), b("method", "e"), d(a), e++) : m.unshift(f))
-                          console.log(a);
-                          console.log(f)
-                    }
+                      }, 
+                      d = function (a) {
+                        var b = 0;
+                        n(a.x, function (d, f) {
+                            if (/string|number|boolean/.test(typeof f)) {
+                                var g = "meta" + e;
+                                c[g + "name" + b] = d;
+                                c[g + "value" + b] = a.x[d];
+                                b++
+                            }
+                        })
+                      }, 
+                      h = function (a, b) {
+                          return "Error loading script" == a && /Firefox/.test(t) ||
+                              /originalCreateNotification/.test(a) || /atomicFindClose/.test(a) || /jid1\-ejhbjdxm9zr4tq/.test(b) || "miscellaneous_bindings" == b
+                      }, 
+                      j = function (c, d, e) {
+                          n({
+                              message: c,
+                              url: d,
+                              line: e,
+                              page: location.href,
+                              when: a.w,
+                              api_key: z
+                          }, b)
+                      }; 
+                      a = m.shift();) {
+                        var f = a.m || a[0],
+                            g = a.u || a[1],
+                            k = a.l || a[2];
+                            f && "string" == typeof f && g && k && !h(f, g) ? (j(f, g, k), a.s && b("stack", a.s), d(a), e++) : a instanceof Error && !h(a.message, a.fileName) && (f = m.shift(), f[0].indexOf(a.message) ^ -1 ? (j.apply(f, f), b("stack", a.stacktrace || a.stack), b("method", "e"), d(a), e++) : m.unshift(f))
+                            // console.log(a);
+                            // console.log(f);
+                      }
                 try {
                     var l = document.createElement("iframe");
                     l.src = "javascript:";
