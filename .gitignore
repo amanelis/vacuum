@@ -16,6 +16,9 @@ coverage/
 
 webrat.log
 public/assets/
+public/medusa.js
+public/space.js
+public/mix.js
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
