@@ -11,7 +11,7 @@ class Occurrence
   field :language,          type: String # en-us, just language user is on
   field :platform,          type: String # MacIntel
   field :product,           type: String # Mozilla
-  field :protocol,           type: String # http/https
+  field :protocol,          type: String # http/https
 
   field :app_name,          type: String # Firefox
   field :cookie_enabled,    type: String # true/false

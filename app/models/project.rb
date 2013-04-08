@@ -34,7 +34,7 @@ class Project
       verb = false
     end
 
-    javascript = "<script type=\"text/javascript\" src=\"#{host}/vacuum.js\"></script>" +
+    return "<script type=\"text/javascript\" src=\"#{host}/vacuum.js\"></script>" +
                  "<script type=\"text/javascript\">" +
                    "try {" +
                       "vacuum.api_key = '" + self.api_key + "';" +
@@ -43,6 +43,5 @@ class Project
                       "console.log(vacuum.status());" +
                    "} catch(e) {}" +
                  "</script>"
-    javascript
   end
 end
