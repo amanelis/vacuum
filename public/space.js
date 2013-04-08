@@ -76,38 +76,6 @@
     return false;
   };
   
-  /** 
-   * Transmission for the data to server via a hidden form inserted into an iframe
-   * @param
-   * @return
-   */
-  spaceship.transmit = function(url, text) {
-    // Add the iframe with a unique name
-    var iframe = document.createElement("iframe");
-    var uniqueNameOfFrame = "sum";
-    document.body.appendChild(iframe);
-    iframe.style.display = "none";
-    iframe.contentWindow.name = uniqueNameOfFrame;
-
-    // construct a form with hidden inputs, targeting the iframe
-    var form = document.createElement("form");
-    form.target = uniqueNameOfFrame;
-    form.action = url;
-    form.method = "POST";
-
-    for (var i = 0; i < spaceship.drivers().length; i++) { 
-      spaceship.Logger(spaceship.drivers()[i]);
-      var input = document.createElement("input");
-      input.type = "hidden";
-      input.name = spaceship.drivers()[i];
-      input.value = spaceship.blackbox[spaceship.drivers()[i]];
-      form.appendChild(input);
-      document.body.appendChild(form);
-    }
-
-    form.submit();
-  };
-  
   /**
    * These are the actual methods that we are trying to pull from the user agent and data on the user
    * @param
@@ -181,6 +149,38 @@
     data['browser_time_zone'] = new Date().getTimezoneOffset();
 
     spaceship.blackbox = data;
+  };
+  
+  /** 
+   * Transmission for the data to server via a hidden form inserted into an iframe
+   * @param
+   * @return
+   */
+  spaceship.transmit = function(url, text) {
+    // Add the iframe with a unique name
+    var iframe = document.createElement("iframe");
+    var uniqueNameOfFrame = "sum";
+    document.body.appendChild(iframe);
+    iframe.style.display = "none";
+    iframe.contentWindow.name = uniqueNameOfFrame;
+
+    // construct a form with hidden inputs, targeting the iframe
+    var form = document.createElement("form");
+    form.target = uniqueNameOfFrame;
+    form.action = url;
+    form.method = "POST";
+
+    for (var i = 0; i < spaceship.drivers().length; i++) { 
+      spaceship.Logger(spaceship.drivers()[i]);
+      var input = document.createElement("input");
+      input.type = "hidden";
+      input.name = spaceship.drivers()[i];
+      input.value = spaceship.blackbox[spaceship.drivers()[i]];
+      form.appendChild(input);
+      document.body.appendChild(form);
+    }
+
+    form.submit();
   };
   
   /**

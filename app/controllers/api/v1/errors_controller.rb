@@ -2,13 +2,7 @@ class Api::V1::ErrorsController < Api::V1::ApiController
   before_filter :clean_params,    :only => [:index, :create]
   before_filter :load_project,    :only => [:index, :create]
   
-  def create    
-    logger.debug ""
-    logger.debug "PROJECT[#{@project.name}][ERROR] -------------------------------------------------------------------"
-    logger.debug @params.inspect
-    logger.debug "PROJECT[#{@project.name}][ERROR] -------------------------------------------------------------------"
-    logger.debug ""
-    
+  def create        
     # Find the Error or create it, then handle the occurence
     @error = Error.find_or_create_by(project_id: @project.id, level: params[:level], message: params[:message])    
     
@@ -41,10 +35,18 @@ class Api::V1::ErrorsController < Api::V1::ApiController
     # Save the resource, account for errors
     @error.save && @occurrence.save
     
+    logger.debug ""
+    logger.debug "PROJECT[#{@project.name}][ERROR] -------------------------------------------------------------------"
+    logger.debug @params.inspect
+    logger.debug "PROJECT[#{@project.name}][ERROR] -------------------------------------------------------------------"
+    logger.debug ""
+    
+    logger.debug ''
     logger.debug 'ERRORS --------------------------------------------------------------------------'
     logger.debug @error.errors.messages
     logger.debug @occurrence.errors.messages
     logger.debug 'ERRORS --------------------------------------------------------------------------'
+    logger.debug ''
     
     json = {
       error: @error.as_json(only: error_permissions(:only))

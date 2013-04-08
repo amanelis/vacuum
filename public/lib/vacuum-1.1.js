@@ -1,0 +1,3 @@
+(function(vacuum) {
+  
+})(window, document);
