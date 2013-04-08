@@ -26,7 +26,7 @@ class Api::V1::ErrorsController < Api::V1::ApiController
       user_address:     @params['user_address'],
       window_event:     @params['window_event'],
       stack_trace:      @params['stack_trace'],
-      browser_time:     @params['browers_time'].to_s
+      browser_time:     @params['browser_time'].to_s
     }
     
     # Build the occurrence
@@ -40,14 +40,7 @@ class Api::V1::ErrorsController < Api::V1::ApiController
     logger.debug @params.inspect
     logger.debug "PROJECT[#{@project.name}][ERROR] -------------------------------------------------------------------"
     logger.debug ""
-    
-    logger.debug ''
-    logger.debug 'ERRORS --------------------------------------------------------------------------'
-    logger.debug @error.errors.messages
-    logger.debug @occurrence.errors.messages
-    logger.debug 'ERRORS --------------------------------------------------------------------------'
-    logger.debug ''
-    
+
     json = {
       error: @error.as_json(only: error_permissions(:only))
     }

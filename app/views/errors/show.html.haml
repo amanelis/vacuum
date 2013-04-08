@@ -3,7 +3,7 @@
     .panel.radius.right.count
       %h5= @occurrences.count
       occurrences
-    %h3 #{@occurrences.first.error.message}
+    %h3 #{@occurrences.last.error.message}
     %p
       %table.table.twelve
         %thead
@@ -56,53 +56,59 @@
       User Agent:
       %br
       %code
-        = @occurrences.first.user_agent
+        = @occurrences.last.user_agent
 
       %br
       Window Event:
       %br
       %code
-        = @occurrences.first.window_event
+        = @occurrences.last.window_event
 
       %br
       IP Address:
       %br
       %code
-        = @occurrences.first.user_address
+        = @occurrences.last.user_address
 
       %br
       Cookie Enabled:
       %br
       %code
-        = @occurrences.first.cookie_enabled
+        = @occurrences.last.cookie_enabled
 
       %br
       Protocol:
       %br
       %code
-        = @occurrences.first.protocol
+        = @occurrences.last.protocol
 
       %br
       Platform:
       %br
       %code
-        = @occurrences.first.platform
+        = @occurrences.last.platform
 
       %br
       Product:
       %br
       %code
-        = @occurrences.first.product
+        = @occurrences.last.product
 
       %br
       Language:
       %br
       %code
-        = @occurrences.first.language
+        = @occurrences.last.language
+        
+      %br
+      Browser Time:
+      %br
+      %code
+        = @occurrences.last.browser_time
 
       %br
       Stack trace:
       %br
       %code
-        = @occurrences.first.stack_trace
+        = @occurrences.last.stack_trace
     %a.close-reveal-modal ×
