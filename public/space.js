@@ -43,6 +43,15 @@
   };
   
   /**
+   * Determines if the browser can actually do XHR requests
+   * @param
+   * @return Boolean
+   */
+  spaceship.USE_XHR = function() {
+    return (window.XMLHttpRequest && 'withCredentials' in new XMLHttpRequest());
+  };
+  
+  /**
    * Logging for Spaceship
    * @param String[message]
    * @return Void
@@ -51,6 +60,18 @@
     if (spaceship.VERBOSE == true) {
       console.log(message);
     }
+  };
+  
+  /**
+   * Serialize a hash into a proper http url query string
+   * @param Hash[obj]
+   * @return String
+   */
+  spaceship.serialize = function(obj) {
+    var str = [];
+    for(var p in obj)
+      str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+    return str.join("&");
   };
   
   /**
@@ -132,7 +153,6 @@
     data['vendor']            = navigator.vendor;
     data['charset']           = document.charset;
     data['referrer']          = document.referrer;
-    data['remote_addr']       = spaceship.remote_address();
     data['screen_height']     = screen.availHeight;
     data['screen_width']      = screen.availWidth;
     data['href']              = window.location.href;
@@ -145,6 +165,7 @@
     data['cookie_enabled']    = navigator.cookieEnabled;
     data['user_agent']        = navigator.userAgent;
     data['window_event']      = window.event;
+    data['remote_addr']       = spaceship.remote_address();
     data['browser_time']      = new Date();
     data['browser_time_zone'] = new Date().getTimezoneOffset();
 
@@ -157,30 +178,45 @@
    * @return
    */
   spaceship.transmit = function(url, text) {
-    // Add the iframe with a unique name
-    var iframe = document.createElement("iframe");
-    var uniqueNameOfFrame = "sum";
-    document.body.appendChild(iframe);
-    iframe.style.display = "none";
-    iframe.contentWindow.name = uniqueNameOfFrame;
-
-    // construct a form with hidden inputs, targeting the iframe
-    var form = document.createElement("form");
-    form.target = uniqueNameOfFrame;
-    form.action = url;
-    form.method = "POST";
-
-    for (var i = 0; i < spaceship.drivers().length; i++) { 
-      spaceship.Logger(spaceship.drivers()[i]);
-      var input = document.createElement("input");
-      input.type = "hidden";
-      input.name = spaceship.drivers()[i];
-      input.value = spaceship.blackbox[spaceship.drivers()[i]];
-      form.appendChild(input);
-      document.body.appendChild(form);
-    }
-
-    form.submit();
+    if (spaceship.USE_XHR) {
+      
+      var data = spaceship.serialize(text);
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', url + "?" + data);
+      xhr.onreadystatechange = function (e) {
+          if (xhr.readyState === 4) { // XMLHttpRequest.DONE == 4, except in safari 4
+              if (xhr.status === 200) {
+                spaceship.Logger('xhr success');
+              } else {
+                spaceship.Logger('xhr failed');
+              }
+          }
+      };
+      xhr.send();
+    } else {
+      var iframe = document.createElement("iframe");
+      var uniqueNameOfFrame = "sum";
+      document.body.appendChild(iframe);
+      iframe.style.display = "none";
+      iframe.contentWindow.name = uniqueNameOfFrame;
+      
+      // construct a form with hidden inputs, targeting the iframe
+      var form = document.createElement("form");
+      form.target = uniqueNameOfFrame;
+      form.action = url;
+      form.method = "POST";
+      
+      for (var i = 0; i < spaceship.drivers().length; i++) { 
+        var input = document.createElement("input");
+        input.type = "hidden";
+        input.name = spaceship.drivers()[i];
+        input.value = spaceship.blackbox[spaceship.drivers()[i]];
+        form.appendChild(input);
+        document.body.appendChild(form);
+      }
+      
+      form.submit();
+    }  
   };
   
   /**
@@ -216,4 +252,4 @@
       }
     }
   }();
-})(window, document);
+})();

@@ -156,33 +156,11 @@ vacuum.createXMLHTTPObject = function() {
 };
 
 /**
- * Manual custom error logging function
- * @param
- * @return 
- */
-vacuum.debug = function(message) {
- this.post_request('debug', message);
-};
-vacuum.error = function(message) {
- this.post_request('error', message);
-};
-vacuum.fatal = function(message) {
- this.post_request('fatal', message);
-};
-vacuum.info = function(message) {
- this.post_request('info', message);
-};
-vacuum.warn = function(message) {
- this.post_request('warn', message);
-};
-
-/**
  * Manual method for posting errors
  * @param
  * @return
  */
 vacuum.post_request = function(level, message) {
-  var request = vacuum.createXMLHTTPObject();
   var params  =   "&amp;level="            + escape(level) +
                   "&amp;message="          + escape(message) +
                   
@@ -201,18 +179,68 @@ vacuum.post_request = function(level, message) {
                   "&amp;window_event="     + escape(window.event) +
                   "&amp;stack_trace="      + escape('coming soon') +
 
-                  "&amp;browers_time="     + escape(new Date());
+                  "&amp;browser_time="     + escape(new Date());
                   
 
-  if ((level != null || level != "") && (message != null || message != "") && this.api_key != null) {
-    request.open('POST', this.api_url + this.log_path + '?api_key=' + this.api_key + params, true);
-  	request.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-    request.onreadystatechange = function () {
-      if (request.readyState != 4) return;
-    }
-    if (request.readyState == 4) return;
-    request.send();
-  }
+  if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
+  else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+
+  xmlhttp.open("POST", url + "?" + params,false);
+  xmlhttp.send();
+
+  // Add the iframe with a unique name
+  // var iframe = document.createElement("iframe");
+  // var uniqueNameOfFrame = "sum";
+  // document.body.appendChild(iframe);
+  // iframe.style.display = "none";
+  // iframe.contentWindow.name = uniqueNameOfFrame;
+  // 
+  // // construct a form with hidden inputs, targeting the iframe
+  // var form = document.createElement("form");
+  // form.target = uniqueNameOfFrame;
+  // form.action = url;
+  // form.method = "POST";
+  // 
+  // var input = document.createElement("input");
+  // input.type = "hidden";
+  // input.name = 'body';
+  // input.value = params
+  // form.appendChild(input);
+  // document.body.appendChild(form);
+  // 
+  // form.submit();
+
+  // var request = vacuum.createXMLHTTPObject();
+  // if ((level != null || level != "") && (message != null || message != "") && this.api_key != null) {
+  //   request.open('POST', this.api_url + this.log_path + '?api_key=' + this.api_key + params, true);
+  //  request.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+  //   request.onreadystatechange = function () {
+  //     if (request.readyState != 4) return;
+  //   }
+  //   if (request.readyState == 4) return;
+  //   request.send();
+  // }
+};
+
+/**
+ * Manual custom error logging function
+ * @param
+ * @return 
+ */
+vacuum.debug = function(message) {
+ this.post_request('debug', message);
+};
+vacuum.error = function(message) {
+ this.post_request('error', message);
+};
+vacuum.fatal = function(message) {
+ this.post_request('fatal', message);
+};
+vacuum.info = function(message) {
+ this.post_request('info', message);
+};
+vacuum.warn = function(message) {
+ this.post_request('warn', message);
 };
 
 /**
@@ -243,7 +271,7 @@ window.onerror = function(message, file, line) {
         "&amp;window_event="     + escape(window.event) +
         "&amp;stack_trace="      + escape('coming soon') +
 
-        "&amp;browers_time="     + escape(new Date());
+        "&amp;browser_time="     + escape(new Date());
   
     /** Send error to server */
     var request = vacuum.createXMLHTTPObject();

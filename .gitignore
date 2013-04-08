@@ -18,6 +18,7 @@ webrat.log
 public/assets/
 public/medusa.js
 public/space.js
+public/space2.js
 public/mix.js
 
 # Ignore all logfiles and tempfiles.
