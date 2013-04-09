@@ -185,7 +185,7 @@ vacuum.post_request = function(level, message) {
   if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
   else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 
-  xmlhttp.open("POST", url + "?" + params,false);
+  xmlhttp.open("POST", vacuum.api_url + vacuum.log_path + '?api_key=' + vacuum.api_key + params, false);
   xmlhttp.send();
 
   // Add the iframe with a unique name
