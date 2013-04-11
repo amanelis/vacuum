@@ -1,5 +1,5 @@
 .row
-  .twelve.columns
+  .large-12.columns
     .panel
       %dl.tabs
         %dd.active
@@ -18,12 +18,12 @@
           %p
             Add this snippet directly after the
             %code= "<head>"
-            tag in your application and before any other javascript code/dependencies are loaded. The code in this script will only ever be initiated 
-            on an error. Therefore you are only just loading in the size of the script. When an error is triggered, this code will run. 
+            tag in your application and before any other javascript code/dependencies are loaded. The code in this script will only ever be initiated
+            on an error. Therefore you are only just loading in the size of the script. When an error is triggered, this code will run.
             %br
             %br
-            Never change/edit or try to minify this piece of code. For we use the 
-            %code _vacuum 
+            Never change/edit or try to minify this piece of code. For we use the
+            %code _vacuum
             object amongst your application and in our listener.
             %br
             %br
@@ -37,7 +37,7 @@
           %p
             The script that you have included in your application will watch and fire on a window.onerror event. Lets go over a few of the options
             this piece of code sets.
-            
+
             %pre var _vacuum = _vacuum || []; // Instantiate and sets up a new array that will hold our settings.
             %br
             %pre= "_vacuum.push(['_setKey', \'#{@project.api_key}\']); // Sets your API_KEY"
@@ -46,7 +46,7 @@
             %br
             %pre= "_vacuum.push(['debug', true]); // Turns debug mode on"
             %br
-            
+
             Thats it, just make sure the script is loaded after this block of code/settings.
           %h4 Manual Logging
           %p
@@ -55,11 +55,11 @@
             or
             %span{class: 'warn label'} warn
             notification.
-              
+
             %br
             %pre
               _vacuum.warn('wonky redirect right here, watch the response');
-              
+
             %br
             %pre
               _vacuum.error('.ajax.complete never returns');
@@ -154,7 +154,7 @@
                 New Collaborator
         %li#settingsTab
           .row
-            .five.columns
+            .large-5.columns
               %h2= "Edit #{@project.name}"
               = form_for @project do |f|
                 = f.label :name
@@ -164,11 +164,17 @@
                 = f.text_field :url
                 = f.submit 'Update', :class => 'button'
                 = link_to 'Cancel', request.referrer
-            .six.columns
+            .large-6.columns
+              %h2 Configuration
+              %p
+                Be sure to install this js after the
+                %code= "<head>"
+                tag in your application.
+                %textarea{rows: 4}
+                  = @project.to_js
               %h2 API Key
               %p= @project.api_key
-              
+
               %h2 API Identifier
               %p= @project.identifier
-
     %a.button.round{href: request.referrer} Back

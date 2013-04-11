@@ -27,10 +27,10 @@ group :assets do
   gem 'compass-rails'
   gem 'haml-rails'
   gem 'jquery-rails'
-  gem 'sass',         '~> 3.2.0.alpha.95'
-  gem 'sass-rails',   '~> 3.2.0.alpha.95'
+  gem 'sass'
+  gem 'sass-rails'
   gem 'uglifier'
-  gem 'zurb-foundation'
+  gem 'zurb-foundation', '~> 4.0.0'
   gem 'font-awesome-rails'
 end
 

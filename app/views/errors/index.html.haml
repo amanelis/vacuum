@@ -1,5 +1,5 @@
 .row
-  .twelve.columns
+  .large-12.columns
     - if @errors.empty?
       .panel
         %h3 No errors yet. Guess thats a good thing?
@@ -48,8 +48,8 @@
               %td= error.occurrences.count
               %td= time_ago_in_words(error.updated_at)
 .row
-  .six.columns
+  .large-6.columns
     %a.button.round.small.left{href: projects_path} Back
-  .six.columns
+  .large-6.columns
     %div{align: 'right'}
       = will_paginate(@errors)

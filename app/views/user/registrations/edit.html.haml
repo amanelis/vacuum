@@ -1,5 +1,5 @@
 .row
-  .panel
+  .large-6.columns.centered.panel
     %h2
       Edit #{resource_name.to_s.humanize}
     = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
@@ -13,7 +13,7 @@
           = f.label :username
           %br
           = f.text_field :username
-    
+
       .six.columns
         %div
           = f.label :password
@@ -35,5 +35,3 @@
 
       %p
         Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}.
-
-
