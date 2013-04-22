@@ -38,6 +38,7 @@
     , /** @const */ API_KEY          = _vacuum[0][1]
     , /** @const */ API_URL          = document.location.hostname == 'localhost' ? HTTP_PROTOCOL + 'localhost:3000/logger' : HTTP_PROTOCOL + 'vacuum.io/api/v1/errors'
     , /** @const */ FLA_TIMEOUT      = 5
+    , /** @const */ VACUUM_ERROR_ARR = new Object();
     , /** @const */ CURRENT_DOMAIN   = document.location.host
     , /** @const */ VARIABLE_DRIVERS = ['host', 'hostname', 'origin', 'pathname', 'port',
                                         'url', 'href', 'parameters', 'language', 'platform',
@@ -85,6 +86,20 @@
      * @return {string}
      */
     Vacuum.prototype.blackbox = "";
+    
+    /**
+     * Set the error objects
+     * @param {string} message The error message that will be associated with the error.
+     * @param {string} file The file that will be affected by the error.
+     * @param {string} line The line that the error is captured on.
+     * @param {string} level Primarly a user set value.
+     */
+    Vacuum.prototype.set_error_object = function(message, file, line, level) {
+      VACUUM_ERROR_ARR['message'] = message;
+      VACUUM_ERROR_ARR['file'] = file;
+      VACUUM_ERROR_ARR['line'] = line;
+      VACUUM_ERROR_ARR['level'] = level;
+    };
 
     /**
      * Logger determined by debug mode
@@ -204,6 +219,11 @@
       _data['user_agent']        = navigator.userAgent;
       _data['vendor']            = navigator.vendor;
       _data['window_event']      = window.event;
+      
+      _data['message']           = VACUUM_ERROR_ARR['message'];
+      _data['line']              = VACUUM_ERROR_ARR['line'];
+      _data['file']              = VACUUM_ERROR_ARR['file'];
+      _data['level']             = VACUUM_ERROR_ARR['level'];
       /* Defaults, must match VARIABLE_DRIVERS */
 
       return _data;
@@ -279,28 +299,20 @@
       });
 
       /**
-       * Attach the object to the window's onload method. Once loaded, _vacuum
-       * will start the process of collecting and then sending the data.
+       * Set the error to call on window.onerror
        */
-      if(window.attachEvent) {
-        window.attachEvent('onload', _vacuum.record());
-      } else {
-        if(window.onload) {
-          var _curronload = window.onload;
-          var _newonload = function() {
-            _curronload();
-            _vacuum.record();
-          };
-          window.onload = _newonload;
-        } else {
-          window.onload = _vacuum.record();
-        }
+      window.onerror = function(message, file, line) { 
+        _vacuum.set_error_object(message, file, line, 'window');
+        _vacuum.record();
       }
+      
       return _vacuum;
     };
 
+    
     /**
-     * Run and initialize the object, save the object to the window.
+     * Call and initalize the object
      */
-    window['vacuum'] = _init();
+    _init();
+
 })(window);
