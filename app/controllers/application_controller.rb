@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  before_filter :mailer_set_url_options
   after_filter :set_access_control_headers
   
   def set_access_control_headers
@@ -7,7 +6,8 @@ class ApplicationController < ActionController::Base
     headers['Access-Control-Request-Method'] = '*'
   end
   
-  def mailer_set_url_options
-    ActionMailer::Base.default_url_options[:host] = request.host_with_port
-  end
+  # before_filter :mailer_set_url_options
+  # def mailer_set_url_options
+  #   ActionMailer::Base.default_url_options[:host] = request.host_with_port
+  # end
 end
