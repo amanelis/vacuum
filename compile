@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+# Remove the current vacuum version
+system('rm public/vacuum.js') if File.file?('public/vacuum.js')
+
+# Get the latest version of vacuum
+version = File.open('VERSION', &:readline)
+
+# Now compile the javascript to vacuum.js
+system("closure-compiler --js public/lib/vacuum-#{version}.js --js_output_file public/vacuum.js")
