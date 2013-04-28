@@ -5,8 +5,4 @@ class ApplicationController < ActionController::Base
     headers['Access-Control-Allow-Origin'] = '*'
     headers['Access-Control-Request-Method'] = '*'
   end
-  
-  def load_project
-    @project = Project.find(params[:project_id])
-  end
 end

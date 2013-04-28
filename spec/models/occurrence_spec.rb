@@ -18,7 +18,7 @@ describe Occurrence do
   it { should respond_to :app_name }
   it { should respond_to :cookie_enabled }
   it { should respond_to :user_agent }
-  it { should respond_to :user_address }
+  it { should respond_to :remote_addr }
   it { should respond_to :window_event }
   it { should respond_to :stack_trace }
   it { should respond_to :browser_time }
