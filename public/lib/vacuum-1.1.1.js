@@ -222,10 +222,10 @@
       _data['vendor']            = navigator.vendor;
       _data['window_event']      = window.event;
 
-      _data['message']           = VACUUM_ERROR_ARR['message'];
-      _data['line']              = VACUUM_ERROR_ARR['line'];
-      _data['file']              = VACUUM_ERROR_ARR['file'];
-      _data['level']             = VACUUM_ERROR_ARR['level'];
+      _data['message']           = VACUUM_ERROR_ARR['message']; // Error
+      _data['level']             = VACUUM_ERROR_ARR['level'];   // Error 
+      _data['line']              = VACUUM_ERROR_ARR['line'];     
+      _data['file']              = VACUUM_ERROR_ARR['file'];     
       /* Defaults, must match VARIABLE_DRIVERS */
 
       return _data;

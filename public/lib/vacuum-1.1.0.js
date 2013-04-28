@@ -283,3 +283,12 @@ window.onerror = function(message, file, line) {
     if (request.readyState == 4) return;
     request.send();  
 };
+
+// <script type="text/javascript" src="http://vacuum.io/vacuum.js"></script>
+// <script type="text/javascript">
+//   try {
+//     vacuum.api_key = 'YOUR_API_KEY';
+//     vacuum.window_error = true;
+//     vacuum.VERBOSE = true;
+//   } catch(e) {}
+// </script>

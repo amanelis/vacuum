@@ -16,7 +16,7 @@
         %p
           Add this snippet directly after the
           %code= "<head>"
-          tag in your application.
+          tag in your application and before any other javascript dependencies you have. Never modify/minify this code.
           %pre
             = @project.to_js
         %div{align: 'right'}
@@ -94,7 +94,7 @@
       %li#collaboratorsTab
         %h3 Collaborators
         %p
-          Coming soon...
+          Coming soon
       %li#settingsTab
         .row
           .five.columns

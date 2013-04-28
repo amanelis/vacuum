@@ -3,26 +3,40 @@ class Occurrence
   include Mongoid::Timestamps
   include DefaultAttributeSetters
 
-  field :file,              type: String # Should return a url of the file containing the error caught
-  field :line,              type: String # Line number the error is on and found at
-
-  field :href,              type: String # The page the error was caught on
-  field :parameters,        type: String # Any parameters that are in the url at the time
-  field :language,          type: String # en-us, just language user is on
-  field :platform,          type: String # MacIntel
-  field :product,           type: String # Mozilla
-  field :protocol,          type: String # http/https
-
-  field :app_name,          type: String # Firefox
-  field :cookie_enabled,    type: String # true/false
-  field :user_agent,        type: String # Which agent use is using
-  field :user_address,      type: String # User's ip address
-
-  field :window_event,      type: String # Try and parse out the event found in error
-  field :stack_trace,       type: String # For when possible
-
-  field :browser_time,      type: String # Return the actual time recorded in browser at time of error
-  field :identifier,        type: String
+  field :file,                type: String # Should return a url of the file containing the error caught
+  field :line,                type: String # Line number the error is on and found at
+  
+  field :app_code_name,       type: String
+  field :app_name,            type: String
+  field :app_version,         type: String
+  field :browser_time,        type: String
+  field :browser_time_zone,   type: String
+  field :charset,             type: String
+  field :cookie_enabled,      type: String
+  field :cookies,             type: String
+  field :href,                type: String
+  field :host,                type: String
+  field :hostname,            type: String
+  field :java_enabled,        type: String
+  field :language,            type: String
+  field :origin,              type: String
+  field :pathname,            type: String
+  field :parameters,          type: String
+  field :platform,            type: String
+  field :port,                type: String
+  field :product,             type: String
+  field :protocol,            type: String
+  field :referrer,            type: String
+  field :remote_addr,         type: String
+  field :screen_height,       type: String
+  field :screen_width,        type: String
+  field :stack_trace,         type: String
+  field :url,                 type: String
+  field :user_agent,          type: String
+  field :vendor,              type: String
+  field :window_event,        type: String
+  
+  field :identifier,          type: String
   
   ### Embedding
   embedded_in :error
