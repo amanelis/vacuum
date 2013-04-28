@@ -3,7 +3,7 @@ class Api::V1::ErrorsController < Api::V1::ApiController
   
   def create        
     # Locate the project
-    @project = Project.find(:first, :conditions => ['api_key = ?', params[:api_key]])
+    @project = Project.where(api_key: params[:api_key])[0]
     
     # Find the Error or create it, then handle the occurence
     @error = Error.find_or_create_by(project_id: @project.id, level: params[:level], message: params[:message])    
