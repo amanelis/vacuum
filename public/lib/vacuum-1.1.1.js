@@ -224,8 +224,8 @@
 
       _data['message']           = VACUUM_ERROR_ARR['message']; // Error
       _data['level']             = VACUUM_ERROR_ARR['level'];   // Error 
-      _data['line']              = VACUUM_ERROR_ARR['line'];     
-      _data['file']              = VACUUM_ERROR_ARR['file'];     
+      _data['line']              = VACUUM_ERROR_ARR['line'];    // Occurrence 
+      _data['file']              = VACUUM_ERROR_ARR['file'];    // Occurrence
       /* Defaults, must match VARIABLE_DRIVERS */
 
       return _data;

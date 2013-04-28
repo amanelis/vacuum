@@ -25,7 +25,7 @@
         %h4 Automatic Logging
         %p
           Start logging errors automatically, these will trigger the
-          %span{class: 'label'} system
+          %span{class: 'label'} window
           notification.
           %br
           %pre
@@ -34,17 +34,16 @@
         %h4 Manual Logging
         %p
           Start logging errors manually, these will trigger the
-          %span{class: 'alert label'} error
-          or
           %span{class: 'warn label'} warn
+          or
+          %span{class: 'alert label'} error
           notification.
           %br
           %pre
             vacuum.warn('wonky redirect right here, watch the response');
           %br
           %pre
-            vacuum.error('.ajax.complete never returns');
-
+            vacuum.error('$.ajax.completed but never returns');
 
       %li#notificationTab
         %h2 Notify the correct people

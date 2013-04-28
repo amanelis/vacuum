@@ -1,8 +1,10 @@
 class Api::V1::ErrorsController < Api::V1::ApiController  
   before_filter :clean_params,    :only => [:index, :create]
-  before_filter :load_project,    :only => [:index, :create]
   
   def create        
+    # Locate the project
+    @project = Project.find(:first, :conditions => ['api_key = ?', params[:api_key]])
+    
     # Find the Error or create it, then handle the occurence
     @error = Error.find_or_create_by(project_id: @project.id, level: params[:level], message: params[:message])    
     

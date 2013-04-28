@@ -47,14 +47,6 @@ class Api::V1::ApiController < ApplicationController
     @params = params.select { |k,v| DEFAULT_ALLOWED_PARAMETERS_ON_LOGGING.include?(k) }
   end
   
-  # load_project
-  # @param
-  # @return
-  # within this method, we can load the site and its corresponding account information
-  def load_project
-    @project = Project.where(api_key: params[:api_key]).first
-  end
-  
   protected
     ### VERIFICATION METHODS ###################################
     def verify_authentic
