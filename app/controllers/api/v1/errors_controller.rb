@@ -34,16 +34,8 @@ class Api::V1::ErrorsController < Api::V1::ApiController
     
     # Save the resource, account for errors
     @error.save && @occurrence.save
-    
-    logger.debug ""
-    logger.debug "PROJECT[#{@project.name}][ERROR] -------------------------------------------------------------------"
-    logger.debug @params.inspect
-    logger.debug "PROJECT[#{@project.name}][ERROR] -------------------------------------------------------------------"
-    logger.debug ""
 
-    json = {
-      error: @error.as_json(only: error_permissions(:only))
-    }
-    render json: json, response: 200, callback: params[:callback]
+    # Render the response, well assume it saves
+    render json: {error: @error.as_json(only: error_permissions(:only))}, status: 201, callback: params[:callback]
   end
 end
