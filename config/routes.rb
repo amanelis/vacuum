@@ -37,8 +37,11 @@ Vacuum::Application.routes.draw do
     resources :notifications
   end
 
-  match '/logger/:id/err'   => 'home#errors'
-  match '/logger'           => 'home#errors'
+  # Development specific testing routes
+  if Rails.env.development?
+    match '/logger/:id/err'   => 'home#errors', :via => [:get, :post]
+    match '/logger'           => 'home#errors', :via => [:get, :post]
+  end
 
   # Root the application
   authenticated :user do
