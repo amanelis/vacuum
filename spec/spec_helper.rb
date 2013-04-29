@@ -30,6 +30,9 @@ RSpec.configure do |config|
   # Render all the Views.
   config.render_views
   
+  # Mongoid matchers
+  config.include Mongoid::Matchers
+  
   # Clean up the database
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
