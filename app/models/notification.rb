@@ -7,8 +7,8 @@ class Notification
   field :email,             type: String
   field :identifier,        type: String
   
-  ### Embedding
-  embedded_in :project
+  ### Associations
+  belongs_to :project
 
   ### Callbacks
   before_create :set_identifier

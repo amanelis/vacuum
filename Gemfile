@@ -15,6 +15,7 @@ gem 'mongoid'
 gem 'haml'
 gem 'devise'
 gem 'zurb-rush'
+gem 'devise-encryptable'
 gem 'will_paginate_mongoid'
 
 # Assets

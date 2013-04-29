@@ -1,15 +1,16 @@
 require 'spec_helper'
 
 describe Project do
-  context "when creating a user" do
+  context "when creating a project" do
     it "has a valid fabrication" do
       Fabricate(:project).should be_valid
     end
   end
   
   describe 'associations' do
-    it { should have_many :errors }
-    it { should belong_to :user }
+    it { should belong_to(:user) }
+    it { should have_many(:errors).with_autosave }
+    it { should have_many(:notifications).with_autosave }
   end
   
   describe 'attributes' do

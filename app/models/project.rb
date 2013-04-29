@@ -10,11 +10,9 @@ class Project
   field :identifier, type: String
 
   ### Associations
+  has_many :notifications, autosave: true, :dependent => :destroy
   has_many :errors, autosave: true, :dependent => :destroy
   belongs_to :user
-  
-  ### Embedding
-  embeds_many :notifications
 
   ### Validations
   validates :name, :presence => true
