@@ -14,6 +14,7 @@ gem 'mongoid'
 # Other
 gem 'haml'
 gem 'devise'
+gem 'cancan'
 gem 'zurb-rush'
 gem 'devise-encryptable'
 gem 'will_paginate_mongoid'
