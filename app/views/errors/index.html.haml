@@ -47,11 +47,9 @@
                 %em= error.occurrences.last.try(:file) + ':' + error.occurrences.last.try(:line)  unless error.occurrences.last.try(:line).nil?
               %td= error.occurrences.count
               %td= time_ago_in_words(error.updated_at)
-
 .row
   .six.columns
     %a.button.round.small.left{href: projects_path} Back
   .six.columns
     %div{align: 'right'}
       = will_paginate(@errors)
-
