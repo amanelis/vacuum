@@ -51,6 +51,7 @@ group :test, :development do
   gem 'rspec-core'
   gem 'rspec-rails'
   gem 'rspec-mocks'
+  gem 'mongoid-rspec'
   gem 'rspec-expectations'
   gem 'terminal-notifier'
   gem 'debugger'
@@ -58,10 +59,10 @@ group :test, :development do
 end
 
 group :test do
-  gem 'minitest'
   gem 'launchy'
   gem 'webmock'
   gem 'capybara'
+  gem 'minitest'
   gem 'simplecov'
   gem 'fabrication'
   gem 'database_cleaner'
