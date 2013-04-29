@@ -7,7 +7,6 @@ class Project
   field :url, type: String
   field :enabled, type: Boolean, default: true
   field :api_key, type: String
-
   field :identifier, type: String
 
   ### Associations
@@ -26,12 +25,13 @@ class Project
 
   def to_js
     host = Rails.env.development? || Rails.env.test? ? '//localhost:3000' : '//vacuum.io'
-    return "<script type=\"text/javascript\">" + 
-            "var _vacuum = _vacuum || []; " +
-            "_vacuum.push(['_setKey', '"+self.api_key+"']);" +
-            "_vacuum.push(['_setIdentifier', '"+self.identifier+"']);" +
-            "_vacuum.push(['debug', true]);" +
-           "</script>" +
-           "<script src=\"#{host}/vacuum.js\"></script>"
+    script = "<script type=\"text/javascript\">" + 
+      "var _vacuum = _vacuum || []; " +
+      "_vacuum.push(['_setKey', '"+self.api_key+"']);" +
+      "_vacuum.push(['_setIdentifier', '"+self.identifier+"']);" +
+      "_vacuum.push(['debug', true]);" +
+      "</script>" +
+      "<script src=\"#{host}/vacuum.js\"></script>"
+    return script
   end
 end
