@@ -1,7 +1,6 @@
 class ProjectsController < ApplicationController
   respond_to :html, :js, :json, :xml
   before_filter :authenticate_user!
-  rescue_from Mongoid::Errors::DocumentNotFound, :with => :not_found
   
   def index
     @projects = current_user.projects.paginate(page: params[:page], per_page: 10)
@@ -50,10 +49,4 @@ class ProjectsController < ApplicationController
       redirect_to project_path(@project)
     end
   end
-  
-  private
-    def not_found
-      flash[:alert] = "You do not have access to view that page."
-      redirect_to projects_path
-    end
 end

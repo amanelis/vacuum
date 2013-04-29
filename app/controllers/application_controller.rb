@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from Mongoid::Errors::DocumentNotFound do |exception|
-    flash[:alert] = "Document/url not found."
+    flash[:alert] = "Document not found."
     redirect_to root_path
   end
   

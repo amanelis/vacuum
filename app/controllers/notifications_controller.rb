@@ -1,7 +1,6 @@
 class NotificationsController < ApplicationController
   respond_to :html, :js, :json, :xml
   before_filter :authenticate_user!
-  rescue_from Mongoid::Errors::DocumentNotFound, :with => :not_found
   
   def index
     @project = current_user.projects.find(params[:project_id])
@@ -40,10 +39,4 @@ class NotificationsController < ApplicationController
       redirect_to project_notifications_path(@project)
     end
   end
-  
-  private
-    def not_found
-      flash[:alert] = "You do not have access to view that project and its data."
-      redirect_to projects_path
-    end
 end
