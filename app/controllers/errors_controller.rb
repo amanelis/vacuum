@@ -1,7 +1,6 @@
 class ErrorsController < ApplicationController
   respond_to :html, :js, :json, :xml
   before_filter :authenticate_user!
-  rescue_from Mongoid::Errors::DocumentNotFound, :with => :not_found
   
   def index
     @project = current_user.projects.find(params[:project_id])
@@ -19,10 +18,4 @@ class ErrorsController < ApplicationController
     @error   = @project.errors.find(params[:id])
     @error.update_attributes!(resolved: params[:error][:resolved])
   end
-  
-  private
-    def not_found
-      flash[:alert] = "You do not have access to view that project and its data."
-      redirect_to projects_path
-    end
 end
