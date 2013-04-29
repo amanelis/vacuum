@@ -5,6 +5,8 @@
         %dd.active
           %a{:href => "#setup"} Setup
         %dd
+          %a{:href => "#documentation"} Documentation
+        %dd
           %a{:href => "#notification"} Notification
         %dd
           %a{:href => "#collaborators"} Collaborators
@@ -16,21 +18,36 @@
           %p
             Add this snippet directly after the
             %code= "<head>"
-            tag in your application.
-            %pre
+            tag in your application and before any other javascript code/dependencies are loaded. The code in this script will only ever be initiated 
+            on an error. Therefore you are only just loading in the size of the script. When an error is triggered, this code will run. 
+            %br
+            %br
+            Never change/edit or try to minify this piece of code. For we use the 
+            %code _vacuum 
+            object amongst your application and in our listener.
+            %br
+            %br
+            %textarea{:cols => "50", :rows => "4", :id => 'codebox'}
               = @project.to_js
           %div{align: 'right'}
             = link_to "I've completed this step", project_errors_path(@project), :class => 'success button round'
 
-          %h4 Automatic Logging
+        %li#documentationTab
+          %h2 Introduction
           %p
-            Start logging errors automatically, these will trigger the
-            %span{class: 'label'} system
-            notification.
+            The script that you have included in your application will watch and fire on a window.onerror event. Lets go over a few of the options
+            this piece of code sets.
+            
+            %pre var _vacuum = _vacuum || []; // Instantiate and sets up a new array that will hold our settings.
             %br
-            %pre
-              vacuum.window_error = true;
-
+            %pre= "_vacuum.push(['_setKey', \'#{@project.api_key}\']); // Sets your API_KEY"
+            %br
+            %pre= "_vacuum.push(['_setIdentifier', \'#{@project.identifier}\']); // Sets your identifier"
+            %br
+            %pre= "_vacuum.push(['debug', true]); // Turns debug mode on"
+            %br
+            
+            Thats it, just make sure the script is loaded after this block of code/settings.
           %h4 Manual Logging
           %p
             Start logging errors manually, these will trigger the
@@ -41,30 +58,16 @@
               
             %br
             %pre
-              vacuum.info('.ajax.complete never returns');
+              _vacuum.warn('wonky redirect right here, watch the response');
               
             %br
             %pre
-              vacuum.debug('.ajax.complete never returns');
-              
-            %br
-            %pre
-              vacuum.warn('wonky redirect right here, watch the response');
-              
-            %br
-            %pre
-              vacuum.error('.ajax.complete never returns');
-
-            %br
-            %pre
-              vacuum.fatal('.ajax.complete never returns');
-
+              _vacuum.error('.ajax.complete never returns');
 
         %li#notificationTab
-          %h2 Notify the correct people
+          %h2 Error Notifications
           %p
             - unless @project.notifications.empty?
-              %h4 People who will be notified for errors
               #notification_members
                 %table.table
                   %thead
@@ -85,26 +88,28 @@
                                   %a{:href => edit_project_notification_path(@project, notifier)} Edit
                                 %li.divider
                                 %li
-                                  = link_to "Delete", project_notification_path(@project, notifier), :method => :delete, :confirm => "Are you sure you want to delete this person?"
-  
-              
+                                  = link_to "Delete", project_notification_path(@project, notifier), :method => :delete, :confirm => "Are you sure?"
           %p
             #notifications_error
-          %p
-            %h4 Add a new contact
-            #notifications_new
-              - @notification = @project.notifications.build
-              = form_for @notification, :url => project_notifications_path(@project.id), :html => { :id => "notifications_form" } do |f|
-                = f.label :name
-                = f.text_field :name
-                #notifications_name_error
-                %br
-                = f.label :email
-                = f.text_field :email
-                #notifications_email_error
-                = hidden_field_tag 'notification_project_id', @project.id
-                = f.submit 'Create', :class => 'button round'
-                = link_to 'Cancel', request.referrer
+            #newNotifier.reveal-modal
+              %h5 Add a new person to be notified on error
+              #notifications_new
+                - @notification = @project.notifications.build
+                = form_for @notification, :url => project_notifications_path(@project.id), :html => { :id => "notifications_form" } do |f|
+                  = f.label :name
+                  = f.text_field :name
+                  #notifications_name_error
+                  %br
+                  = f.label :email
+                  = f.text_field :email
+                  #notifications_email_error
+                  = hidden_field_tag 'notification_project_id', @project.id
+                  = f.submit 'Create', :class => 'button round'
+                  = link_to 'Cancel', request.referrer
+            %div{:align => 'left'}
+              %a.success.button.round{"data-reveal-id" => "newNotifier"}
+                %i.foundicon-plus
+                New Contact
         %li#collaboratorsTab
           %h2 Collaborators
           %p
@@ -122,18 +127,10 @@
                 = f.submit 'Update', :class => 'button'
                 = link_to 'Cancel', request.referrer
             .six.columns
-              %h2 Configuration
-              %p
-                Be sure to install this js after the
-                %code= "<head>"
-                tag in your application.
-                %textarea{rows: 4}
-                  = @project.to_js
-
               %h2 API Key
               %p= @project.api_key
+              
+              %h2 API Identifier
+              %p= @project.identifier
 
     %a.button.round{href: request.referrer} Back
-    
-:javascript
-  console.log("#{@project.id}");

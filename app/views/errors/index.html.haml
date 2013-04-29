@@ -4,10 +4,17 @@
       .panel
         %h3 No errors yet. Guess thats a good thing?
       %p
-        Be sure to install this js after the
+        Add this snippet directly after the
         %code= "<head>"
-        tag in your application.
-        %textarea{rows: 3}
+        tag in your application and before any other javascript code/dependencies are loaded. The code in this script will only ever be initiated 
+        on an error. Therefore you are only just loading in the size of the script. When an error is triggered, this code will run. 
+        %br
+        %br
+        Never change/edit or try to minify this piece of code. For we use the 
+        %code _vacuum 
+        object amongst your application and in our listener.
+        %br
+        %textarea{:cols => "50", :rows => "4", :id => 'codebox'}
           = @project.to_js
     - else
       %a.settings-link.button.round.small.right{href: "/projects/#{@project.id}/edit#settings"}

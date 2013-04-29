@@ -18,17 +18,17 @@
 
 $(document).ready(function() {
 	$('#notifications_form').submit(function(evt) {
-		evt.preventDefault();
+    evt.preventDefault();
 		$('#notification_name').removeClass('error');
 		$('#notification_email').removeClass('error');
 		$('#notifications_name_error').empty();
 		$('#notifications_email_error').empty();
 	
-		var name = $('#notification_name').val();
+	  var error = false;
+		var name  = $('#notification_name').val();
 		var email = $('#notification_email').val();
 		var project_id = $('#notification_project_id').val();
 		
-		var error  = false;
 		if (name == '' || name == null || name == undefined) {
 			$('#notification_name').addClass('error');
 			$('#notifications_name_error').html('<div class="alert-box alert">Add a name<a href="" class="close">&times;</a></div>');
@@ -48,12 +48,19 @@ $(document).ready(function() {
 			  url: "/projects/" + project_id + "/notifications",
 			  data: { 'name': name, 'email': email},
 			  success: function(response) {
-					console.log('success')
+					console.log('success');
+          window.location.reload();
 				},
 				failure: function(response) {
-					console.log('failure')
+					console.log('failure');
+          window.location.reload();
 				}
 			});
 		}
+	});
+	
+	$('textarea#codebox').click(function() {
+	  this.focus();
+	  this.select();
 	});
 });

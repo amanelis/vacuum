@@ -27,8 +27,16 @@ class ProjectsController < ApplicationController
     @project = current_user.projects.find(params[:id])
   end
   
-  def edit
+  def update
     @project = current_user.projects.find(params[:id])
+    
+    if @project.update_attributes!(params[:project])
+      flash[:success] = "Project successfully updated."
+      redirect_to project_path(@project, anchor: 'settings')
+    else
+      flash[:alert] = "Ooops, #{@project.errors.messages.collect { |k,v| "#{k.upcase} #{v.first}" }.join(',').gsub(',', ', ')}"
+      redirect_to project_path(@project, anchor: 'settings')
+    end
   end
   
   def destroy
@@ -45,7 +53,7 @@ class ProjectsController < ApplicationController
   
   private
     def not_found
-      flash[:alert] = "You do not have access to view that project."
+      flash[:alert] = "You do not have access to view that page."
       redirect_to projects_path
     end
 end
