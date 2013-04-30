@@ -39,7 +39,6 @@ module ProjectsHelper
     if params[:action] == "index"
       @projects = current_user.projects.paginate(page: params[:page], per_page: 10)
     else
-      # @project = current_user.projects.find(params[:id])
       @project = Project.find(params[:id])
     end
   end

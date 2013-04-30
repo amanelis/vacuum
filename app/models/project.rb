@@ -3,23 +3,23 @@ class Project
   include Mongoid::Timestamps
   include DefaultAttributeSetters
 
-  field :name, type: String
-  field :url, type: String
-  field :enabled, type: Boolean, default: true
-  field :api_key, type: String
-  field :identifier, type: String
+  field :name,        type: String
+  field :url,         type: String
+  field :enabled,     type: Boolean, default: true
+  field :api_key,     type: String
+  field :identifier,  type: String
 
   ### Associations
+  belongs_to :user
   has_many :notifications, autosave: true, :dependent => :destroy
   has_many :errors, autosave: true, :dependent => :destroy
-  belongs_to :user
   
   ### Embedded documents
   embeds_many :collaborators
 
   ### Validations
-  validates :name, :presence => true
-  validates :url,  :presence => true
+  validates :name, :presence => true, :uniqueness => { :scope => :user_id }
+  validates :url,  :presence => true, :uniqueness => { :scope => :user_id }
 
   ### Callbacks
   before_create :set_identifier, :set_api_key
