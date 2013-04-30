@@ -56,6 +56,7 @@ class User
   has_many :projects, autosave: true, :dependent => :destroy
   
   # Callbacks
+  before_save :ensure_authentication_token
   before_create :set_identifier, :set_created_at
   after_update  :set_updated_at
   

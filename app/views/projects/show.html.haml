@@ -66,6 +66,7 @@
 
         %li#notificationTab
           %h2 Error Notifications
+          %em Sends an email to the right person when a single error occurs.
           %p
             - unless @project.notifications.empty?
               #notification_members
@@ -112,8 +113,12 @@
                 New Contact
         %li#collaboratorsTab
           %h2 Collaborators
+          %em Gives a Vacuum user read access to your project.
           %p
-            Coming soon...
+            %div{:align => 'left'}
+              %a.success.button.round{"data-reveal-id" => "newNotifier"}
+                %i.foundicon-plus
+                New Collaborator
         %li#settingsTab
           .row
             .five.columns
