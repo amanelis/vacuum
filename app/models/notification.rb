@@ -6,6 +6,7 @@ class Notification
   field :name,              type: String
   field :email,             type: String
   field :identifier,        type: String
+  field :verified,          type: Boolean, default: false
   
   ### Validations
   validates :name, :presence => true
