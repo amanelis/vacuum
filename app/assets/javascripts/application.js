@@ -59,6 +59,41 @@ $(document).ready(function() {
 		}
 	});
 	
+	$('#collaborators_form').submit(function(evt) {
+    evt.preventDefault();
+  	$('#collaborator_email').removeClass('error');
+  	$('#collaborators_email_error').empty();
+
+    var error = false;
+  	var email = $('#collaborator_email').val();
+  	var project_id = $('#collaborators_project_id').val();
+
+  	if (email == '' || email == null || email == undefined) {
+  		$('#collaborator_email').addClass('error');
+  		$('#collaborators_email_error').html('<div class="alert-box alert">Add an email<a href="" class="close">&times;</a></div>');
+  		error = true;
+  	}
+
+  	if (error) {
+  		return false;
+  	} else {
+  		$.ajax({
+  		  type: "POST",
+  		  url: "/projects/" + project_id + "/collaborators",
+  		  data: {'email': email},
+  		  success: function(response) {
+  				console.log('success');
+          window.location.reload();
+  			},
+  			failure: function(response) {
+  				console.log('failure');
+          window.location.reload();
+  			}
+  		});
+  	}
+  });
+	
+	
 	$('textarea#codebox').click(function() {
 	  this.focus();
 	  this.select();
