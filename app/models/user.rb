@@ -18,6 +18,7 @@ class User
   field :identifier, :type => String
   field :active, :type => Boolean, :default => true
   field :admin, :type => Boolean, :default => false
+  field :paid, :type => Boolean, :default => false
   
   ## Recoverable
   field :reset_password_token,   :type => String
@@ -60,4 +61,9 @@ class User
   
   ### Scopes
   scope :admin, where(admin: true)
+  
+  def create_project?
+    return false if !self.paid? && self.projects.count >= 1
+    return true
+  end
 end
