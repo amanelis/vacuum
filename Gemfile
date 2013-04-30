@@ -16,6 +16,7 @@ gem 'haml'
 gem 'devise'
 gem 'cancan'
 gem 'zurb-rush'
+gem 'mail_view', '~> 1.0.3'
 gem 'devise-encryptable'
 gem 'will_paginate_mongoid'
 
@@ -40,7 +41,6 @@ end
 group :development do
   gem 'foreman'
   gem 'annotate'
-  gem 'mail_view'
   gem 'pry-rails'
   gem 'quiet_assets'
   gem 'better_errors'
