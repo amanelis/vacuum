@@ -42,6 +42,9 @@ Vacuum::Application.routes.draw do
   if Rails.env.development?
     match '/logger/:id/err'   => 'home#errors', :via => [:get, :post]
     match '/logger'           => 'home#errors', :via => [:get, :post]
+    
+    # Preview all emails with routes like followed
+    mount ErrorPreview => 'error_mail'
   end
 
   # Root the application
