@@ -13,6 +13,9 @@ class Project
   has_many :notifications, autosave: true, :dependent => :destroy
   has_many :errors, autosave: true, :dependent => :destroy
   belongs_to :user
+  
+  ### Embedded documents
+  embeds_many :collaborators
 
   ### Validations
   validates :name, :presence => true
@@ -27,7 +30,7 @@ class Project
       "var _vacuum = _vacuum || []; " +
       "_vacuum.push(['_setKey', '"+self.api_key+"']);" +
       "_vacuum.push(['_setIdentifier', '"+self.identifier+"']);" +
-      "_vacuum.push(['debug', true]);" +
+      "_vacuum.push(['debug', false]);" +
       "</script>" +
       "<script src=\"#{host}/vacuum.js\"></script>"
     return script
