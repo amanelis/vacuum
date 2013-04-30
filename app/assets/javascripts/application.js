@@ -43,19 +43,7 @@ $(document).ready(function() {
 		if (error) {
 			return false;
 		} else {
-			$.ajax({
-			  type: "POST",
-			  url: "/projects/" + project_id + "/notifications",
-			  data: { 'name': name, 'email': email},
-			  success: function(response) {
-					console.log('success');
-          window.location.reload();
-				},
-				failure: function(response) {
-					console.log('failure');
-          window.location.reload();
-				}
-			});
+		  this.submit();
 		}
 	});
 	
@@ -66,7 +54,7 @@ $(document).ready(function() {
 
     var error = false;
   	var email = $('#collaborator_email').val();
-  	var project_id = $('#collaborators_project_id').val();
+  	var project_id = $('#collaborator_project_id').val();
 
   	if (email == '' || email == null || email == undefined) {
   		$('#collaborator_email').addClass('error');
@@ -77,22 +65,9 @@ $(document).ready(function() {
   	if (error) {
   		return false;
   	} else {
-  		$.ajax({
-  		  type: "POST",
-  		  url: "/projects/" + project_id + "/collaborators",
-  		  data: {'email': email},
-  		  success: function(response) {
-  				console.log('success');
-          window.location.reload();
-  			},
-  			failure: function(response) {
-  				console.log('failure');
-          window.location.reload();
-  			}
-  		});
+      this.submit();
   	}
   });
-	
 	
 	$('textarea#codebox').click(function() {
 	  this.focus();

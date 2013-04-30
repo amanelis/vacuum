@@ -34,6 +34,7 @@ Vacuum::Application.routes.draw do
         get :resolve
       end
     end
+    resources :collaborators
     resources :notifications
   end
 

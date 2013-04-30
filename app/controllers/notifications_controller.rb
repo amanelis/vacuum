@@ -1,12 +1,5 @@
 class NotificationsController < ApplicationController
   before_filter :authenticate_user!
-  respond_to :html, :js
-  
-  def index
-    @project = current_user.projects.find(params[:project_id])
-    @notifications = @project.notifications
-    respond_with(@notifiations)
-  end
   
   def new
     @notification = Notification.new
@@ -14,17 +7,16 @@ class NotificationsController < ApplicationController
   end
   
   def create
-    if params[:name].present? && params[:email].present?
-      @project = current_user.projects.find(params[:project_id])
-      @notification = @project.notifications.build(name: params[:name], email: params[:email])    
-      if @notification.save
-        respond_to do |format|
-          format.json { render :json => @notification.to_json, :status => 201 }
-          format.js   { render :json => @notification.to_json, :status => 201 }
-          format.xml  { render :xml  => @notification.to_xml,  :status => 201 }
-        end
-      end
+    @project = current_user.projects.find(params[:project_id])
+    @notification = @project.notifications.build(name: params[:notification][:name], email: params[:notification][:email])
+    
+    if @notification.save
+      flash[:success] = "Notification saved successfully."
+    else
+      flash[:alert] = "There was an error, please try again later."
     end
+  
+    redirect_to project_path(@project, anchor: 'notification')
   end
   
   def destroy
@@ -33,10 +25,10 @@ class NotificationsController < ApplicationController
     
     if @notification.destroy
       flash[:success] = "User successfully deleted."
-      redirect_to "/projects/#{@project.id}#notification"
     else
       flash[:alert] = "Ooops, #{@notification.errors.messages.collect { |k,v| "#{k.upcase} #{v.first}" }.join(',').gsub(',', ', ')}"
-      redirect_to project_notifications_path(@project)
     end
+    
+    redirect_to project_path(@project, anchor: 'notification')
   end
 end

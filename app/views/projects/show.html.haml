@@ -106,7 +106,7 @@
                   #notifications_email_error
                   = hidden_field_tag 'notification_project_id', @project.id
                   = f.submit 'Create', :class => 'button round'
-                  = link_to 'Cancel', request.referrer
+                  %a.close-reveal-modal x
             %div{:align => 'left'}
               %a.success.button.round{"data-reveal-id" => "newNotifier"}
                 %i.foundicon-plus
@@ -115,8 +115,41 @@
           %h2 Collaborators
           %em Gives a Vacuum user read access to your project.
           %p
+            - unless @project.collaborators.empty?
+              #collaborator_members
+                %table.table
+                  %thead
+                    %tr
+                      %th Email
+                      %th Options
+                    %tbody
+                      - @project.collaborators.each do |collaborator|
+                        %tr
+                          %td= collaborator.email
+                          %th
+                            .small.button.dropdown.round{:href => "#"}
+                              Configuration
+                              %ul
+                                %li
+                                  %a{:href => edit_project_collaborator_path(@project, collaborator)} Edit
+                                %li.divider
+                                %li
+                                  = link_to "Delete", project_collaborator_path(@project, collaborator), :method => :delete, :confirm => "Are you sure?"
+          %p
+            #notifications_error
+            #newCollaborator.reveal-modal
+              %h5 Share access to this project
+              #notifications_new
+                - @collaborator = @project.collaborators.build
+                = form_for @collaborator, :url => project_collaborators_path(@project.id), :html => { :id => "collaborators_form" } do |f|
+                  = f.label :email
+                  = f.text_field :email
+                  #collaborators_email_error
+                  = hidden_field_tag 'collaborator_project_id', @project.id
+                  = f.submit 'Create', :class => 'button round'
+                  %a.close-reveal-modal x
             %div{:align => 'left'}
-              %a.success.button.round{"data-reveal-id" => "newNotifier"}
+              %a.success.button.round{"data-reveal-id" => "newCollaborator"}
                 %i.foundicon-plus
                 New Collaborator
         %li#settingsTab

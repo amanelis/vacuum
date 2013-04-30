@@ -11,11 +11,9 @@ class Project
 
   ### Associations
   belongs_to :user
-  has_many :notifications, autosave: true, :dependent => :destroy
   has_many :errors, autosave: true, :dependent => :destroy
-  
-  ### Embedded documents
-  embeds_many :collaborators
+  has_many :collaborators, autosave: true, :dependent => :destroy
+  has_many :notifications, autosave: true, :dependent => :destroy
 
   ### Validations
   validates :name, :presence => true, :uniqueness => { :scope => :user_id }

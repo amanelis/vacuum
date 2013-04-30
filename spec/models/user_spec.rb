@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe User do 
-  context "when creating a user" do
-    it "has a valid fabrication" do
+  context 'when creating a user' do
+    it 'has a valid fabrication' do
       Fabricate(:user).should be_valid
     end
   end 
@@ -32,28 +32,32 @@ describe User do
     it { should validate_presence_of :encrypted_password }
   end
   
-  describe ".admin" do
+  describe '.admin' do
     before {
       @user = Fabricate(:user)
       @admin = Fabricate(:user, admin: true)
     }
-    
+
     context 'it includes users with the admin attribute set to true' do
       subject {
         User.admin.to_a.include?(@admin) 
       }
-      
+
       it { should be_true }
       it { should_not be_nil }
     end
-    
+
     context 'it does not include users with the admin attribute set to false' do
       subject {
         User.admin.to_a.include?(@user) 
       }
-      
+
       it { should be_false }
       it { should_not be_nil }
     end
+  end
+
+  describe '#send_welcome_email' do
+    pending "BUILD THIS FEATURE"
   end
 end

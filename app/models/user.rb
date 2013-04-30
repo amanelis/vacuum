@@ -49,22 +49,29 @@ class User
   field :authentication_token, :type => String
   
   ### Validations
-  validates :email, :presence => true
-  validates :encrypted_password, :presence => true
+  validates :email,               :presence => true, :uniqueness => true
+  validates :encrypted_password,  :presence => true
   
   ### Associations
   has_many :projects, autosave: true, :dependent => :destroy
   
   # Callbacks
   before_save :ensure_authentication_token
-  before_create :set_identifier, :set_created_at
+  before_create :send_welcome_email, :set_identifier, :set_created_at
   after_update  :set_updated_at
   
   ### Scopes
   scope :admin, where(admin: true)
   
+  # create_project?
+  # Method for authorization to create more projects. User must be paying to do this
   def create_project?
     return false if !self.paid? && self.projects.count >= 1
     return true
+  end
+  
+  # send_welcome_email
+  # Send a welcome email after a user is signed up for Vacuum.
+  def send_welcome_email
   end
 end

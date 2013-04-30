@@ -3,10 +3,13 @@ class Collaborator
   include Mongoid::Timestamps
   include DefaultAttributeSetters
   
-  field :user_id, type: String
   field :email, type: String
+  field :user_id, type: String
   field :identifier, type: String
   
-  ### Embedded documents
-  embedded_in :project
+  ### Associations
+  belongs_to :project
+  
+  ### Validations
+  validates :email, :presence => true
 end
