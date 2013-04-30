@@ -15,7 +15,4 @@ class Error
 
   ### Embedding
   embeds_many :occurrences, cascade_callbacks: true
-
-  ### Callbacks
-  before_create :set_identifier
 end
