@@ -9,6 +9,9 @@ class ErrorObserver < Mongoid::Observer
   # TODO(amanelis): will want to check email subscribe permissions
   #   before blasting off emails
   def after_create(error)
+    return false if error.project.nil?
+    return false if error.project.user.nil?
+    
     ErrorMailer.report_error(error).deliver
   end
 end
