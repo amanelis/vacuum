@@ -1,6 +1,6 @@
 class NotificationsController < ApplicationController
-  respond_to :html, :js, :json, :xml
   before_filter :authenticate_user!
+  respond_to :html, :js
   
   def index
     @project = current_user.projects.find(params[:project_id])
