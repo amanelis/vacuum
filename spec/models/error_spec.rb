@@ -3,7 +3,11 @@ require 'spec_helper'
 describe Error do
   context "when creating an error" do
     it "has a valid fabrication" do
-      Fabricate(:error).should be_valid
+      user = Fabricate(:user)
+      project = user.projects.build(name: Faker::Name.name, url: Faker::Internet.domain_name)
+      user.save
+      
+      Fabricate(:error, project_id: project.id).should be_valid
     end
   end
   
