@@ -16,7 +16,7 @@ gem 'haml'
 gem 'devise'
 gem 'cancan'
 gem 'zurb-rush'
-gem 'mail_view', '~> 1.0.3'
+gem 'mail_view'
 gem 'devise-encryptable'
 gem 'will_paginate_mongoid'
 
