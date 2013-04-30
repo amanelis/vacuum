@@ -7,19 +7,25 @@ class Ability
     
     if user.admin?
       can :manage, :all
-    else
-      # Starting with the highest level and cascading down
-      # the document tree
-      
-      ##################
-      #### PROJECTS ####
-      ##################
+    else      
+      ### Projects ###
       can :create, Project
-      can [:read, :update, :cancel, :destroy], Project do |project|
-        project.user_id == user.id
+      can [:read, :update, :destroy], Project do |project|
+        project.user_id == user.id || project.collaborators.collect { |c| BSON::ObjectId(c.user_id).to_s == user.id.to_s }.any?
+      end  
+      
+      ### Errors ###
+      can :create, Error do |error|
+        error.project.user_id = user.id
       end
       
+      can [:read], Error do |error|
+        error.project.user_id == user.id || error.project.collaborators.collect { |c| BSON::ObjectId(c.user_id).to_s == user.id.to_s }.any?
+      end
       
+      can [:resolve, :destroy], Error do |error|
+        error.project.user_id == user.id
+      end
     end
   end
 end
