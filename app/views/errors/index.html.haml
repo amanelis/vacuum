@@ -17,7 +17,7 @@
         %textarea{:cols => "50", :rows => "4", :id => 'codebox'}
           = @project.to_js
     - else
-      %a.settings-link.button.round.small.right{href: "/projects/#{@project.id}/edit#settings"}
+      %a.settings-link.button.round.small.right{href: project_path(@project, anchor: 'settings')} 
         %i.icon-cog
       %h2= "#{@project.name} errors"
       %table.table.twelve
