@@ -6,3 +6,7 @@ class ErrorMailer < ActionMailer::Base
     mail(to: error.project.user.email, subject: "Project #{error.project.name} got a new error: #{error.id}")
   end
 end
+
+class ErrorMailer < MailView
+  
+end

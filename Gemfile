@@ -40,6 +40,7 @@ end
 group :development do
   gem 'foreman'
   gem 'annotate'
+  gem 'mail_view'
   gem 'pry-rails'
   gem 'quiet_assets'
   gem 'better_errors'
