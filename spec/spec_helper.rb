@@ -43,4 +43,13 @@ RSpec.configure do |config|
   config.before(:each) do
     DatabaseCleaner.clean
   end  
+  
+  # Garbage collection
+  config.before(:all) do
+    DeferredGarbageCollection.start
+  end
+
+  config.after(:all) do
+    DeferredGarbageCollection.reconsider
+  end
 end
