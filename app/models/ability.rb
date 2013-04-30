@@ -9,7 +9,7 @@ class Ability
       can :manage, :all
     else      
       ### Projects ###
-      can :create, Project unless user.create_project?
+      can :create, Project if user.create_project?
       can [:read, :update, :destroy], Project do |project|
         project.user_id == user.id || project.collaborators.collect { |c| BSON::ObjectId(c.user_id).to_s == user.id.to_s }.any?
       end  

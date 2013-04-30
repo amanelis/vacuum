@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   respond_to :html, :js
   
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:alert] = "Access denied for that project."
+    flash[:alert] = "Access denied for that action."
     redirect_to root_path
   end
   
