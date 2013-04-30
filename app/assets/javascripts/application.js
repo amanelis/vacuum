@@ -17,6 +17,7 @@
 //= require lib/toggle
 
 $(document).ready(function() {
+  // Notifications form validation
 	$('#notifications_form').submit(function(evt) {
     evt.preventDefault();
 		$('#notification_name').removeClass('error');
@@ -47,6 +48,7 @@ $(document).ready(function() {
 		}
 	});
 	
+	// Collaborators form validation
 	$('#collaborators_form').submit(function(evt) {
     evt.preventDefault();
   	$('#collaborator_email').removeClass('error');
@@ -69,6 +71,7 @@ $(document).ready(function() {
   	}
   });
 	
+	// Text area for script tag, auto highlight
 	$('textarea#codebox').click(function() {
 	  this.focus();
 	  this.select();
