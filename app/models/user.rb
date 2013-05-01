@@ -14,11 +14,11 @@ class User
   field :password_salt,      :type => String, :default => ""
   
   # Custom fields
-  field :username, :type => String
-  field :identifier, :type => String
-  field :active, :type => Boolean, :default => true
-  field :admin, :type => Boolean, :default => false
-  field :paid, :type => Boolean, :default => false
+  field :username,    :type => String
+  field :identifier,  :type => String
+  field :active,      :type => Boolean, :default => true
+  field :admin,       :type => Boolean, :default => false
+  field :paid,        :type => Boolean, :default => false
   
   ## Recoverable
   field :reset_password_token,   :type => String
