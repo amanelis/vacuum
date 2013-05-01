@@ -64,9 +64,18 @@ class User
   scope :admin, where(admin: true)
   
   # create_project?
-  # Method for authorization to create more projects. User must be paying to do this
+  # Method for authorization to create more projects. User must be paying to do this.
   def create_project?
+    return true if self.admin?
     return false if !self.paid? && self.projects.count >= 1
+    return true
+  end
+  
+  # has_paid?
+  # If the admin is present or user has paid, payment is not required.
+  def needs_to_pay?
+    return false if self.admin?
+    return false if self.paid?
     return true
   end
   

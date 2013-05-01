@@ -1,5 +1,8 @@
 - if user_signed_in?
   %ul.nav.right
+    - if current_user.needs_to_pay?
+      %li
+        %a.button.round.small.alert{:href => "#", "data-reveal-id" => "chargeCard"} Upgrade
     %li
       %a.button.round.small{href: projects_path} My Projects
     %li

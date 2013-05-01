@@ -7,8 +7,8 @@
         = yield(:modals)
     #wrap
       #main
-        / = render partial: 'layouts/header/stripes'
         = render partial: 'layouts/header/header'
         = render partial: 'layouts/header/flash'
         = yield
+        = render partial: 'layouts/includes/modal_pay'
     = render partial: 'layouts/footer/navigation'
