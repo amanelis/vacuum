@@ -4,35 +4,35 @@ class ProjectsController < ApplicationController
   before_filter :load_project, :only => [:index, :show, :update, :destroy]
   
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:alert] = "Access denied."
+    flash[:alert] = exception.message
     redirect_to root_path
   end
   
   def index
-    authorize! :read, Project
+    authorize! :read, Project, message: project_read_deny
   end
   
   def new
-    authorize! :create, Project
+    authorize! :create, Project, message: project_create_deny(current_user)
     new_project
   end
   
   def create
-    authorize! :create, Project
+    authorize! :create, Project, message: project_create_deny(current_user)
     create_project(params)
   end
   
   def show
-    authorize! :read, @project
+    authorize! :read, @project, message: project_read_deny
   end
   
   def update
-    authorize! :update, @project
+    authorize! :update, @project, message: project_read_deny
     update_project(@project, params)
   end
   
   def destroy
-    authorize! :destroy, @project
+    authorize! :destroy, @project, message: project_read_deny
     destroy_project(@project)
   end
 end
