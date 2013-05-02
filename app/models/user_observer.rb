@@ -4,6 +4,7 @@ class UserObserver < Mongoid::Observer
   def after_create(user)
     # Send welcome email
     UserMailer.delay.welcome_email(user) unless user.sent_welcome_email?
+    AdminMailer.delay.new_user(user)
 
     # Ensure that the authentication token
     # is present and saved 

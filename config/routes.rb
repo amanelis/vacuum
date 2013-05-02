@@ -44,8 +44,9 @@ Vacuum::Application.routes.draw do
     match '/logger'           => 'home#errors', :via => [:get, :post]
     
     # Preview all emails with routes like followed
-    mount ErrorPreview => 'error_mail'
-    mount UserPreview => 'user_mail'
+    mount AdminPreview  => 'admin_mail'
+    mount ErrorPreview  => 'error_mail'
+    mount UserPreview   => 'user_mail'
   end
 
   # Root the application
