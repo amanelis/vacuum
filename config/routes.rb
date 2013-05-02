@@ -45,6 +45,7 @@ Vacuum::Application.routes.draw do
     
     # Preview all emails with routes like followed
     mount ErrorPreview => 'error_mail'
+    mount UserPreview => 'user_mail'
   end
 
   # Root the application

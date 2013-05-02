@@ -38,12 +38,16 @@ class User
   field :confirmation_token,   :type => String
   field :confirmed_at,         :type => Time
   field :confirmation_sent_at, :type => Time
-  field :unconfirmed_email,    :type => String # Only if using reconfirmable
+  field :unconfirmed_email,    :type => String 
 
   ## Lockable
-  field :failed_attempts, :type => Integer, :default => 0 # Only if lock strategy is :failed_attempts
-  field :unlock_token,    :type => String # Only if unlock strategy is :email or :both
+  field :failed_attempts, :type => Integer, :default => 0 
+  field :unlock_token,    :type => String 
   field :locked_at,       :type => Time
+  
+  ## Email
+  field :sent_welcome_email,  :type => Boolean, :default => false
+  field :subscribed,          :type => Boolean, :default => true
 
   ## Token authenticatable
   field :authentication_token, :type => String
@@ -56,7 +60,8 @@ class User
   has_many :projects, autosave: true, :dependent => :destroy
   
   ### Scopes
-  scope :admin, where(admin: true)
+  scope :admin,       where(admin: true)
+  scope :subscribed,  where(subscribed: true)
   
   # create_project?
   # Method for authorization to create more projects. User must be paying to do this.

@@ -1,4 +1,5 @@
 class ErrorObserver < Mongoid::Observer
+  observe :error
   
   # Before the object is created, set the identifier
   def before_create(error)
