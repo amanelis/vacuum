@@ -55,11 +55,6 @@ class User
   ### Associations
   has_many :projects, autosave: true, :dependent => :destroy
   
-  # Callbacks
-  before_save :ensure_authentication_token
-  before_create :send_welcome_email, :set_identifier, :set_created_at
-  after_update  :set_updated_at
-  
   ### Scopes
   scope :admin, where(admin: true)
   
@@ -77,10 +72,5 @@ class User
     return false if self.admin?
     return false if self.paid?
     return true
-  end
-  
-  # send_welcome_email
-  # Send a welcome email after a user is signed up for Vacuum.
-  def send_welcome_email
   end
 end
