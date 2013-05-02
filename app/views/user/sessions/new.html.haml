@@ -1,5 +1,5 @@
 .row
-  .large-5.columns.centered
+  .large-7.columns.large-centered
     %h2 Sign in
     .panel
       = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
@@ -8,4 +8,4 @@
         = f.label :password
         = f.password_field :password
         = f.submit "Sign in", :class => 'button round'
-      = render "devise/shared/links"
+      %p= render "devise/shared/links"

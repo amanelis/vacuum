@@ -1,5 +1,5 @@
 .row
-  .large-5.columns.centered
+  .large-7.columns.large-centered
     %h2 Sign up
     .panel
       = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
@@ -11,4 +11,4 @@
         = f.label :password_confirmation
         = f.password_field :password_confirmation
         %div= f.submit "Sign up", :class => 'button round'
-      = render "user/shared/links"
+      %p= render "user/shared/links"

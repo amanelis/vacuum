@@ -26,16 +26,16 @@
                 %td= project.errors.where(resolved: nil).count
                 %td= project.errors.count
                 %th
-                  .small.button.dropdown.round{:href => "#"}
+                  .small.button.dropdown.round{:href => "#", data: {dropdown: 'config-dropdown'}}
                     Configuration
-                    %ul
-                      %li
-                        %a{href: project_errors_path(project)} Logs
-                      %li
-                        %a{href: project_path(project, anchor: 'settings') } Settings
-                      %li.divider
-                      %li
-                        = link_to "Delete", project_path(project), :method => :delete, :confirm => "Are you sure you want to delete this project?"
+                  %ul#config-dropdown.f-dropdown{data: {dropdown_content: true}}
+                    %li
+                      %a{href: project_errors_path(project)} Logs
+                    %li
+                      %a{href: project_path(project, anchor: 'settings') } Settings
+                    %li.divider
+                    %li
+                      = link_to "Delete", project_path(project), :method => :delete, :confirm => "Are you sure you want to delete this project?"
       %div{:align => 'left'}
         %a.success.button.round{:href => new_project_path}
           %i.foundicon-plus
