@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+# Check if user has closure-compiler installed
+has_closure = system('which closure-compiler')
+unless has_closure
+  print "You need to install closure-compiler to be able to compile vacuum.js"
+  exit
+end 
+
 # Remove the current vacuum version
 system('rm public/vacuum.js') if File.file?('public/vacuum.js')
 
@@ -8,3 +15,4 @@ version = File.open('VERSION', &:readline)
 
 # Now compile the javascript to vacuum.js
 system("closure-compiler --js public/lib/vacuum-#{version}.js --js_output_file public/vacuum.js")
+print "Compiled to public/vacuum.js"
