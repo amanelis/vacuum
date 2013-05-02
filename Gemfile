@@ -19,6 +19,7 @@ gem 'stripe'
 gem 'zurb-rush'
 gem 'mail_view'
 gem 'devise-encryptable'
+gem 'delayed_job_mongoid'
 gem 'will_paginate_mongoid'
 
 # Assets
