@@ -4,8 +4,8 @@
       %dl.tabs
         %dd.active
           %a{:href => "#setup"} Setup
-        %dd
-          %a{:href => "#documentation"} Documentation
+        / %dd
+        /   %a{:href => "#documentation"} Documentation
         %dd
           %a{:href => "#notification"} Notification
         %dd
@@ -32,38 +32,38 @@
           %div{align: 'right'}
             = link_to "I've completed this step", project_errors_path(@project), :class => 'success button round'
 
-        %li#documentationTab
-          %h2 Introduction
-          %p
-            The script that you have included in your application will watch and fire on a window.onerror event. Lets go over a few of the options
-            this piece of code sets.
-            
-            %pre var _vacuum = _vacuum || []; // Instantiate and sets up a new array that will hold our settings.
-            %br
-            %pre= "_vacuum.push(['_setKey', \'#{@project.api_key}\']); // Sets your API_KEY"
-            %br
-            %pre= "_vacuum.push(['_setIdentifier', \'#{@project.identifier}\']); // Sets your identifier"
-            %br
-            %pre= "_vacuum.push(['debug', true]); // Turns debug mode on"
-            %br
-            
-            Thats it, just make sure the script is loaded after this block of code/settings.
-          %h4 Manual Logging
-          %p
-            Start logging errors manually, these will trigger the
-            %span{class: 'alert label'} error
-            or
-            %span{class: 'warn label'} warn
-            notification.
-              
-            %br
-            %pre
-              _vacuum.warn('wonky redirect right here, watch the response');
-              
-            %br
-            %pre
-              _vacuum.error('.ajax.complete never returns');
-
+        / %li#documentationTab
+        /           %h2 Introduction
+        /           %p
+        /             The script that you have included in your application will watch and fire on a window.onerror event. Lets go over a few of the options
+        /             this piece of code sets.
+        /             
+        /             %pre var _vacuum = _vacuum || []; // Instantiate and sets up a new array that will hold our settings.
+        /             %br
+        /             %pre= "_vacuum.push(['_setKey', \'#{@project.api_key}\']); // Sets your API_KEY"
+        /             %br
+        /             %pre= "_vacuum.push(['_setIdentifier', \'#{@project.identifier}\']); // Sets your identifier"
+        /             %br
+        /             %pre= "_vacuum.push(['debug', true]); // Turns debug mode on"
+        /             %br
+        /             
+        /             Thats it, just make sure the script is loaded after this block of code/settings.
+        /           %h4 Manual Logging
+        /           %p
+        /             Start logging errors manually, these will trigger the
+        /             %span{class: 'alert label'} error
+        /             or
+        /             %span{class: 'warn label'} warn
+        /             notification.
+        /               
+        /             %br
+        /             %pre
+        /               _vacuum.warn('wonky redirect right here, watch the response');
+        /               
+        /             %br
+        /             %pre
+        /               _vacuum.error('.ajax.complete never returns');
+        
         %li#notificationTab
           %h2 Error Notifications
           %em Sends an email to the right person when a single error occurs.
