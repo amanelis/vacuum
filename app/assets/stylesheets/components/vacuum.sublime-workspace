@@ -1,0 +1,1341 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"renter",
+				"renter_verification"
+			],
+			[
+				"rent",
+				"renter_verification"
+			],
+			[
+				"RenterVerification",
+				"RenterVerificationWizard"
+			],
+			[
+				"boa",
+				"boat_details"
+			],
+			[
+				"javasc",
+				"javascript_includes"
+			],
+			[
+				"show",
+				"showVerify"
+			],
+			[
+				"p",
+				"p	padding: T R B L"
+			],
+			[
+				"C",
+				"C"
+			],
+			[
+				"err",
+				"error_msg"
+			],
+			[
+				"e",
+				"e"
+			],
+			[
+				"render",
+				"renderActivities"
+			],
+			[
+				"Ac",
+				"Activity"
+			],
+			[
+				"target",
+				"targetExtractor"
+			],
+			[
+				"moz",
+				"moz-transform-origin"
+			],
+			[
+				"1px",
+				"1px"
+			],
+			[
+				"2px",
+				"2px"
+			],
+			[
+				"rei",
+				"redirect_to"
+			],
+			[
+				"backgrou",
+				"background-position"
+			],
+			[
+				"an",
+				"aaron"
+			],
+			[
+				"thum",
+				"thumbnailIndicator"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/Users/mattjohnston/Sites/Tallpixels/vacuum/vacuum/config/routes.rb",
+			"settings":
+			{
+				"buffer_size": 1554,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/mattjohnston/Sites/Tallpixels/vacuum/vacuum/app/views/user/registrations/edit.html.haml",
+			"settings":
+			{
+				"buffer_size": 1358,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/mattjohnston/Sites/Tallpixels/vacuum/vacuum/app/views/projects/index.html.haml",
+			"settings":
+			{
+				"buffer_size": 1639,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/mattjohnston/Sites/Tallpixels/vacuum/vacuum/app/views/projects/show.html.haml",
+			"settings":
+			{
+				"buffer_size": 8367,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "dropdown.css.sass",
+			"settings":
+			{
+				"buffer_size": 387,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/mattjohnston/Sites/Tallpixels/vacuum/vacuum/app/assets/stylesheets/application.css.sass",
+			"settings":
+			{
+				"buffer_size": 668,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "paneling.css.sass",
+			"settings":
+			{
+				"buffer_size": 86,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 367.0,
+		"selected_items":
+		[
+			[
+				"lint",
+				"CoffeeLint: Lint code"
+			],
+			[
+				"coffee",
+				"CoffeeLint: Lint code"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"Snippet: ",
+				"Snippet: html"
+			]
+		],
+		"width": 593.0
+	},
+	"console":
+	{
+		"height": 225.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/mattjohnston/Sites/Tallpixels/vacuum/vacuum/app/views/errors/index.html.haml",
+		"/Users/mattjohnston/Sites/Tallpixels/vacuum/vacuum/app/views/layouts/header/_head.html.haml",
+		"/Users/mattjohnston/Sites/Tallpixels/vacuum/vacuum/app/assets/stylesheets/base/base.css.sass",
+		"/Users/mattjohnston/Sites/Tallpixels/vacuum/vacuum/app/views/projects/show.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/controllers/renter_reviews_controller.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/assets/stylesheets/mailers/base/typography.css.sass",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/assets/stylesheets/mailers/base/base.css.sass",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/boats/_boat_edit_details.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/config/initializers/sidekiq.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/shared/_header.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/dashboard/your_boats.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/layouts/landing.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/shared/_head.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/shared/_airbrakejs.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/models/boat.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/boats/index.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/models/boat_photo.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/assets/stylesheets/components/forms/forms.css.sass",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/assets/stylesheets/application.css.sass",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/Gemfile",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/config/initializers/airbrake.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/renter_verifications/_insurance.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/assets/stylesheets/components/forms/checkbox.css.sass",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/presenters/boat_presenter.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/helpers/boats_helper.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/bookings/_boat_details_section.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/bookings/_information_outlet.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/bookings/_booking_details_section.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/bookings/new.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/boats/edit/_sidebar.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/presenters/edit_boat_presenter.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/controllers/boats_controller.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/assets/javascripts/search/routes.js.coffee",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/assets/javascripts/search/models.js.coffee",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/vendor/assets/javascripts/ember-ext.js.coffee",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/assets/javascripts/search/views.js.coffee",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/assets/javascripts/search/controllers.js.coffee",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/assets/javascripts/application.js",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/assets/javascripts/prelaunch.js.coffee",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/services/boat_wizard.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/services/boat_validation.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/public/500.html",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/public/404.html",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/home/landing/_header.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/shared/_ocean.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/layouts/application.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/assets/stylesheets/components/modal.css.sass",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/shared/modals/beta/_added_new_boat.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/shared/modals/_send_message.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/shared/modals/_add_phone_number.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/home/landing/_modals.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/dashboard/your_reservations.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/assets/stylesheets/pages/search.css.sass",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/vendor/assets/javascripts/bootstrap-scroll-modal.js",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/shared/_sky.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/boat_mailer/approved.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/bookings/_payment_section_form.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/assets/javascripts/main.js.coffee",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/dashboard/_boat_list_item.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/renter_verifications/_verification.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/users/registrations/edit.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/dashboard/_dashboard_nav.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/controllers/boat_reviews_controller.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/mailers/invitation_mailer.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/mailers/account_mailer.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/account_mailer/welcome.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/vendor/assets/javascripts/jquery-ui-map-3.0-rc/demos/jquery-google-maps-basic-example.html",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/vendor/assets/javascripts/jquery-ui-map-3.0-rc/demos/jquery-google-maps-geolocation.html",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/mailers/mailer.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/mailers/boat_mailer.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/models/renter_verification.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/models/user.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/mailers/mail_preview.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/models/message.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/assets/stylesheets/mailers/components/message.css.sass",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/config/routes.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/mailers/messages_mailer.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/messages_mailer/new.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/boat_mailer/submitted.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/assets/stylesheets/mailers/mailer.css.sass",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/boats/_description.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/models/msg_thread.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/messages/index.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/shared/_messages.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/assets/stylesheets/theme/landing_prelaunch.css.sass",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/users/registrations/register_invitation.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/users/registrations/_default_blurb.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/controllers/users/registrations_controller.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/invitation_mailer/owner.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/users/registrations/_owner_blurb.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/controllers/authentications_controller.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/users/registrations/new.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/account_mailer",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/controllers/home_controller.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/home/prelaunch.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/config/initializers/copycopter.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/dashboard/index.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/controllers/bookings_controller.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/assets/stylesheets/theme/jquery_ui.css.sass",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/assets/stylesheets/pages/edit.css.sass",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/assets/stylesheets/pages/boats/edit.css.sass",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/assets/stylesheets/pages/listing.css.sass",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/boats/show.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/boats/_reviews.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/boats/edit/_amenities.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/boats/_amenities.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/renter_verifications/_complete.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/controllers/renter_verifications_controller.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/admin/boat.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/boats/_owner_outlet.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/boats/edit.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/boats/new.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/invitation_mailer/renter.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/vendor/assets/stylesheets/helpers.css.sass",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/vendor/assets/stylesheets/bootstrap-scroll-modal.css.scss",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/config/environments/development.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/assets/stylesheets/components/search.css.sass",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/models/beta_request.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/admin/beta_requests.rb",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/assets/stylesheets/mailers/components/cta.css.sass",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/assets/stylesheets/components/forms/editable.css.sass",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/vendor/assets/javascripts/editable.js.coffee",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/users/registrations/reigster_invitation.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/views/users/registrations/new_owner.html.haml",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/assets/stylesheets/mailers/componenents/cta.css.sass",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/assets/stylesheets/base/base.css.sass",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/assets/stylesheets/components/navbar/base.css.sass",
+		"/Users/mattjohnston/Sites/Boatbound/boatbound/app/assets/stylesheets/components/navbar/tabs.css.sass"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"",
+			"<project>",
+			"",
+			"Open files and folders",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"\n",
+			"six",
+			"10.245.10.208",
+			", input[type=\"datetime-local\"], input[type=\"date\"], input[type=\"month\"], input[type=\"time\"], input[type=\"week\"], input[type=\"number\"], input[type=\"email\"], input[type=\"url\"], input[type=\"search\"], input[type=\"tel\"], input[type=\"color\"]",
+			"airbrake",
+			"you don't have any boat listing",
+			"edit_sidebar_class",
+			"ion.complete?",
+			"filteredContent",
+			"hasresults",
+			"shiver me tim",
+			".gmap",
+			"'map",
+			".map",
+			"completed",
+			"edit_sidebar_class",
+			".modal",
+			"dynamic",
+			"//",
+			"javascript_includes",
+			"5.",
+			"login details",
+			"completed?",
+			"completed",
+			"refresh",
+			"this.",
+			"boatscontroller",
+			"refresh",
+			"send",
+			"refreshContent",
+			"boat_route",
+			"b>",
+			"boat_license",
+			"boat",
+			"owner",
+			"user",
+			"        ",
+			"notice",
+			"signed in successfully",
+			".listing-status",
+			"approve_if_pass_insurance",
+			"approved",
+			".ts",
+			"boat_type",
+			"boat_type_name",
+			"boat_type",
+			"tab",
+			"-   ",
+			"display_boat_details",
+			"              = amenity.title\ndisplay_boat_details",
+			"completed_at?",
+			"is_on_wizard",
+			"button_to",
+			"wizard",
+			"Test Title",
+			"first",
+			"render",
+			".form-date-range",
+			"dismiss",
+			"flash[:first",
+			".modal",
+			"h4",
+			".center",
+			"true",
+			"false",
+			"Passenger",
+			"5 passenger",
+			"passengerview",
+			".icon-arrow-right",
+			"inline",
+			" classNames=\"input-small\"",
+			"daterangeview",
+			" classNames=\"input-small\"",
+			"endDate",
+			"boat_owner",
+			"e.",
+			"%h2",
+			"calendar-static",
+			"cursor",
+			"padding",
+			"calendar-tab",
+			"calendarview",
+			"main",
+			"mainh",
+			"boat_infos",
+			".checkbox-box-right",
+			".checkbox.inline",
+			"radio",
+			"approve/reject",
+			"renter_cancel",
+			".modal",
+			".modal-footer",
+			"cancelation",
+			"modal-he",
+			"help-bubble",
+			"test heading",
+			"didrequestrange",
+			"filteredcontent",
+			"range",
+			"didRequestRange",
+			"paginatedcontent",
+			"sortFunction",
+			"newest",
+			"sort",
+			"sortfilter",
+			"message",
+			"booking",
+			"ancel-new",
+			"image",
+			"$opacity",
+			"5",
+			"4",
+			"e.",
+			"e",
+			"5-stars",
+			"get",
+			"new_boat_review",
+			"BoatReviewsController",
+			"editable",
+			"reviews",
+			"boat_length",
+			"link_to",
+			"boat_owner",
+			"boat",
+			"current_user",
+			"verified",
+			"type",
+			"value"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"boat_details_form_value",
+			"boat_details_form_field",
+			"<b>$1</b>",
+			"Boatbound",
+			".row",
+			".large-$1.columns",
+			".center",
+			" \"",
+			"image_path('chosen-sprite.png')",
+			"current_user.listing_active_count",
+			"current_users.listing_active_count",
+			"",
+			".my_handleError",
+			"",
+			"\n",
+			"milestones",
+			"likes",
+			"",
+			".panel._",
+			"",
+			"http://www.",
+			"",
+			".popup_inner",
+			"class=\"popup_inner\"",
+			"class=\"popup\"",
+			"+",
+			".inner",
+			".outer",
+			".container_inner",
+			".container_outer",
+			".popup_container",
+			".arrows_ud",
+			".arrows_lr",
+			".controls",
+			".next",
+			".social_plugins",
+			".lists",
+			".likes",
+			".see_all",
+			".name",
+			".comments",
+			".content_container",
+			".tabs",
+			".tab_container",
+			".bottom",
+			".description",
+			".image_main",
+			".product",
+			".previous",
+			".thumbs_down",
+			".actions",
+			".source",
+			".buy_button",
+			".close",
+			".padding_top_bottom",
+			".info",
+			".thumbnails",
+			".thumbnail_indicator",
+			".thumbnails_container",
+			".image_container"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/Users/mattjohnston/Sites/Tallpixels/vacuum/vacuum/config/routes.rb",
+					"settings":
+					{
+						"buffer_size": 1554,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								583,
+								590
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/mattjohnston/Sites/Tallpixels/vacuum/vacuum/app/views/user/registrations/edit.html.haml",
+					"settings":
+					{
+						"buffer_size": 1358,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								371,
+								371
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/Ruby Haml.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Users/mattjohnston/Sites/Tallpixels/vacuum/vacuum/app/views/projects/index.html.haml",
+					"settings":
+					{
+						"buffer_size": 1639,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								809,
+								809
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/Ruby Haml.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 465.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/Users/mattjohnston/Sites/Tallpixels/vacuum/vacuum/app/views/projects/show.html.haml",
+					"settings":
+					{
+						"buffer_size": 8367,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8363,
+								8363
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/Ruby Haml.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5335.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 4,
+					"file": "dropdown.css.sass",
+					"settings":
+					{
+						"buffer_size": 387,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								312,
+								312
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SASS/Syntaxes/SASS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/Users/mattjohnston/Sites/Tallpixels/vacuum/vacuum/app/assets/stylesheets/application.css.sass",
+					"settings":
+					{
+						"buffer_size": 668,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								457,
+								457
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SASS/Syntaxes/SASS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "paneling.css.sass",
+					"settings":
+					{
+						"buffer_size": 86,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								86,
+								86
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SASS/Syntaxes/SASS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.538702349291,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.CoffeeLintPanel":
+	{
+		"height": 142.0
+	},
+	"output.exec":
+	{
+		"height": 94.0
+	},
+	"output.find_results":
+	{
+		"height": 281.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"erroinde",
+				"app/views/errors/index.html.haml"
+			],
+			[
+				"projshow",
+				"app/views/projects/show.html.haml"
+			],
+			[
+				"projeinde",
+				"app/views/projects/index.html.haml"
+			],
+			[
+				"panelsass",
+				"app/assets/stylesheets/components/paneling.css.sass"
+			],
+			[
+				"regiedit",
+				"app/views/user/registrations/edit.html.haml"
+			],
+			[
+				"routes",
+				"config/routes.rb"
+			],
+			[
+				"appsass",
+				"app/assets/stylesheets/application.css.sass"
+			],
+			[
+				"dropdo",
+				"app/assets/stylesheets/components/dropdown.css.sass"
+			],
+			[
+				"bassass",
+				"app/assets/stylesheets/base/base.css.sass"
+			],
+			[
+				"headhtml",
+				"app/views/layouts/header/_head.html.haml"
+			],
+			[
+				"projectshow",
+				"app/views/projects/show.html.haml"
+			],
+			[
+				"sidek",
+				"config/initializers/sidekiq.rb"
+			],
+			[
+				"boatrevicont",
+				"app/controllers/boat_reviews_controller.rb"
+			],
+			[
+				"boatreviewhtml",
+				"app/views/booking_mailer/boat_review_reminder.html.haml"
+			],
+			[
+				"reviewcontrol",
+				"app/controllers/renter_reviews_controller.rb"
+			],
+			[
+				"mailview",
+				"app/mailers/mail_preview.rb"
+			],
+			[
+				"mailtyposass",
+				"app/assets/stylesheets/mailers/base/typography.css.sass"
+			],
+			[
+				"mailbasesass",
+				"app/assets/stylesheets/mailers/base/base.css.sass"
+			],
+			[
+				"renterreviewhtml",
+				"app/views/booking_mailer/renter_review_reminder.html.haml"
+			],
+			[
+				"bookingappr",
+				"app/views/booking_mailer/booking_approved.html.haml"
+			],
+			[
+				"newbookinhtml",
+				"app/views/booking_mailer/new_booking.html.haml"
+			],
+			[
+				"bookmailer",
+				"app/mailers/booking_mailer.rb"
+			],
+			[
+				"boatedithtml",
+				"app/views/boats/edit.html.haml"
+			],
+			[
+				"boatedihtml",
+				"app/views/boats/_boat_edit_details.html.haml"
+			],
+			[
+				"side",
+				"config/initializers/sidekiq.rb"
+			],
+			[
+				"inidevelop",
+				"config/environments/development.rb"
+			],
+			[
+				"formsass",
+				"app/assets/stylesheets/components/forms/forms.css.sass"
+			],
+			[
+				"landinghtml",
+				"app/views/layouts/landing.html.haml"
+			],
+			[
+				"sharheadhtml",
+				"app/views/shared/_head.html.haml"
+			],
+			[
+				"airbrakjs",
+				"app/views/shared/_airbrakejs.html.haml"
+			],
+			[
+				"gemfile",
+				"Gemfile"
+			],
+			[
+				"boatphoto",
+				"app/models/boat_photo.rb"
+			],
+			[
+				"boatindexhtml",
+				"app/views/boats/index.html.haml"
+			],
+			[
+				"airb",
+				"config/initializers/airbrake.rb"
+			],
+			[
+				"gemfil",
+				"Gemfile"
+			],
+			[
+				"boat",
+				"app/models/boat.rb"
+			],
+			[
+				"headerhtml",
+				"app/views/shared/_header.html.haml"
+			],
+			[
+				"boateditsideb",
+				"app/views/boats/edit/_sidebar.html.haml"
+			],
+			[
+				"editboat",
+				"app/presenters/edit_boat_presenter.rb"
+			],
+			[
+				"boatpresen",
+				"app/presenters/boat_presenter.rb"
+			],
+			[
+				"bookindetails",
+				"app/views/bookings/_booking_details_section.html.haml"
+			],
+			[
+				"informatiooutlet",
+				"app/views/bookings/_information_outlet.html.haml"
+			],
+			[
+				"checkboxsass",
+				"app/assets/stylesheets/components/forms/checkbox.css.sass"
+			],
+			[
+				"verifiinsuran",
+				"app/views/renter_verifications/_insurance.html.haml"
+			],
+			[
+				"bookdeta",
+				"app/views/bookings/_booking_details_section.html.haml"
+			],
+			[
+				"boatdetas",
+				"app/views/bookings/_boat_details_section.html.haml"
+			],
+			[
+				"bookinnew",
+				"app/views/bookings/new.html.haml"
+			],
+			[
+				"modboat",
+				"app/models/boat.rb"
+			],
+			[
+				"boatcont",
+				"app/controllers/boats_controller.rb"
+			],
+			[
+				"searccontr",
+				"app/assets/javascripts/search/controllers.js.coffee"
+			],
+			[
+				"embext",
+				"vendor/assets/javascripts/ember-ext.js.coffee"
+			],
+			[
+				"searviewjs",
+				"app/assets/javascripts/search/views.js.coffee"
+			],
+			[
+				"searcmodel",
+				"app/assets/javascripts/search/models.js.coffee"
+			],
+			[
+				"searchroute",
+				"app/assets/javascripts/search/routes.js.coffee"
+			],
+			[
+				"boatvalid",
+				"app/services/boat_validation.rb"
+			],
+			[
+				"boatedisideb",
+				"app/views/boats/edit/_sidebar.html.haml"
+			],
+			[
+				"boatwiza",
+				"app/services/boat_wizard.rb"
+			],
+			[
+				"modalsass",
+				"app/assets/stylesheets/components/modal.css.sass"
+			],
+			[
+				"landingmodals",
+				"app/views/home/landing/_modals.html.haml"
+			],
+			[
+				"apsass",
+				"app/assets/stylesheets/application.css.sass"
+			],
+			[
+				"modasass",
+				"app/assets/stylesheets/components/modal.css.sass"
+			],
+			[
+				"modaljs",
+				"vendor/assets/javascripts/bootstrap-scroll-modal.js"
+			],
+			[
+				"appjs",
+				"app/assets/javascripts/application.js"
+			],
+			[
+				"prelaujs",
+				"app/assets/javascripts/prelaunch.js.coffee"
+			],
+			[
+				"sharehead",
+				"app/views/shared/_head.html.haml"
+			],
+			[
+				"lanjs",
+				"app/assets/javascripts/prelaunch.js.coffee"
+			],
+			[
+				"scrollmodal",
+				"vendor/assets/javascripts/bootstrap-scroll-modal.js"
+			],
+			[
+				"landinhtml",
+				"app/views/home/landing/_header.html.haml"
+			],
+			[
+				"oceanhtml",
+				"app/views/shared/_ocean.html.haml"
+			],
+			[
+				"sharedsky",
+				"app/views/shared/_sky.html.haml"
+			],
+			[
+				"applihtml",
+				"app/views/layouts/application.html.haml"
+			],
+			[
+				"apphtml",
+				"app/views/boat_mailer/approved.html.haml"
+			],
+			[
+				"mainjs",
+				"app/assets/javascripts/main.js.coffee"
+			],
+			[
+				"homlandmodals",
+				"app/views/home/landing/_modals.html.haml"
+			],
+			[
+				"searcrout",
+				"app/assets/javascripts/search/routes.js.coffee"
+			],
+			[
+				"searcontrjs",
+				"app/assets/javascripts/search/controllers.js.coffee"
+			],
+			[
+				"500",
+				"public/500.html"
+			],
+			[
+				"public",
+				"public/404.html"
+			],
+			[
+				"paymentsectionform",
+				"app/views/bookings/_payment_section_form.html.haml"
+			],
+			[
+				"booknewhtml",
+				"app/views/bookings/new.html.haml"
+			],
+			[
+				"modeboat",
+				"app/models/boat.rb"
+			],
+			[
+				"boatcontr",
+				"app/controllers/boats_controller.rb"
+			],
+			[
+				"verificathtml",
+				"app/views/renter_verifications/_verification.html.haml"
+			],
+			[
+				"dashboatlisti",
+				"app/views/dashboard/_boat_list_item.html.haml"
+			],
+			[
+				"yourboatshtml",
+				"app/views/dashboard/your_boats.html.haml"
+			],
+			[
+				"reservationshtml",
+				"app/views/dashboard/your_reservations.html.haml"
+			],
+			[
+				"dashbonav",
+				"app/views/dashboard/_dashboard_nav.html.haml"
+			],
+			[
+				"renterre",
+				"app/controllers/renter_reviews_controller.rb"
+			],
+			[
+				"boarecon",
+				"app/controllers/boat_reviews_controller.rb"
+			],
+			[
+				"seavewjs",
+				"app/assets/javascripts/search/views.js.coffee"
+			],
+			[
+				"jquerygoogle",
+				"vendor/assets/javascripts/jquery-ui-map-3.0-rc/demos/jquery-google-maps-geolocation.html"
+			],
+			[
+				"searviewj",
+				"app/assets/javascripts/search/views.js.coffee"
+			],
+			[
+				"searmodeljs",
+				"app/assets/javascripts/search/models.js.coffee"
+			],
+			[
+				"searcontr",
+				"app/assets/javascripts/search/controllers.js.coffee"
+			],
+			[
+				"mailertypog",
+				"app/assets/stylesheets/mailers/base/typography.css.sass"
+			],
+			[
+				"mailersass",
+				"app/assets/stylesheets/mailers/mailer.css.sass"
+			],
+			[
+				"mailsass",
+				"app/assets/stylesheets/mailers/mailer.css.sass"
+			],
+			[
+				"description",
+				"app/views/boats/_description.html.haml"
+			],
+			[
+				"message",
+				"app/models/message.rb"
+			],
+			[
+				"messaindexhtml",
+				"app/views/messages/index.html.haml"
+			],
+			[
+				"messagehtml",
+				"app/views/shared/_messages.html.haml"
+			],
+			[
+				"msgthread",
+				"app/models/msg_thread.rb"
+			],
+			[
+				"messagerb",
+				"app/models/message.rb"
+			],
+			[
+				"userr",
+				"app/models/user.rb"
+			],
+			[
+				"renterverification",
+				"app/models/renter_verification.rb"
+			],
+			[
+				"mailprev",
+				"app/mailers/mail_preview.rb"
+			],
+			[
+				"inviowner",
+				"app/views/invitation_mailer/owner.html.haml"
+			],
+			[
+				"regicon",
+				"app/controllers/users/registrations_controller.rb"
+			],
+			[
+				"defaultblur",
+				"app/views/users/registrations/_default_blurb.html.haml"
+			],
+			[
+				"userregrent",
+				"app/views/users/registrations/register_invitation.html.haml"
+			],
+			[
+				"userreowner",
+				"app/views/users/registrations/_owner_blurb.html.haml"
+			],
+			[
+				"registinvi",
+				"app/views/users/registrations/register_invitation.html.haml"
+			],
+			[
+				"reginewhtml",
+				"app/views/users/registrations/new.html.haml"
+			],
+			[
+				"uisass",
+				"app/assets/stylesheets/theme/jquery_ui.css.sass"
+			],
+			[
+				"bookingcont",
+				"app/controllers/bookings_controller.rb"
+			],
+			[
+				"dashboardindex",
+				"app/views/dashboard/index.html.haml"
+			],
+			[
+				"copycopter",
+				"config/initializers/copycopter.rb"
+			],
+			[
+				"prelaunchhtml",
+				"app/views/home/prelaunch.html.haml"
+			],
+			[
+				"homecontr",
+				"app/controllers/home_controller.rb"
+			],
+			[
+				"landingsass",
+				"app/assets/stylesheets/theme/landing_prelaunch.css.sass"
+			],
+			[
+				"boatpresenter",
+				"app/presenters/boat_presenter.rb"
+			],
+			[
+				"editboatp",
+				"app/presenters/edit_boat_presenter.rb"
+			],
+			[
+				"editsass",
+				"app/assets/stylesheets/pages/edit.css.sass"
+			],
+			[
+				"boatcontrol",
+				"app/controllers/boats_controller.rb"
+			],
+			[
+				"boateditamen",
+				"app/views/boats/edit/_amenities.html.haml"
+			],
+			[
+				"listingsass",
+				"app/assets/stylesheets/pages/listing.css.sass"
+			],
+			[
+				"reviewshtml",
+				"app/views/boats/_reviews.html.haml"
+			],
+			[
+				"boatshowhtml",
+				"app/views/boats/show.html.haml"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 270.0,
+	"status_bar_visible": true
+}

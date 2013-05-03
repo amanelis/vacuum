@@ -1,4 +1,21 @@
 .f-dropdown
-  padding: 5px 0
+  padding: 9px 0
   text-transform: uppercase
   font-size: 12px
+  font-weight: 600
+  li
+    padding: 0
+    cursor: default
+    a
+      padding: 0.4125em 0.625em
+      display: block
+      &:hover
+        background: #eee
+    &:hover
+      background: transparent
+
+    &.divider
+      margin: emCalc(10px) 0
+      border-top: 1px solid #ddd
+      width: 100%
+      height: 1px

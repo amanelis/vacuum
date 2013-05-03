@@ -1,7 +1,7 @@
 .row
   .large-12.columns
     .panel
-      .section-container.auto{data: {section: true, options: 'deep_linking: true;'}}
+      .section-container.tabs{data: {section: true, options: 'deep_linking: true;'}}
         %section.active
           %p.title{data: {section_title: true}}
             %a{href: '#setup'} Setup
@@ -17,10 +17,8 @@
               Never change/edit or try to minify this piece of code. For we use the
               %code _vacuum
               object amongst your application and in our listener.
-              %br
-              %br
-              %textarea{:cols => "50", :rows => "5", :id => 'codebox'}
-                = @project.to_js
+            %textarea{:cols => "50", :rows => "5", :id => 'codebox'}
+              = @project.to_js
             %div{align: 'right'}
               = link_to "I've completed this step", project_errors_path(@project), :class => 'success button round'
         %section
@@ -79,14 +77,14 @@
                             %td= notifier.name
                             %td= notifier.email
                             %th
-                              .small.button.dropdown.round{:href => "#"}
+                              .small.button.round{:href => "#", data: {dropdown: 'config-dropdown'}}
                                 Configuration
-                                %ul
-                                  %li
-                                    %a{:href => edit_project_notification_path(@project, notifier)} Edit
-                                  %li.divider
-                                  %li
-                                    = link_to "Delete", project_notification_path(@project, notifier), :method => :delete, :confirm => "Are you sure?"
+                              %ul#config-dropdown.f-dropdown{data: {dropdown_content: true}}
+                                %li
+                                  %a{:href => edit_project_notification_path(@project, notifier)} Edit
+                                %li.divider
+                                %li
+                                  = link_to "Delete", project_notification_path(@project, notifier), :method => :delete, :confirm => "Are you sure?"
             %p
               #notifications_error
               #newNotifier.reveal-modal
@@ -183,4 +181,4 @@
                 %h2 API Identifier
                 %p= @project.identifier
 
-    %a.button.round{href: request.referrer} Back
+    %a.button.round{href: request.referrer} < Back
