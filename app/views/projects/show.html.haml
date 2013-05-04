@@ -30,38 +30,33 @@
               The script that you have included in your application will watch and fire on a window.onerror event. Lets go over a few of the options
               this piece of code sets.
 
-              %pre var _vacuum = _vacuum || []; // Instantiate and sets up a new array that will hold our settings.
-              %br
-              %pre= "_vacuum.push(['_setKey', \'#{@project.api_key}\']); // Sets your API_KEY"
-              %br
-              %pre= "_vacuum.push(['_setIdentifier', \'#{@project.identifier}\']); // Sets your identifier"
-              %br
-              %pre= "_vacuum.push(['debug', true]); // Turns debug mode on"
-              %br
+            %pre var _vacuum = _vacuum || []; // Instantiate and sets up a new array that will hold our settings.
 
-              Thats it, just make sure the script is loaded after this block of code/settings.
+            %pre= "_vacuum.push(['_setKey', \'#{@project.api_key}\']); // Sets your API_KEY"
+
+            %pre= "_vacuum.push(['_setIdentifier', \'#{@project.identifier}\']); // Sets your identifier"
+
+            %pre= "_vacuum.push(['debug', true]); // Turns debug mode on"
+
+            %p That's it, just make sure the script is loaded after this block of code/settings.
             %h4 Manual Logging
             %p
               Start logging errors manually, these will trigger the
-              %span{class: 'alert label'} error
+              %span.alert.label error
               or
-              %span{class: 'warn label'} warn
+              %span.warn.label warn
               notification.
 
-              %br
-              %pre
-                _vacuum.warn('wonky redirect right here, watch the response');
+            %pre _vacuum.warn('wonky redirect right here, watch the response');
 
-              %br
-              %pre
-                _vacuum.error('.ajax.complete never returns');
+            %pre _vacuum.error('.ajax.complete never returns');
 
         %section
           %p.title{data: {section_title: true}}
-            %a{href: '#notifications'} Notification
+            %a{href: '#notifications'} Notifications
           .content{data: {slug: 'notifications', section_content: true}}
             %h2 Error Notifications
-            %em Sends an email to the right person when a single error occurs.
+            %h6.subheader Sends an email to the right person when a single error occurs.
             %p
               - unless @project.notifications.empty?
                 #notification_members
@@ -112,7 +107,7 @@
             %a{href: '#collaborators'} Collaborators
           .content{data: {slug: 'collaborators', section_content: true}}
             %h2 Collaborators
-            %em Gives a Vacuum user read access to your project.
+            %h6.subheader Gives a Vacuum user read access to your project.
             %p
               - unless @project.collaborators.empty?
                 #collaborator_members
@@ -145,7 +140,7 @@
                     = f.text_field :email
                     #collaborators_email_error
                     = hidden_field_tag 'collaborator_project_id', @project.id
-                    = f.submit 'Create', :class => 'button round'
+                    = f.submit 'Create', :class => 'button success round'
                     %a.close-reveal-modal x
               %div{:align => 'left'}
                 %a.success.button.round{"data-reveal-id" => "newCollaborator"}
@@ -181,4 +176,4 @@
                 %h2 API Identifier
                 %p= @project.identifier
 
-    %a.button.round{href: request.referrer} < Back
+    %a.button.round.small{href: project_errors_path(@project)} < Back to logs
