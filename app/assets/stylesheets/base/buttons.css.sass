@@ -17,7 +17,7 @@
   &:hover, &:focus
     outline: none
     background: #fff
-    border-color: $mainColorLight
+    border-color: #000
     color: #000
     // +box-shadow((0 0 10px rgba(#00afe9, .2), inset 0 0 10px rgba(#000, .1)))
 
@@ -28,7 +28,7 @@
     color: #cbcbcb
 
     &:hover
-      color: #888
+      color: #000
 
   &.protrude
     border-bottom-width: 3px
@@ -55,13 +55,13 @@
             background: #E3F4F9
 
   &.success
-    background: #fff
-    border: 2px solid #000
-    color: #000
-    &:hover
+    background: $mainColor
+    border-color: darken($mainColor, 10%)
+    color: #fff
+    &:hover, &:focus
+      background: darken($mainColor, 10%)
+      border-color: darken($mainColor, 15%)
       color: #fff
-      background: #000
-      +box-shadow(none)
 
   &.alert
     background: #fff
