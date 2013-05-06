@@ -3,12 +3,13 @@
   %meta{:content => 'yes', :name => 'apple-mobile-web-app-capable'}
   %meta{:content => 'black', :name => 'apple-mobile-web-app-status-bar-style'}
   %meta{:content => 'width = device-width, initial-scale = 1, user-scalable = no, maximum-scale = 1', :name => 'viewport'}
-  %meta{:content => "javascript, javascript errors, front end error logging, javascript error logging, javascript error logging service, js errors", :name => "keywords"}
+  %meta{:content => "javascript, javascript errors, front end error logging, javascript error logging, javascript error logging service, js errors, vacuum error logging, vacuum.io, vacuum javascript", :name => "keywords"}
   %meta{:content => 'Vacuum is a front end error logging and reporting service. Log errors on client side from the browsers of your users.', :name => 'description'}
   = stylesheet_link_tag 'application', media: 'all'
-  /[if lt IE 8]
-  = javascript_include_tag 'application'
+  = javascript_include_tag 'application', 'https://js.stripe.com/v1/'
   = csrf_meta_tags
+  :javascript
+    Stripe.setPublishableKey("#{STRIPE_PUBLISHABLE_KEY}");
   %link{:href => 'http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,400italic,700italic', :rel => 'stylesheet', :type => 'text/css'}
   :plain
     <!--[if !IE 7]>

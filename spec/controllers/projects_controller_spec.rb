@@ -3,7 +3,6 @@ require 'spec_helper'
 describe ProjectsController do
   include Devise::TestHelpers
 
-
   describe "GET 'index'" do
     context "when logged in" do
       before(:each) do

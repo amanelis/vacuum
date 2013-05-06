@@ -42,4 +42,12 @@ module ProjectsHelper
       @project = Project.find(params[:id])
     end
   end
+  
+  def project_read_deny
+    "Permission denied to view that project(s)."
+  end
+  
+  def project_create_deny(current_user)
+    "You need to upgrade your account before you can add more projects."
+  end
 end

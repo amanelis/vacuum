@@ -14,11 +14,11 @@ class User
   field :password_salt,      :type => String, :default => ""
   
   # Custom fields
-  field :username, :type => String
-  field :identifier, :type => String
-  field :active, :type => Boolean, :default => true
-  field :admin, :type => Boolean, :default => false
-  field :paid, :type => Boolean, :default => false
+  field :username,    :type => String
+  field :identifier,  :type => String
+  field :active,      :type => Boolean, :default => true
+  field :admin,       :type => Boolean, :default => false
+  field :paid,        :type => Boolean, :default => false
   
   ## Recoverable
   field :reset_password_token,   :type => String
@@ -38,12 +38,16 @@ class User
   field :confirmation_token,   :type => String
   field :confirmed_at,         :type => Time
   field :confirmation_sent_at, :type => Time
-  field :unconfirmed_email,    :type => String # Only if using reconfirmable
+  field :unconfirmed_email,    :type => String 
 
   ## Lockable
-  field :failed_attempts, :type => Integer, :default => 0 # Only if lock strategy is :failed_attempts
-  field :unlock_token,    :type => String # Only if unlock strategy is :email or :both
+  field :failed_attempts, :type => Integer, :default => 0 
+  field :unlock_token,    :type => String 
   field :locked_at,       :type => Time
+  
+  ## Email
+  field :sent_welcome_email,  :type => Boolean, :default => false
+  field :subscribed,          :type => Boolean, :default => true
 
   ## Token authenticatable
   field :authentication_token, :type => String
@@ -55,23 +59,23 @@ class User
   ### Associations
   has_many :projects, autosave: true, :dependent => :destroy
   
-  # Callbacks
-  before_save :ensure_authentication_token
-  before_create :send_welcome_email, :set_identifier, :set_created_at
-  after_update  :set_updated_at
-  
   ### Scopes
-  scope :admin, where(admin: true)
+  scope :admin,       where(admin: true)
+  scope :subscribed,  where(subscribed: true)
   
   # create_project?
-  # Method for authorization to create more projects. User must be paying to do this
+  # Method for authorization to create more projects. User must be paying to do this.
   def create_project?
+    return true if self.admin?
     return false if !self.paid? && self.projects.count >= 1
     return true
   end
   
-  # send_welcome_email
-  # Send a welcome email after a user is signed up for Vacuum.
-  def send_welcome_email
+  # has_paid?
+  # If the admin is present or user has paid, payment is not required.
+  def needs_to_pay?
+    return false if self.admin?
+    return false if self.paid?
+    return true
   end
 end

@@ -15,8 +15,10 @@ gem 'mongoid'
 gem 'haml'
 gem 'devise'
 gem 'cancan'
+gem 'stripe'
 gem 'mail_view'
 gem 'devise-encryptable'
+gem 'delayed_job_mongoid'
 gem 'will_paginate_mongoid'
 
 # Assets
