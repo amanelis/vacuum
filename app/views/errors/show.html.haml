@@ -1,44 +1,49 @@
 .row
-  .twelve.columns
+  .large-12.columns
     .panel.radius.right.count
       %h5= @occurrences.count
       occurrences
     %h3 #{@occurrences.last.error.message}
-    %p
-      %table.table.twelve
-        %thead
-          %tr
-            %th Agent
-            %th File
-            %th Parameters
-            %th Line #
-            %th Seen At
-        %tbody
-          - @occurrences.each do |occurrence|
-            %tr
-              %td= image_tag "/assets/#{occurrence.human_agent}.png", width: '16px', height: '16px'
-              / %td= occurrence.href.gsub(/\?(.*)$/, '')
-              %td= occurrence.try(:file)
-              %td
-                - if occurrence.parameters.nil? || occurrence.parameters.empty?
-                  = '{}'
-                - else
-                  = occurrence.parameters
-              %td
-                - if occurrence.line.nil? || occurrence.line.empty?
-                  n/a
-                - else
-                  = occurrence.line
-              %td= occurrence.created_at
+    %p{class: "error-status #{@error.resolved ? 'resolved' : 'unresolved'}"}
+      %i.foundicon-checkmark Resolved
+      %i.foundicon-error Unresolved
 
-      %div{align: 'right'}
-        %a{href: '#', class: 'alert button round', 'data-reveal-id' => 'stack-trace-modal'} Browser Data
+    %table.table
+      %thead
+        %tr
+          %th Agent
+          %th File
+          %th Parameters
+          %th Line #
+          %th Seen At
+      %tbody
+        - @occurrences.each do |occurrence|
+          %tr
+            %td= image_tag "/assets/#{occurrence.human_agent}.png", width: '16px', height: '16px'
+            / %td= occurrence.href.gsub(/\?(.*)$/, '')
+            %td= occurrence.try(:file)
+            %td
+              - if occurrence.parameters.nil? || occurrence.parameters.empty?
+                = '{}'
+              - else
+                = occurrence.parameters
+            %td
+              - if occurrence.line.nil? || occurrence.line.empty?
+                n/a
+              - else
+                = occurrence.line
+            %td= occurrence.created_at
+
 
       = will_paginate(@occurrences)
-    %a.button.round{href: project_errors_path(@project)} Back
+
+    .row
+      %a.alert.button.round.right{href: '#', 'data-reveal-id' => 'stack-trace-modal'} Browser Data
+
+    %a.button.small.round{href: project_errors_path(@project)} < Back
 
 - content_for :modals do
-  #stack-trace-modal.reveal-modal.expand.xlarge.large.medium.small
+  #stack-trace-modal.reveal-modal
     %h3= "Error #{@error.id}"
     %p
       Level:
@@ -99,7 +104,7 @@
       %br
       %code
         = @occurrences.last.language
-        
+
       %br
       Browser Time:
       %br

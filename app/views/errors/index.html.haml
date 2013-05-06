@@ -1,23 +1,23 @@
 .row
-  .twelve.columns
+  .large-12.columns
     - if @errors.empty?
       .panel
         %h3 No errors yet. Guess thats a good thing?
       %p
         Add this snippet directly after the
         %code= "<head>"
-        tag in your application and before any other javascript code/dependencies are loaded. The code in this script will only ever be initiated 
-        on an error. Therefore you are only just loading in the size of the script. When an error is triggered, this code will run. 
+        tag in your application and before any other javascript code/dependencies are loaded. The code in this script will only ever be initiated
+        on an error. Therefore you are only just loading in the size of the script. When an error is triggered, this code will run.
         %br
         %br
-        Never change/edit or try to minify this piece of code. For we use the 
-        %code _vacuum 
+        Never change/edit or try to minify this piece of code. For we use the
+        %code _vacuum
         object amongst your application and in our listener.
         %br
         %textarea{:cols => "50", :rows => "4", :id => 'codebox'}
           = @project.to_js
     - else
-      %a.settings-link.button.round.small.right{href: project_path(@project, anchor: 'settings')} 
+      %a.settings-link.button.round.small.right{href: project_path(@project, anchor: 'settings')}
         %i.icon-cog
       %h2= "#{@project.name} errors"
       %table.table.twelve
@@ -48,8 +48,8 @@
               %td= error.occurrences.count
               %td= time_ago_in_words(error.updated_at)
 .row
-  .six.columns
-    %a.button.round.small.left{href: projects_path} Back
-  .six.columns
+  .large-6.columns
+    %a.button.round.small.left{href: projects_path} < Back
+  .large-6.columns
     %div{align: 'right'}
       = will_paginate(@errors)

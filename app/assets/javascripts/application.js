@@ -17,6 +17,9 @@
 //= require lib/toggle
 
 $(document).ready(function() {
+
+  $(document).foundation()
+
   // Notifications form validation
 	$('#notifications_form').submit(function(evt) {
     evt.preventDefault();
@@ -24,12 +27,12 @@ $(document).ready(function() {
 		$('#notification_email').removeClass('error');
 		$('#notifications_name_error').empty();
 		$('#notifications_email_error').empty();
-	
+
 	  var error = false;
 		var name  = $('#notification_name').val();
 		var email = $('#notification_email').val();
 		var project_id = $('#notification_project_id').val();
-		
+
 		if (name == '' || name == null || name == undefined) {
 			$('#notification_name').addClass('error');
 			$('#notifications_name_error').html('<div class="alert-box alert">Add a name<a href="" class="close">&times;</a></div>');
@@ -40,14 +43,14 @@ $(document).ready(function() {
 			$('#notifications_email_error').html('<div class="alert-box alert">Add an email<a href="" class="close">&times;</a></div>');
 			error = true;
 		}
-		
+
 		if (error) {
 			return false;
 		} else {
 		  this.submit();
 		}
 	});
-	
+
 	// Collaborators form validation
 	$('#collaborators_form').submit(function(evt) {
     evt.preventDefault();
@@ -70,7 +73,7 @@ $(document).ready(function() {
       this.submit();
   	}
   });
-	
+
 	// Text area for script tag, auto highlight
 	$('textarea#codebox').click(function() {
 	  this.focus();

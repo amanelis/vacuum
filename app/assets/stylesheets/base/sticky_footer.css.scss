@@ -12,16 +12,17 @@ vertical margins (top and bottom) to add spacing, else those margins get added t
 and your footer gets pushed down a bit more, creating vertical scroll bars in the browser */
 
 $height: 123px;
+$offset: 50px;
 
 html, body {height: 100%;}
 
 #wrap {min-height: 100%;}
 
 #main {overflow:auto;
-  padding-bottom: $height;}  /* must be same height as the footer */
+  padding-bottom: $height + $offset;}  /* must be same height as the footer */
 
 #footer {position: relative;
-  margin-top: - $height; /* negative value of footer height */
+  margin-top: - $height; /* negative value of footer height removing offset */
   height: $height;
   clear:both;}
 

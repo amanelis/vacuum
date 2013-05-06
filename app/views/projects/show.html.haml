@@ -1,174 +1,151 @@
 .row
-  .twelve.columns
+  .large-12.columns
     .panel
-      %dl.tabs
-        %dd.active
-          %a{:href => "#setup"} Setup
-        / %dd
-        /   %a{:href => "#documentation"} Documentation
-        %dd
-          %a{:href => "#notification"} Notification
-        %dd
-          %a{:href => "#collaborators"} Collaborators
-        %dd
-          %a{:href => "#settings"} Settings
-      %ul.tabs-content
-        %li#setupTab.active
-          %h2 Javascript Installation
-          %p
-            Add this snippet directly after the
-            %code= "<head>"
-            tag in your application and before any other javascript code/dependencies are loaded. The code in this script will only ever be initiated 
-            on an error. Therefore you are only just loading in the size of the script. When an error is triggered, this code will run. 
-            %br
-            %br
-            Never change/edit or try to minify this piece of code. For we use the 
-            %code _vacuum 
-            object amongst your application and in our listener.
-            %br
-            %br
-            %textarea{:cols => "50", :rows => "4", :id => 'codebox'}
-              = @project.to_js
-          %div{align: 'right'}
-            = link_to "I've completed this step", project_errors_path(@project), :class => 'success button round'
+      .section-container.tabs{data: {section: true, options: 'deep_linking: true;'}}
+        %section.active
+          %p.title{data: {section_title: true}}
+            %a{href: '#setup'} Setup
+          .content{data: {slug: 'setup', section_content: true}}
+            %h2 Javascript Installation
+            %p
+              Add this snippet directly after the
+              %code= "<head>"
+              tag in your application and before any other javascript code/dependencies are loaded. The code in this script will only ever be initiated
+              on an error. Therefore you are only just loading in the size of the script. When an error is triggered, this code will run.
+              %br
+              %br
+              Never change/edit or try to minify this piece of code. For we use the
+              %code _vacuum
+              object amongst your application and in our listener.
+              %br
+              %br
+              %textarea{:cols => "50", :rows => "4", :id => 'codebox'}= @project.to_js
+            %div{align: 'right'}
+              = link_to "I've completed this step", project_errors_path(@project), :class => 'success button round'
 
-        / %li#documentationTab
-        /           %h2 Introduction
-        /           %p
-        /             The script that you have included in your application will watch and fire on a window.onerror event. Lets go over a few of the options
-        /             this piece of code sets.
-        /             
-        /             %pre var _vacuum = _vacuum || []; // Instantiate and sets up a new array that will hold our settings.
-        /             %br
-        /             %pre= "_vacuum.push(['_setKey', \'#{@project.api_key}\']); // Sets your API_KEY"
-        /             %br
-        /             %pre= "_vacuum.push(['_setIdentifier', \'#{@project.identifier}\']); // Sets your identifier"
-        /             %br
-        /             %pre= "_vacuum.push(['debug', true]); // Turns debug mode on"
-        /             %br
-        /             
-        /             Thats it, just make sure the script is loaded after this block of code/settings.
-        /           %h4 Manual Logging
-        /           %p
-        /             Start logging errors manually, these will trigger the
-        /             %span{class: 'alert label'} error
-        /             or
-        /             %span{class: 'warn label'} warn
-        /             notification.
-        /               
-        /             %br
-        /             %pre
-        /               _vacuum.warn('wonky redirect right here, watch the response');
-        /               
-        /             %br
-        /             %pre
-        /               _vacuum.error('.ajax.complete never returns');
-        
-        %li#notificationTab
-          %h2 Error Notifications
-          %em Sends an email to the right person when a single error occurs.
-          %p
-            - unless @project.notifications.empty?
-              #notification_members
-                %table.table
-                  %thead
-                    %tr
-                      %th Name
-                      %th Email
-                      %th Options
-                    %tbody
-                      - @project.notifications.each do |notifier|
-                        %tr
-                          %td= notifier.name
-                          %td= notifier.email
-                          %th
-                            .small.button.dropdown.round{:href => "#"}
-                              Configuration
-                              %ul
+        %section
+          %p.title{data: {section_title: true}}
+            %a{href: '#notifications'} Notifications
+          .content{data: {slug: 'notifications', section_content: true}}
+            %h2 Error Notifications
+            %h6.subheader Sends an email to the right person when a single error occurs.
+            %p
+              - unless @project.notifications.empty?
+                #notification_members
+                  %table.table
+                    %thead
+                      %tr
+                        %th Name
+                        %th Email
+                        %th Options
+                      %tbody
+                        - @project.notifications.each do |notifier|
+                          %tr
+                            %td= notifier.name
+                            %td= notifier.email
+                            %th
+                              .small.button.round{:href => "#", data: {dropdown: 'config-dropdown'}}
+                                Configuration
+                              %ul#config-dropdown.f-dropdown{data: {dropdown_content: true}}
                                 %li
                                   %a{:href => edit_project_notification_path(@project, notifier)} Edit
                                 %li.divider
                                 %li
                                   = link_to "Delete", project_notification_path(@project, notifier), :method => :delete, :confirm => "Are you sure?"
-          %p
-            #notifications_error
-            #newNotifier.reveal-modal
-              %h5 Add a new person to be notified on error
-              #notifications_new
-                - @notification = @project.notifications.build
-                = form_for @notification, :url => project_notifications_path(@project.id), :html => { :id => "notifications_form" } do |f|
+            %p
+              #notifications_error
+              #newNotifier.reveal-modal
+                %h5 Add a new person to be notified on error
+                #notifications_new
+                  - @notification = @project.notifications.build
+                  = form_for @notification, :url => project_notifications_path(@project.id), :html => { :id => "notifications_form" } do |f|
+                    = f.label :name
+                    = f.text_field :name
+                    #notifications_name_error
+                    %br
+                    = f.label :email
+                    = f.text_field :email
+                    #notifications_email_error
+                    = hidden_field_tag 'notification_project_id', @project.id
+                    = f.submit 'Create', :class => 'button round'
+                    %a.close-reveal-modal x
+              %div{:align => 'left'}
+                %a.success.button.round{"data-reveal-id" => "newNotifier"}
+                  %i.foundicon-plus
+                  New Contact
+
+        %section
+          %p.title{data: {section_title: true}}
+            %a{href: '#collaborators'} Collaborators
+          .content{data: {slug: 'collaborators', section_content: true}}
+            %h2 Collaborators
+            %h6.subheader Gives a Vacuum user read access to your project.
+            %p
+              - unless @project.collaborators.empty?
+                #collaborator_members
+                  %table.table
+                    %thead
+                      %tr
+                        %th Email
+                        %th Options
+                      %tbody
+                        - @project.collaborators.each do |collaborator|
+                          %tr
+                            %td= collaborator.email
+                            %th
+                              .small.button.dropdown.round{:href => "#"}
+                                Configuration
+                                %ul
+                                  %li
+                                    %a{:href => edit_project_collaborator_path(@project, collaborator)} Edit
+                                  %li.divider
+                                  %li
+                                    = link_to "Delete", project_collaborator_path(@project, collaborator), :method => :delete, :confirm => "Are you sure?"
+            %p
+              #notifications_error
+              #newCollaborator.reveal-modal
+                %h5 Share access to this project
+                #notifications_new
+                  - @collaborator = @project.collaborators.build
+                  = form_for @collaborator, :url => project_collaborators_path(@project.id), :html => { :id => "collaborators_form" } do |f|
+                    = f.label :email
+                    = f.text_field :email
+                    #collaborators_email_error
+                    = hidden_field_tag 'collaborator_project_id', @project.id
+                    = f.submit 'Create', :class => 'button success round'
+                    %a.close-reveal-modal x
+              %div{:align => 'left'}
+                %a.success.button.round{"data-reveal-id" => "newCollaborator"}
+                  %i.foundicon-plus
+                  New Collaborator
+
+        %section
+          %p.title{data: {section_title: true}}
+            %a{href: '#settings'} Settings
+          .content{data: {slug: 'settings', section_content: true}}
+            .row
+              .large-5.columns
+                %h2= "Edit #{@project.name}"
+                = form_for @project do |f|
                   = f.label :name
                   = f.text_field :name
-                  #notifications_name_error
                   %br
-                  = f.label :email
-                  = f.text_field :email
-                  #notifications_email_error
-                  = hidden_field_tag 'notification_project_id', @project.id
-                  = f.submit 'Create', :class => 'button round'
-                  %a.close-reveal-modal x
-            %div{:align => 'left'}
-              %a.success.button.round{"data-reveal-id" => "newNotifier"}
-                %i.foundicon-plus
-                New Contact
-        %li#collaboratorsTab
-          %h2 Collaborators
-          %em Gives a Vacuum user read access to your project.
-          %p
-            - unless @project.collaborators.empty?
-              #collaborator_members
-                %table.table
-                  %thead
-                    %tr
-                      %th Email
-                      %th Options
-                    %tbody
-                      - @project.collaborators.each do |collaborator|
-                        %tr
-                          %td= collaborator.email
-                          %th
-                            .small.button.dropdown.round{:href => "#"}
-                              Configuration
-                              %ul
-                                %li
-                                  %a{:href => edit_project_collaborator_path(@project, collaborator)} Edit
-                                %li.divider
-                                %li
-                                  = link_to "Delete", project_collaborator_path(@project, collaborator), :method => :delete, :confirm => "Are you sure?"
-          %p
-            #notifications_error
-            #newCollaborator.reveal-modal
-              %h5 Share access to this project
-              #notifications_new
-                - @collaborator = @project.collaborators.build
-                = form_for @collaborator, :url => project_collaborators_path(@project.id), :html => { :id => "collaborators_form" } do |f|
-                  = f.label :email
-                  = f.text_field :email
-                  #collaborators_email_error
-                  = hidden_field_tag 'collaborator_project_id', @project.id
-                  = f.submit 'Create', :class => 'button round'
-                  %a.close-reveal-modal x
-            %div{:align => 'left'}
-              %a.success.button.round{"data-reveal-id" => "newCollaborator"}
-                %i.foundicon-plus
-                New Collaborator
-        %li#settingsTab
-          .row
-            .five.columns
-              %h2= "Edit #{@project.name}"
-              = form_for @project do |f|
-                = f.label :name
-                = f.text_field :name
-                %br
-                = f.label :url
-                = f.text_field :url
-                = f.submit 'Update', :class => 'button'
-                = link_to 'Cancel', request.referrer
-            .six.columns
-              %h2 API Key
-              %p= @project.api_key
-              
-              %h2 API Identifier
-              %p= @project.identifier
+                  = f.label :url
+                  = f.text_field :url
+                  = f.submit 'Update', :class => 'button round'
+                  = link_to 'Cancel', request.referrer
+              .large-6.columns
+                %h2 Configuration
+                %p
+                  Be sure to install this js after the
+                  %code= "<head>"
+                  tag in your application.
+                  %textarea{rows: 4}
+                    = @project.to_js
+                %h2 API Key
+                %p= @project.api_key
 
-    %a.button.round{href: request.referrer} Back
+                %h2 API Identifier
+                %p= @project.identifier
+
+    %a.button.round.small{href: project_errors_path(@project)} < Back to logs
