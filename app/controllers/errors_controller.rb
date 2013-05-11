@@ -5,7 +5,7 @@ class ErrorsController < ApplicationController
   respond_to :html, :js 
   
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:alert] = "Access denied for that projects errors."
+    flash[:alert] = "Access denied for that projects data."
     redirect_to root_path
   end
   
