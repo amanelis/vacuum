@@ -11,7 +11,7 @@ class ErrorsController < ApplicationController
   
   def index
     authorize! :read, @project
-    @errors  = @project.errors.desc(:updated_at).paginate(page: params[:page], per: 10)
+    @errors  = @project.errors.unresolved.desc(:updated_at).paginate(page: params[:page], per: 10)
   end
   
   def show
