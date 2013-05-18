@@ -5,7 +5,7 @@ development:
     default:
       # Defines the name of the default database that Mongoid can connect to.
       # (required).
-      database: vapi_development
+      database: vacuum_development
       # Provides the hosts the default session can connect to. Must be an array
       # of host:port pairs. (required)
       hosts:
@@ -69,7 +69,7 @@ development:
 test:
   sessions:
     default:
-      database: vapi_test
+      database: vacuum_test
       hosts:
         - localhost:27017
       options:
@@ -83,28 +83,3 @@ production:
   sessions:
     default:
       uri: <%= ENV['MONGOHQ_URL'] %>
-
-# production:
-#   sessions:
-#     default:
-#       database: app9868490
-#       username: heroku
-#       password: a1a3151de2ef1347fa61d21cead600a4
-#       hosts:  
-#         - mars.mongohq.com
-#       port: 10040
-#       options:
-#         consistency: :strong
-
-# production:
-#   hosts:
-#     - - mars.mongohq.com
-#       - 10085
-#   database: app9868490
-#   username: heroku
-#   password: a1a3151de2ef1347fa61d21cead600a4
-#   allow_dynamic_fields: false
-#   raise_not_found_error: false
-#   logger: false
-#   persist_in_safe_mode: true
-#   max_retries_on_connection_failure: 15
