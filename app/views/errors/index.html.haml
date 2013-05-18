@@ -58,7 +58,7 @@
             - @errors.each do |error|
               %tr
                 %td
-                  %input.error-checkbox{type: 'checkbox', name: @project.id}
+                  %input.error-checkbox{type: 'checkbox', name: 'error_ids[]', value: error.id}
                 %td
                   - if error.level == 'system' || error.level == 'window'
                     %span{class: 'label radius'}= error.level
