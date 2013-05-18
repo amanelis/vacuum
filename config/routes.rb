@@ -56,5 +56,6 @@ Vacuum::Application.routes.draw do
   authenticated :user do
     root :to => "projects#index"
   end
+  
   root to: 'home#index'
 end

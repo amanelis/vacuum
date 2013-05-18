@@ -21,6 +21,7 @@ gem 'delayed_job_web'
 gem 'devise-encryptable'
 gem 'delayed_job_mongoid'
 gem 'will_paginate_mongoid'
+gem 'exception_notification'
 
 # Assets
 group :assets do
