@@ -1,4 +1,4 @@
-- if user_signed_in?  
+- if user_signed_in?
   #upgradeAccount.reveal-modal{:class => "[expand, xlarge, large, medium, small]"}
     %h2 Upgrade Required
     %p
@@ -10,7 +10,7 @@
         %br
         %a.button.round.large.alert{"data-reveal-id" => "chargeCard", :href => "#"} Upgrade
     %a.close-reveal-modal ×
-  
+
   #chargeCard.reveal-modal{:class => "[expand, xlarge, large, medium, small]"}
     %h2 Enter credit card
     %p
@@ -28,7 +28,7 @@
           %span /
           %input.card-expiry-year{:size => "4", :type => "text"}
         %br
-        %a.button.round.large.alert{"data-reveal-id" => "chargeCard", :href => "#", :type => "submit"} Upgrade
+        %a.button.round.success{"data-reveal-id" => "chargeCard", :href => "#", :type => "submit"} Upgrade
     %a.close-reveal-modal ×
 
   - if current_user.needs_to_pay? && SETTINGS[:show_upgrade_modal]
