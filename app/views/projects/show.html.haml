@@ -54,21 +54,6 @@
                                   = link_to "Delete", project_notification_path(@project, notifier), :method => :delete, :confirm => "Are you sure?"
             %p
               #notifications_error
-              #newNotifier.reveal-modal
-                %h5 Add a new person to be notified on error
-                #notifications_new
-                  - @notification = @project.notifications.build
-                  = form_for @notification, :url => project_notifications_path(@project.id), :html => { :id => "notifications_form" } do |f|
-                    = f.label :name
-                    = f.text_field :name
-                    #notifications_name_error
-                    %br
-                    = f.label :email
-                    = f.text_field :email
-                    #notifications_email_error
-                    = hidden_field_tag 'notification_project_id', @project.id
-                    = f.submit 'Create', :class => 'button round'
-                    %a.close-reveal-modal x
               %div{:align => 'left'}
                 %a.success.button.round{"data-reveal-id" => "newNotifier"}
                   %i.foundicon-plus
@@ -103,17 +88,6 @@
                                     = link_to "Delete", project_collaborator_path(@project, collaborator), :method => :delete, :confirm => "Are you sure?"
             %p
               #notifications_error
-              #newCollaborator.reveal-modal
-                %h5 Share access to this project
-                #notifications_new
-                  - @collaborator = @project.collaborators.build
-                  = form_for @collaborator, :url => project_collaborators_path(@project.id), :html => { :id => "collaborators_form" } do |f|
-                    = f.label :email
-                    = f.text_field :email
-                    #collaborators_email_error
-                    = hidden_field_tag 'collaborator_project_id', @project.id
-                    = f.submit 'Create', :class => 'button success round'
-                    %a.close-reveal-modal x
               %div{:align => 'left'}
                 %a.success.button.round{"data-reveal-id" => "newCollaborator"}
                   %i.foundicon-plus
@@ -149,3 +123,31 @@
                 %p= @project.identifier
 
     %a.button.round.small{href: project_errors_path(@project)} < Back to logs
+
+- content_for :modals do
+  #newNotifier.reveal-modal
+    %h5 Add a new person to be notified on error
+    #notifications_new
+      - @notification = @project.notifications.build
+      = form_for @notification, :url => project_notifications_path(@project.id), :html => { :id => "notifications_form" } do |f|
+        = f.label :name
+        = f.text_field :name
+        #notifications_name_error
+        %br
+        = f.label :email
+        = f.text_field :email
+        #notifications_email_error
+        = hidden_field_tag 'notification_project_id', @project.id
+        = f.submit 'Create', :class => 'button round success'
+        %a.close-reveal-modal x
+  #newCollaborator.reveal-modal
+    %h5 Share access to this project
+    #notifications_new
+      - @collaborator = @project.collaborators.build
+      = form_for @collaborator, :url => project_collaborators_path(@project.id), :html => { :id => "collaborators_form" } do |f|
+        = f.label :email
+        = f.text_field :email
+        #collaborators_email_error
+        = hidden_field_tag 'collaborator_project_id', @project.id
+        = f.submit 'Create', :class => 'button success round'
+        %a.close-reveal-modal x

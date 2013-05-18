@@ -2,13 +2,13 @@
   %ul.nav.right
     - if current_user.needs_to_pay?
       %li
-        %a.button.round.small.success{:href => "#", "data-reveal-id" => "chargeCard"} Upgrade
+        %a.cta{:href => "#", "data-reveal-id" => "chargeCard"} Upgrade
     %li
-      %a.button.round.small{href: projects_path} My Projects
+      %a{href: projects_path} My Projects
     %li
-      %a.button.round.small{href: account_path} Account
+      %a{href: account_path} Account
     %li
-      %a.button.round.small{href: logout_path} Logout
+      %a{href: logout_path} Logout
 - else
   %ul.nav.right
     %li

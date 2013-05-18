@@ -24,8 +24,11 @@
         %button.button.round.small.action-on-selected{:href => "#", disabled: true, data: {action: "/error_ignore_path_here"}}
           %i.icon-ban-circle
           Ignore Selected
-        %a.button.round.small{:href => "#", data: {dropdown: 'config-dropdown'}}
-          %i.icon-cog.icon-big
+      .clearfix
+        %h2.left
+          = "#{@project.name}"
+          %a.button.radius.xsmall.settings-link{:href => "#", data: {dropdown: 'config-dropdown'}}
+            %i.icon-cog.icon-big
         %ul#config-dropdown.f-dropdown{data: {dropdown_content: true}}
           %li
             %a{href: project_path(@project, anchor: 'setup') } Setup
@@ -38,7 +41,6 @@
           %li.divider
           %li
             = link_to "Delete", project_path(@project), :method => :delete, :confirm => "Are you sure you want to delete this project?"
-      %h2= "#{@project.name}"
       %form#error-form{name: 'error-form', method: 'post'}
         %table.table.twelve
           %thead
