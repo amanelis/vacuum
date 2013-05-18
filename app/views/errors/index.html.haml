@@ -40,7 +40,9 @@
             %a{href: project_path(@project, anchor: 'settings') } Settings
           %li.divider
           %li
-            = link_to "Delete", project_path(@project), :method => :delete, :confirm => "Are you sure you want to delete this project?"
+            = link_to project_path(@project), :method => :delete, :confirm => "Are you sure you want to delete this project?" do
+              %i.icon-ban-circle
+              Delete project
       %form#error-form{name: 'error-form', method: 'post'}
         %table.table.twelve
           %thead
