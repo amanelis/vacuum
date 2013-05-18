@@ -16,13 +16,13 @@ require 'rspec/autorun'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
+# Configure DatabaseCleaner
+DatabaseCleaner.orm = "mongoid"
+
 # Fabrication fixtures
 Fabrication.configure do |config|
   fabricator_dir = "spec/fabricators"
 end
-
-# Configure DatabaseCleaner
-DatabaseCleaner.orm = "mongoid"
 
 RSpec.configure do |config|  
   # If true, the base class of anonymous controllers will be inferred
