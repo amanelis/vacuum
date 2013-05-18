@@ -1,4 +1,7 @@
 Vacuum::Application.routes.draw do
+  # DJ Monitor
+  match "/dj" => DelayedJobWeb, :anchor => false
+  
   # API Routes
   namespace :api do
     namespace :v1 do
@@ -53,5 +56,6 @@ Vacuum::Application.routes.draw do
   authenticated :user do
     root :to => "projects#index"
   end
+  
   root to: 'home#index'
 end

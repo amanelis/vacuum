@@ -63,4 +63,9 @@ Vacuum::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  # Error exception notifier
+  config.middleware.use ExceptionNotifier,
+    sender_address: 'amanelis@gmail.com',
+    ignore_exceptions: ExceptionNotifier.default_ignore_exceptions
 end

@@ -15,4 +15,7 @@ class Error
 
   ### Embedding
   embeds_many :occurrences, cascade_callbacks: true
+  
+  ### Scopes
+  scope :unresolved, where(resolved: false)
 end

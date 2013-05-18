@@ -5,13 +5,13 @@ class ErrorsController < ApplicationController
   respond_to :html, :js 
   
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:alert] = "Access denied for that projects errors."
+    flash[:alert] = "Access denied for that projects data."
     redirect_to root_path
   end
   
   def index
     authorize! :read, @project
-    @errors  = @project.errors.desc(:updated_at).paginate(page: params[:page], per: 10)
+    @errors  = @project.errors.unresolved.desc(:updated_at).paginate(page: params[:page], per: 10)
   end
   
   def show
