@@ -18,12 +18,9 @@
           = @project.to_js
     - else
       .right
-        %button.button.round.small.action-on-selected{:href => "#", disabled: true, data: {action: "/error_resolve_path_here"}}
+        %button.button.round.small.action-on-selected{:href => "#", disabled: true, data: {action: group_resolve_project_errors_path(@project)}}
           %i.icon-ok
           Resolve Selected
-        %button.button.round.small.action-on-selected{:href => "#", disabled: true, data: {action: "/error_ignore_path_here"}}
-          %i.icon-ban-circle
-          Ignore Selected
       .clearfix
         %h2.left
           = "#{@project.name}"

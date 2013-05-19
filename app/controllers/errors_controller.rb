@@ -1,6 +1,6 @@
 class ErrorsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :load_project, :only => [:index, :show, :resolve]
+  before_filter :load_project, :only => [:index, :show, :group_resolve, :resolve]
   before_filter :load_error,   :only => [:show, :resolve]
   respond_to :html, :js
 
@@ -19,8 +19,17 @@ class ErrorsController < ApplicationController
     @occurrences = @error.occurrences.desc(:updated_at).paginate(page: params[:page], per: 10)
   end
 
+  def group_resolve
+    authorize! :resolve, @project
+    error_ids = params[:error_ids]
+    error_ids.each do |id|
+      @project.errors.find(id).update_attributes!(resolved: true)
+    end
+    redirect_to project_errors_path(@project)
+  end
+
   def resolve
-    authorize! :resolve, @error
+    authorize! :resolve, @project
     @error.update_attributes!(resolved: params[:error][:resolved])
   end
 
