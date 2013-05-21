@@ -16,7 +16,7 @@
       %tbody
         - @occurrences.each do |occurrence|
           %tr
-            %td= image_tag "/assets/#{occurrence.human_agent}.png", width: '16px', height: '16px'
+            %td= image_tag "#{occurrence.human_agent}.png", width: '16px', height: '16px'
             %td= occurrence.try(:file)
             %td
               - if occurrence.parameters.nil? || occurrence.parameters.empty?
