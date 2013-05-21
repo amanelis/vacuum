@@ -35,7 +35,6 @@ class Occurrence
   field :user_agent,          type: String
   field :vendor,              type: String
   field :window_event,        type: String
-  
   field :identifier,          type: String
   
   ### Embedding
