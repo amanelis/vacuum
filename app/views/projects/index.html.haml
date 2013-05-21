@@ -23,7 +23,7 @@
                     %em n/a
                 - else
                   %td= time_ago_in_words(project.errors.desc(:updated_at).first.updated_at)
-                %td= project.errors.where(resolved: nil).count
+                %td= project.errors.unresolved.count
                 %td= project.errors.count
                 %th
                   .small.button.dropdown.round{:href => "#", data: {dropdown: 'config-dropdown'}}
