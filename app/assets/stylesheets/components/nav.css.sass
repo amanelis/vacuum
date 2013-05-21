@@ -1,7 +1,24 @@
 .nav
   list-style: none
   margin: 24px 0
+  background: #f3f3f3
+  border-radius: 5px
+  padding: 0 10px
 
   > li
     float: left
-    margin-left: 15px
+    margin: 0
+    > a
+      color: #888
+      display: block
+      padding: 10px 20px
+      font-size: .9em
+      &.cta
+        // border-bottom: 3px solid $mainColor
+        // padding-bottom: 7px
+        // background: #e4e4e4
+        color: $mainColor
+      &:hover
+        color: #fff
+        background: $mainColor
+

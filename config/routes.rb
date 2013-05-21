@@ -1,7 +1,7 @@
 Vacuum::Application.routes.draw do
   # DJ Monitor
   match "/dj" => DelayedJobWeb, :anchor => false
-  
+
   # API Routes
   namespace :api do
     namespace :v1 do
@@ -33,6 +33,9 @@ Vacuum::Application.routes.draw do
   # Standard Resourcing
   resources :projects do
     resources :errors do
+      collection do
+        post :group_resolve
+      end
       member do
         get :resolve
       end
@@ -45,7 +48,7 @@ Vacuum::Application.routes.draw do
   if Rails.env.development?
     match '/logger/:id/err'   => 'home#errors', :via => [:get, :post]
     match '/logger'           => 'home#errors', :via => [:get, :post]
-    
+
     # Preview all emails with routes like followed
     mount AdminPreview  => 'admin_mail'
     mount ErrorPreview  => 'error_mail'
@@ -56,6 +59,6 @@ Vacuum::Application.routes.draw do
   authenticated :user do
     root :to => "projects#index"
   end
-  
+
   root to: 'home#index'
 end

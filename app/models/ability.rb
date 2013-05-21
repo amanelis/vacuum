@@ -4,27 +4,27 @@ class Ability
   def initialize(user)
     # Define a user
     user ||= User.new
-    
+
     if user.admin?
       can :manage, :all
-    else      
+    else
       ### Projects ###
       can :create, Project if user.create_project?
       can [:read, :update, :destroy], Project do |project|
         project.user_id == user.id || project.collaborators.collect { |c| BSON::ObjectId(c.user_id).to_s == user.id.to_s }.any?
-      end  
-      
+      end
+
+      can [:resolve, :destroy], Project do |project|
+        project.user_id == user.id
+      end
+
       ### Errors ###
       can :create, Error do |error|
         error.project.user_id = user.id
       end
-      
+
       can [:read], Error do |error|
         error.project.user_id == user.id || error.project.collaborators.collect { |c| BSON::ObjectId(c.user_id).to_s == user.id.to_s }.any?
-      end
-      
-      can [:resolve, :destroy], Error do |error|
-        error.project.user_id == user.id
       end
     end
   end

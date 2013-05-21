@@ -4,9 +4,6 @@
       %h5= @occurrences.count
       occurrences
     %h3 #{@occurrences.last.error.message}
-    %p{class: "error-status #{@error.resolved ? 'resolved' : 'unresolved'}"}
-      %i.foundicon-checkmark Resolved
-      %i.foundicon-error Unresolved
 
     %table.table
       %thead

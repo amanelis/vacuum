@@ -24,7 +24,7 @@ class Project
 
   def to_js
     host = Rails.env.development? || Rails.env.test? ? '//localhost:3000' : '//vacuum.io'
-    script = "<script type=\"text/javascript\">" + 
+    script = "<script type=\"text/javascript\">" +
       "var _vacuum = _vacuum || []; " +
       "_vacuum.push(['_setKey', '"+self.api_key+"']);" +
       "_vacuum.push(['_setIdentifier', '"+self.identifier+"']);" +
