@@ -53,6 +53,6 @@ class Occurrence
     return nil if self.user_agent.nil? || self.user_agent.empty?
     ['chrome', 'firefox', 'explorer', 'ie', 'netscape', 'opera', 'safari'].collect { |a| 
       return a if self.user_agent.downcase.include?(a) 
-    }.try(:uniq)
+    }.try(:uniq).try(:first)
   end
 end
