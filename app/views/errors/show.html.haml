@@ -17,7 +17,6 @@
         - @occurrences.each do |occurrence|
           %tr
             %td= image_tag "/assets/#{occurrence.human_agent}.png", width: '16px', height: '16px'
-            / %td= occurrence.href.gsub(/\?(.*)$/, '')
             %td= occurrence.try(:file)
             %td
               - if occurrence.parameters.nil? || occurrence.parameters.empty?
@@ -31,8 +30,7 @@
                 = occurrence.line
             %td= occurrence.created_at
 
-
-      = will_paginate(@occurrences)
+    = will_paginate(@occurrences)
 
     .row
       %a.alert.button.round.right{href: '#', 'data-reveal-id' => 'stack-trace-modal'} Browser Data
