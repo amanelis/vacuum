@@ -109,13 +109,6 @@
                   = f.submit 'Update', :class => 'button round success'
                   = link_to 'Cancel', request.referrer
               .large-6.columns
-                %h2 Configuration
-                %p
-                  Be sure to install this js after the
-                  %code= "<head>"
-                  tag in your application.
-                  %textarea{rows: 4}
-                    = @project.to_js
                 %h2 API Key
                 %p= @project.api_key
 
