@@ -26,24 +26,23 @@
                 %td= project.errors.unresolved.count
                 %td= project.errors.count
                 %th
-                  .small.button.dropdown.round{:href => "#", data: {dropdown: 'config-dropdown'}}
-                    Configuration
+                  .small.button.dropdown.round{href:  "#", data: {dropdown: 'config-dropdown'}} Configuration
                   %ul#config-dropdown.f-dropdown{data: {dropdown_content: true}}
                     %li
-                      %a{href: project_path(project, anchor: 'setup') } Setup
+                      %a{href: project_path(project, anchor: 'setup')} Setup
                     %li
-                      %a{href: project_path(project, anchor: 'notifications') } Notifications
+                      %a{href: project_path(project, anchor: 'notifications')} Notifications
                     %li
-                      %a{href: project_path(project, anchor: 'collaborators') } Collaborators
+                      %a{href: project_path(project, anchor: 'collaborators')} Collaborators
                     %li
-                      %a{href: project_path(project, anchor: 'settings') } Settings
+                      %a{href: project_path(project, anchor: 'settings')} Settings
                     %li.divider
                     %li
-                      = link_to project_path(project), :method => :delete, :confirm => "Are you sure you want to delete this project?" do
+                      = link_to project_path(project), :method => :delete, confirm: "Are you sure you want to delete this project?" do
                         %i.icon-ban-circle
                         Delete project
-      %div{:align => 'left'}
-        %a.success.button.round{:href => new_project_path}
+      %div{align: 'left'}
+        %a.success.button.round{href: new_project_path}
           %i.foundicon-plus
           Create a project
         = will_paginate(@projects)
