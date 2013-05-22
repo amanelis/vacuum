@@ -50,7 +50,7 @@ class Occurrence
   # returns a readble version for our user to see.
   def human_agent
     return nil if self.user_agent.nil? || self.user_agent.empty?
-    ['chrome', 'firefox', 'explorer', 'ie', 'netscape', 'opera', 'safari'].collect { |a| 
+    ['chrome', 'firefox', 'explorer', 'ie', 'netscape', 'opera', 'safari', 'iphone'].collect { |a| 
       return a if self.user_agent.downcase.include?(a) 
     }.try(:uniq).try(:first)
   end
