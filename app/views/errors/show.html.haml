@@ -19,22 +19,14 @@
             %td= image_tag "#{occurrence.human_agent}.png", width: '16px', height: '16px'
             %td= occurrence.try(:file)
             %td
-              - if occurrence.parameters.nil? || occurrence.parameters.empty?
-                = '{}'
-              - else
-                = occurrence.parameters
+              = occurrence.parameters.nil? || occurrence.parameters.empty? ? '{}' : occurrence.parameters
             %td
-              - if occurrence.line.nil? || occurrence.line.empty?
-                n/a
-              - else
-                = occurrence.line
+              = occurrence.line.nil? || occurrence.line.empty? ? 'n/a' : occurrence.line
             %td= occurrence.created_at
-
     = will_paginate(@occurrences)
 
     .row
       %a.alert.button.round.right{href: '#', 'data-reveal-id' => 'stack-trace-modal'} Browser Data
-
     %a.button.small.round{href: project_errors_path(@project)} < Back
 
 - content_for :modals do
