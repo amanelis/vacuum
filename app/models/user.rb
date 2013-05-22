@@ -66,7 +66,9 @@ class User
   # create_project?
   # Method for authorization to create more projects. User must be paying to do this.
   def create_project?
-    return true if self.admin?
+    return true if self.admin? # admin always true
+    
+    # False if they have not paid and they have added at least one project
     return false if !self.paid? && self.projects.count >= 1
     return true
   end
@@ -74,8 +76,13 @@ class User
   # has_paid?
   # If the admin is present or user has paid, payment is not required.
   def needs_to_pay?
-    return false if self.admin?
-    return false if self.paid?
-    return true
+    return false if self.admin? # admin always true
+    
+    # 30 days, really needs to pay
+    return true if !self.paid? && 30.days.ago > self.created_at 
+    
+    # False if they need to pay their bill
+    return true if !self.paid?
+    return false
   end
 end
