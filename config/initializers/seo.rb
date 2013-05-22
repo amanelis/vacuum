@@ -6,7 +6,7 @@ $meta = {
  
  description: {
    name: 'description',
-   content: 'Vacuum is a front end error logging and reporting service. Log errors on client side from the browsers of your users.'
+   content: 'Vacuum is a front end error logging and reporting service. Log errors on client side from the browsers of your application.'
  },
  
  viewport: {
