@@ -1,11 +1,11 @@
 %head
   %title Vacuum
-  %meta{:content => 'yes', :name => 'apple-mobile-web-app-capable'}
-  %meta{:content => 'black', :name => 'apple-mobile-web-app-status-bar-style'}
-  %meta{:content => $meta[:viewport][:content], :name => $meta[:viewport][:name]}
-  %meta{:content => $meta[:keywords][:content], :name => $meta[:keywords][:name]}
-  %meta{:content => $meta[:description][:content], :name => $meta[:description][:name]}
-  %link{:href => 'http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,400italic,700italic', :rel => 'stylesheet', :type => 'text/css'}
+  %meta{content: 'yes', name: 'apple-mobile-web-app-capable'}
+  %meta{content: 'black', name: 'apple-mobile-web-app-status-bar-style'}
+  %meta{content: $meta[:viewport][:content], name: $meta[:viewport][:name]}
+  %meta{content: $meta[:keywords][:content], name: $meta[:keywords][:name]}
+  %meta{content: $meta[:description][:content], name: $meta[:description][:name]}
+  %link{href: 'http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,400italic,700italic', rel: 'stylesheet', type: 'text/css'}
   = csrf_meta_tags
   = stylesheet_link_tag 'application', media: 'all'
   = javascript_include_tag 'application', 'https://js.stripe.com/v1/'
