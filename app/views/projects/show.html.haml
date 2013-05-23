@@ -64,7 +64,7 @@
             %a{href: '#collaborators'} Collaborators
           .content{data: {slug: 'collaborators', section_content: true}}
             %h2 Collaborators
-            %h6.subheader Gives a Vacuum user read access to your project.
+            %h6.subheader Gives another Vacuum user read access to your project.
             %p
               - unless @project.collaborators.empty?
                 #collaborator_members
@@ -109,13 +109,6 @@
                   = f.submit 'Update', :class => 'button round success'
                   = link_to 'Cancel', request.referrer
               .large-6.columns
-                %h2 Configuration
-                %p
-                  Be sure to install this js after the
-                  %code= "<head>"
-                  tag in your application.
-                  %textarea{rows: 4}
-                    = @project.to_js
                 %h2 API Key
                 %p= @project.api_key
 

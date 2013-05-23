@@ -16,5 +16,4 @@
 //= require lib/underscore
 //= require lib/encapsulatedPlugin
 //= require lib/toggle
-
 //= require main

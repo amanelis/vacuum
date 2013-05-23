@@ -25,7 +25,6 @@ $ ->
     else
       @submit()
 
-
   # Collaborators form validation
   $("#collaborators_form").submit (evt) ->
     evt.preventDefault()
@@ -43,12 +42,10 @@ $ ->
     else
       @submit()
 
-
   # Text area for script tag, auto highlight
   $("textarea#codebox").click ->
     @focus()
     @select()
-
 
   $errorCheckboxes = $('.error-checkbox')
   if $errorCheckboxes.length
