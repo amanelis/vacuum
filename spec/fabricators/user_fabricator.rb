@@ -10,7 +10,7 @@ Fabricator(:user) do
   
   projects(count: 2) do |project, i|
     Fabricate(:project, name: "#{i} proj")
-  end
+  end  
 end
 
 Fabricator(:admin, :from => :user) do
