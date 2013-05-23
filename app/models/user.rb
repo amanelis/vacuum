@@ -58,6 +58,7 @@ class User
   
   ### Associations
   has_many :projects, autosave: true, :dependent => :destroy
+  has_one  :subscription, autosave: true, :dependent => :destroy
   
   ### Scopes
   scope :admin,       where(admin: true)
