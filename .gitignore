@@ -9,6 +9,8 @@
 /.bundle
 /.idea
 
+/vendor/bundle
+
 coverage/
 
 # Ignore the default SQLite database.

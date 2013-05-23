@@ -1,6 +1,12 @@
 %header
   .row
-    .large-3.columns
-      %a#logo{href: '/'} Vacuum
-    .large-9.columns
-      = render partial: 'layouts/header/navigation'
+    .large-12.columns
+      %nav.top-bar
+        %ul.title-area
+          %li
+            %a#logo{href: '/'} Vacuum
+          %li.toggle-topbar
+            %a{href: '#'}
+              %i.icon-reorder
+        %section.top-bar-section
+          = render partial: 'layouts/header/navigation'

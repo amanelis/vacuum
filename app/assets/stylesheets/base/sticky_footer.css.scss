@@ -23,7 +23,7 @@ html, body {height: 100%;}
 
 #footer {position: relative;
   margin-top: - $height; /* negative value of footer height removing offset */
-  height: $height;
+  min-height: $height;
   clear:both;}
 
 /*Opera Fix*/
