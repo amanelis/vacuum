@@ -46,28 +46,39 @@ $ ->
   $('form#charge_form').submit (evt) ->
     evt.preventDefault
     _this = $(this)
-    console.log('payment for submitted')
     
-    $("#card_number").removeAttr("name")
-    $("#card_cvc").removeAttr("name")
-    $("#expiry_month").removeAttr("name")
-    $("#expiry_year").removeAttr("name")
+    $('span.payment-errors').empty()
     
     Stripe.createToken
-      number: $("#card_number").val()
-      cvc: $("#card_cvc").val()
-      exp_month: $("#expiry_month").val()
-      exp_year: $("#expiry_year").val()
-      
-    , 100, (status, response) ->
-      if response.error
-        console.log(response.error.message)
-      else
-        token = response["id"]
-        input = $("<input name='stripeToken' value='" + token + "' style='display:none;' />")
-        _this.appendChild input[0]
-        _this.submit()
+      number:     $("#card_number").val()
+      cvc:        $("#card_cvc").val()
+      exp_month:  $("#expiry_month").val()
+      exp_year:   $("#expiry_year").val()
+    , stripeResponseHandler
     
+  stripeResponseHandler = (status, response) ->
+    if response.error
+
+      # show the errors on the form
+      $("span.payment-errors").text response.error.message
+    else
+      form$ = $("form#charge_form")
+
+      # token contains id, last4, and card type
+      token = response["id"]
+
+      # insert the token into the form so it gets submitted to the server
+      form$.append "<input type='hidden' name='stripeToken' value='" + token + "'/>"
+
+      # Clear the fields
+      $("#card_number").val('')
+      $("#card_cvc").val('')
+      $("#expiry_month").val('')
+      $("#expiry_year").val('')
+
+      # and submit
+      form$.get(0).submit()
+
 
   # Text area for script tag, auto highlight
   $("textarea#codebox").click ->

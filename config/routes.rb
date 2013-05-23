@@ -31,6 +31,7 @@ Vacuum::Application.routes.draw do
   end
 
   # Standard Resourcing
+  resources :billing
   resources :projects do
     resources :errors do
       collection do
