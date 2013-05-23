@@ -94,11 +94,67 @@ header
   // padding-top: 30px
   border-top: 7px solid #2f2f2f
   margin: 0 0 30px
+  nav.top-bar
+    height: 67px
+    background: transparent
+    .title-area
+      #logo
+        width: 213px
+        height: 67px
+        background: url(image_path('logo-main.png')) no-repeat 0 18px
+        text-indent: -999em
+        display: block
+    .toggle-topbar
+      top: 22px
+      a
+        background: #f3f3f3
+        border-bottom: 1px solid #ccc
+        color: #888
+        &:hover
+          color: #fff
+          background: $mainColor
 
-  #logo
-    width: 242px
-    height: 54px
-    background: url(image_path('logo-main.png')) no-repeat
-    text-indent: -999em
-    margin: 17px 0 0
-    display: block
+    .top-bar-section
+      ul
+        list-style: none
+        background: #f3f3f3
+        border-bottom: 1px solid #ccc
+        font-size: 1.2em
+        > li
+          margin: 0
+          border-bottom: 1px solid #ddd
+          &:last-child
+            border-bottom: none
+          > a
+            color: #888
+            display: block
+            padding: 10px 20px
+            font-size: .9em
+            line-height: inherit
+            background: transparent
+            font-weight: normal
+            &.cta
+              // border-bottom: 3px solid $mainColor
+              // padding-bottom: 7px
+              background: $secondaryColor
+              color: #fff
+            &:hover
+              color: #fff
+              background: $mainColor
+    &.expanded
+      background: transparent
+      .title-area
+        background: transparent
+
+@media only screen and (min-width: 58.75em)
+  header
+    nav.top-bar
+      .top-bar-section
+        ul
+          font-size: 1em
+          margin: 19px 0
+          padding: 0 10px
+          border-radius: 3px
+          > li
+            float: left
+            border: none

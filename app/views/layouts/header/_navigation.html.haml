@@ -1,8 +1,8 @@
 - if user_signed_in?
-  %ul.nav.right
+  %ul.right
     - if current_user.needs_to_pay?
       %li
-        %a.cta{:href => "#", "data-reveal-id" => "chargeCard"} Upgrade
+        %a.cta{href: pricing_path} Upgrade
     %li
       %a{href: projects_path} My Projects
     %li

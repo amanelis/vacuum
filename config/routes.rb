@@ -30,6 +30,9 @@ Vacuum::Application.routes.draw do
     get '/forgot'        => 'user/passwords#new',       as: 'forgot_password'
   end
 
+  # Static pages
+  get '/pricing'        => 'pages#pricing',             as: 'pricing'
+
   # Standard Resourcing
   resources :projects do
     resources :errors do

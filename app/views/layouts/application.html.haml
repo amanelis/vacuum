@@ -2,13 +2,13 @@
 %html
   = render partial: 'layouts/header/head'
   %body
-    - if content_for?(:modals)
-      .row#modals
+    .row#modals
+      = render partial: 'layouts/includes/payment_modal'
+      - if content_for?(:modals)
         = yield(:modals)
     #wrap
       #main
         = render partial: 'layouts/header/header'
         = render partial: 'layouts/header/flash'
         = yield
-        = render partial: 'layouts/includes/payment_modal'
     = render partial: 'layouts/footer/navigation'
