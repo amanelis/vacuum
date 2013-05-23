@@ -41,6 +41,33 @@ $ ->
       false
     else
       @submit()
+      
+  # Payment form
+  $('form#charge_form').submit (evt) ->
+    evt.preventDefault
+    _this = $(this)
+    console.log('payment for submitted')
+    
+    $("#card_number").removeAttr("name")
+    $("#card_cvc").removeAttr("name")
+    $("#expiry_month").removeAttr("name")
+    $("#expiry_year").removeAttr("name")
+    
+    Stripe.createToken
+      number: $("#card_number").val()
+      cvc: $("#card_cvc").val()
+      exp_month: $("#expiry_month").val()
+      exp_year: $("#expiry_year").val()
+      
+    , 100, (status, response) ->
+      if response.error
+        console.log(response.error.message)
+      else
+        token = response["id"]
+        input = $("<input name='stripeToken' value='" + token + "' style='display:none;' />")
+        _this.appendChild input[0]
+        _this.submit()
+    
 
   # Text area for script tag, auto highlight
   $("textarea#codebox").click ->
