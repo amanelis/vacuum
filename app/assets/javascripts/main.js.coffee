@@ -1,5 +1,9 @@
 $ ->
+  # Initialize Foundation
   $(document).foundation()
+  
+  # Initialize Tracker
+  _tracker = new Tracker({debug: true})
 
   # Notifications form validation
   $("#notifications_form").submit (evt) ->
