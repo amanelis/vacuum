@@ -138,7 +138,6 @@ GEM
       tilt
     method_source (0.8.1)
     mime-types (1.23)
-    minitest (5.0.2)
     mongoid (3.1.4)
       activemodel (~> 3.2)
       moped (~> 1.4)
@@ -291,7 +290,6 @@ DEPENDENCIES
   jquery-rails
   launchy
   mail_view
-  minitest
   mongoid
   mongoid-rspec
   pry-rails

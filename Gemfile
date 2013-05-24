@@ -68,7 +68,6 @@ group :test do
   gem 'launchy'
   gem 'webmock'
   gem 'capybara'
-  gem 'minitest'
   gem 'simplecov'
   gem 'fabrication'
   gem 'database_cleaner'

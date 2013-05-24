@@ -21,7 +21,7 @@ describe ProjectsController do
     context "when not logged in" do
       it "returns http success" do
         get 'index'
-        response.should redirect_to(new_user_session_path) || redirect_to(login_path)
+        response.should be_redirect
       end
     end
   end
@@ -30,7 +30,7 @@ describe ProjectsController do
     context "when not logged in" do
       it "returns http success" do
         get 'new'
-        response.should redirect_to(new_user_session_path) || redirect_to(login_path)
+        response.should be_redirect
       end
     end
   end
