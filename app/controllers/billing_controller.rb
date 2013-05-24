@@ -11,15 +11,16 @@ class BillingController < ApplicationController
     
     # Create a subscription if they don't have one
     current_user.create_subscription if current_user.subscription.nil?
-    
-
+  
     begin 
-      # Sign up a customer to the plan
-      customer = Stripe::Customer.create(
-        :card => params[:stripeToken],
-        :plan => "basic_yearly_7500",
-        :email => current_user.email
-      )
+      card_info = {
+        card: params[:stripeToken],
+        plan: "basic_yearly_7500",
+        email: current_user.email
+      }
+      
+      # Sign a customer up to our plan.
+      customer = Stripe::Customer.create(card_info)
     rescue => e
       flash[:error] = "There was an error charging your card. #{e}"
       redirect_to root_path
@@ -27,7 +28,6 @@ class BillingController < ApplicationController
     end
     
     # Update a few attributes
-    current_user.update_attributes!(paid: true)
     current_user.subscription.update_attributes!(paid: true, subscribed_on: Time.now, stripe_token: params[:stripeToken], stripe_customer_id: customer.id)
     
     flash[:success] = "Thanks! We charged your card and you are good to go."
