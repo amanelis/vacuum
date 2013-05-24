@@ -1,0 +1,10 @@
+div.switch
+  input
+    &:last-of-type
+      & + label, & + span + label
+        color: darken($mainColor, 20%)
+  label
+    position: absolute
+    width: 100%
+  > span
+    +box-shadow((2px 0 10px 0 rgba(0, 0, 0, 0.07), 1000px 0 0 980px lighten($mainColor, 30%), -2px 0 10px 0 rgba(0, 0, 0, 0.07), -1000px 0 0 1000px whitesmoke))

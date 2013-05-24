@@ -41,21 +41,21 @@ $ ->
       false
     else
       @submit()
-      
+
   # Payment form
   $('form#charge_form').submit (evt) ->
     evt.preventDefault
     _this = $(this)
-    
+
     $('span.payment-errors').empty()
-    
+
     Stripe.createToken
       number:     $("#card_number").val()
       cvc:        $("#card_cvc").val()
       exp_month:  $("#expiry_month").val()
       exp_year:   $("#expiry_year").val()
     , stripeResponseHandler
-    
+
   stripeResponseHandler = (status, response) ->
     if response.error
 
@@ -84,6 +84,14 @@ $ ->
   $("textarea#codebox").click ->
     @focus()
     @select()
+
+  # Resolve error ajax functionality for error#show page
+  $resolveForm = $('#resolve-error')
+  if $resolveForm.length
+    $resolveForm.find(':input').change (e) ->
+      $.ajax
+        url: "#{$resolveForm.attr('action')}/resolve",
+        data: $resolveForm.serialize()
 
   $errorCheckboxes = $('.error-checkbox')
   if $errorCheckboxes.length

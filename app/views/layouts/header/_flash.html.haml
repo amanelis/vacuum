@@ -2,4 +2,6 @@
   .large-12.columns
     - unless flash.nil?
       - flash.each do |name, msg|
-        = content_tag :div, msg, :id => "flash_#{name}"
+        .alert-box{data: {alert: true}}
+          = msg
+          %a.close{href: true} ×
