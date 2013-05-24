@@ -4,6 +4,10 @@
     .panel
       = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
         = devise_error_messages!
+        
+        = label_tag 'Invite Code'
+        = text_field_tag 'invite_code'
+        
         = f.label :email
         = f.email_field :email
         = f.label :password

@@ -10,6 +10,13 @@ class User::RegistrationsController < DeviseController
 
   # POST /resource
   def create
+
+    if params[:invite_code] != 'vacuum'
+      flash[:error] = 'That invite code was incorrect. We have your email now and will notify when we open up to the public.'
+      redirect_to root_path
+      return false
+    end
+    
     build_resource
 
     if resource.save
