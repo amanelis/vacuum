@@ -31,7 +31,7 @@ Vacuum::Application.routes.draw do
   end
 
   # Static pages
-  get '/pricing'        => 'pages#pricing',             as: 'pricing'
+  get '/pricing'         => 'pages#pricing',            as: 'pricing'
 
   # Standard Resourcing
   resources :billing

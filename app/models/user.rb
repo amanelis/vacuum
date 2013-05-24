@@ -72,7 +72,7 @@ class User
     return false if self.subscription.nil? && self.projects.count >= 1
     
     # False if they have not paid
-    return false if self.subscription.nil?
+    return false if self.subscription.nil? && 14.days.ago > self.created_at 
     return true
   end
   

@@ -1,9 +1,16 @@
 module ProjectsHelper
   def create_project(params)
+    if params[:project][:name].nil? || params[:project][:name].empty? ||
+      params[:project][:url].nil? || params[:project][:url].empty?
+      flash[:error] = "Incorrect parameters missing or passed. Please try again."
+      redirect_to new_project_path
+      return false
+    end
+    
     @project = current_user.projects.build(params[:project])
     
     if @project.save
-      flash[:success] = "Awesome! Lets get you logging some errors now"
+      flash[:success] = "Awesome! Lets get you logging some errors now."
       redirect_to project_path(@project)
     else
       flash[:alert] = "Ooops, #{@project.errors.messages.collect { |k,v| "#{k.upcase} #{v.first}" }.join(',').gsub(',', ', ')}"

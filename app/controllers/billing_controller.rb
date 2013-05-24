@@ -1,6 +1,5 @@
 class BillingController < ApplicationController
   before_filter :authenticate_user!
-  respond_to :html, :js
   
   def create
     if params[:stripeToken].nil? || params[:stripeToken].empty?
@@ -11,7 +10,7 @@ class BillingController < ApplicationController
     
     # Create a subscription if they don't have one
     current_user.create_subscription if current_user.subscription.nil?
-  
+
     begin 
       card_info = {
         card: params[:stripeToken],
@@ -26,7 +25,7 @@ class BillingController < ApplicationController
       redirect_to root_path
       return false
     end
-    
+
     # Update a few attributes
     current_user.subscription.update_attributes!(paid: true, subscribed_on: Time.now, stripe_token: params[:stripeToken], stripe_customer_id: customer.id)
     
