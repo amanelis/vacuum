@@ -3,3 +3,174 @@
   typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");for(g=0;g<i.length;g++)f(c,i[g]);
   b._i.push([a,e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);
   mixpanel.init("#{MIXPANEL_TOKEN}");
+  
+  /**
+   * @constructor
+   * @param {object} object/hash of key, value pairs to set configuration.
+   */
+  var Tracker = function(config) {
+    var _config   = config || {}
+      , _defaults = {
+          debug: false
+        };
+
+    var _key;
+    for (_key in _defaults) {
+      if (_defaults.hasOwnProperty(_key)) {
+        if (!_config.hasOwnProperty(_key)) _config[_key] = _defaults[_key];
+      }
+    }
+
+    /**
+     * Saves the config, to be globally accessible through the object
+     * itself.
+     */
+    this.config = _config;
+
+    /**
+     * Sets the currently logged in user's email and uuid into if it
+     * is available in the DOM from the <body> tag. 
+     * this.vacuum_current_user_uuid_val
+     * this.vacuum_current_user_email_val
+     */
+    this.setCurrentUser();
+    
+    if (this.config.debug) {
+      this.logger("Tracker[initialized][#{MIXPANEL_TOKEN}]");
+      this.logger("Tracker[identified][" + this.getCookie(this.vacuum_uuid_val) + "]")
+    }
+  };
+  
+  /**
+   * Default key value for cookie _vacuum_uuid.
+   */
+  Tracker.prototype.VACUUM_UUID_KEY = '_vacuum_uuid';
+  Tracker.prototype.vacuum_uuid_val = '';
+
+  /**
+   * Default key value for the cookie _vacuum_current_user_uuid.
+   */
+  Tracker.prototype.VACUUM_CURRENT_USER_UUID_KEY = '_vacuum_current_user_uuid';
+  Tracker.prototype.vacuum_current_user_uuid_val = '';
+
+  /**
+   * Default key value for the cookie _vacuum_current_user_email.
+   */
+  Tracker.prototype.VACUUM_CURRENT_USER_EMAIL_KEY = '_vacuum_current_user_email';
+  Tracker.prototype.vacuum_current_user_email_val = '';
+  
+  
+  /**
+   * Setup default rels/hrefs to track.
+   */
+  Tracker.prototype.TRACKABLE_ENTITIES = {
+    externals: [
+      'http://twitter.com/vacuum',
+      'http://twitter.com/amanelis',
+      'http://twitter.com/mattsjohnston'
+    ], /* external hrefs to third party sources */
+
+    hrefs: [
+      '/',
+      '/login',
+      '/signup',
+      '/forgot',
+      '/users/sign_up',
+      '/users/sign_in',
+      '/projects',
+      '/projects/new',
+      '/pricing',
+      '/account'
+    ], /* hrefs to watch for clicks */
+
+    ids: [
+      'signIn'
+    ], /* ids to watch for clicks */
+
+    selectors: [
+    ], /* selectors to watch for clicks on */
+
+    form_ids: [
+    ] /* forms to watch for submissions on */
+  };
+  
+  /**
+   * Generate long uuids
+   * @return {string} Hex/decimal string for _signifyd_uuid cookie value.
+   */
+  Tracker.prototype.generateUuid = function() {
+    return Math.floor((1 + Math.random()) * 0x100000000).toString(16);
+  };
+  
+  /**
+   * Logger determined by debug mode
+   * @param {string} message The message that the logger will log to console.
+   */
+  Tracker.prototype.logger = function(message) {
+    var _message = message
+      , _tracker = this;
+    if (typeof _message === 'undefined') return false;
+    if (_tracker.config.debug) console.log(_message);
+  };
+  
+  /**
+   * Sets a cookie with params passed.
+   * @param {string} Data - the actual value to set for the cookie.
+   * @return {string} The value of the cookie set.
+   */
+  Tracker.prototype.setCookie = function(key, value) {
+    var _tracker    = this;
+    var _key        = key   || _tracker.VACUUM_UUID_KEY
+      , _value      = value || _tracker.generateUuid()
+      , _cookieDate = new Date;
+
+    // Set cookie ahead ten years for expiration.
+    _cookieDate.setFullYear(_cookieDate.getFullYear() + 10);
+
+    // TODO: amanelis
+    // Prolly should put a cookie set check here for browsers that do not
+    // allow cookies to be set.
+    document.cookie = _key +"=" + _value + ';expires=' + _cookieDate.toGMTString( ) + ';path=/';
+    _tracker.vacuum_uuid_val = _value;
+    return _value;
+  };
+  
+  /**
+   * Gets a cookie by given key param.
+   * @param {string} Key - value of cookie to return by from key.
+   * @return {string} Will return the data if found, new cookie, if not.
+   */
+  Tracker.prototype.getCookie = function(key) {
+    var _tracker  = this
+      , _key      = key
+      , _cookies  = document.cookie.split(';');
+
+    for (var _i = 0; _i < _cookies.length; _i++) {
+      var _cookie = _cookies[_i].trim()
+        , _values = _cookie.split('=');
+      if (_key.localeCompare(_values[0].trim()) == 0) return _values[1];
+    }
+
+    // Continue and set new uuid() cookie, if none are available and return that value.
+    return _this_cookie = _tracker.setCookie(_tracker.VACUUM_UUID_KEY, _tracker.generateUuid());
+  };
+  
+  /**
+   * Sets the currently logged in user's email and uuid into the 
+   * instance variables. This data is found in the <body> tag of the DOM.
+   */
+  Tracker.prototype.setCurrentUser = function() {
+    var _tracker = this
+      , _cookie  = this.getCookie(this.vacuum_uuid_val); 
+
+    if (($('body').data('user-uuid') !=null && $('body').data('user-email') !=null) ||
+        ($('body').data('user-uuid') !=""   && $('body').data('user-email') !="")) {
+      _tracker.vacuum_current_user_uuid_val  = $('body').data('user-uuid');
+      _tracker.vacuum_current_user_email_val = $('body').data('user-email');
+    }
+  };
+  
+  /**
+   * Make the object globally usable.
+   */
+  window['tracker'] = Tracker;
