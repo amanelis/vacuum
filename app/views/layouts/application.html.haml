@@ -1,7 +1,8 @@
 !!!
 %html
   = render partial: 'layouts/header/head'
-  %body
+  = render partial: 'layouts/includes/user'
+  %body{'data-uuid' => cookies['_vacuum_uuid'], 'data-user-uuid' => $user[:current_user_uuid], 'data-user-email' => $user[:current_user_email]}
     .row#modals
       = render partial: 'layouts/includes/payment_modal'
       - if content_for?(:modals)
