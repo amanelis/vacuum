@@ -132,4 +132,38 @@ describe ProjectsController do
       it { should be_redirect }
     end
   end
+  
+  describe "PUT 'update'" do
+    let(:user) { Fabricate(:user) }
+    let(:project) { user.projects.first }
+    let(:person) { Fabricate(:user) }
+    
+    context 'when logged in' do
+      context 'and the user owns the projes' do
+        context 'and the request is made with proper attributes' do
+          subject { put 'update', {id: project.id, project: {name: Faker::Internet.user_name, url: "http://#{Faker::Internet.domain_name}"}} }
+          it { should_not be_nil }
+          it { should be_redirect }
+        end
+
+        context 'and the request is made with in proper attributes' do
+          subject { put 'update', {id: project.id} }
+          it { should_not be_nil }
+          it { should be_redirect }
+        end
+      end
+      
+      context 'and the user does not own the project' do
+        subject { put 'update', {id: person.projects.first.id, project: {name: Faker::Internet.user_name, url: "http://#{Faker::Internet.domain_name}"}} }
+        it { should_not be_nil }
+        it { should be_redirect }
+      end
+    end
+    
+    context 'when not logged in' do
+      subject { put 'update', id: SecureRandom.hex(25)[0...20] }
+      it { should_not be_nil }
+      it { should be_redirect }
+    end
+  end
 end
