@@ -4,8 +4,9 @@
   %body#landing
     %header
       .row
-        .large-9.columns.large-offset-3
-          = render partial: 'layouts/header/navigation'
+        .large-12.columns
+          %nav.top-bar
+            = render partial: 'layouts/header/navigation'
 
     = render partial: 'layouts/header/flash'
 

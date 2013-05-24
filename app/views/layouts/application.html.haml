@@ -9,6 +9,7 @@
     #wrap
       #main
         = render partial: 'layouts/header/header'
-        = render partial: 'layouts/header/flash', locals: {flash: flash} 
+        = render partial: 'layouts/header/flash', locals: {flash: flash}
         = yield
+        = render partial: 'layouts/includes/user_voice'
     = render partial: 'layouts/footer/navigation'

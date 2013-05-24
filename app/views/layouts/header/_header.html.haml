@@ -5,8 +5,8 @@
         %ul.title-area
           %li
             %a#logo{href: '/'} Vacuum
-          %li.toggle-topbar
-            %a{href: '#'}
-              %i.icon-reorder
-        %section.top-bar-section
-          = render partial: 'layouts/header/navigation'
+          - if user_signed_in?
+            %li.toggle-topbar
+              %a{href: '#'}
+                %i.icon-reorder
+        = render partial: 'layouts/header/navigation'
