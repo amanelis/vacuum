@@ -11,9 +11,14 @@
           %li.description Our plan plan is great for most people, but if you're looking for a bigger plan, contact us.
           %li.bullet-item
             %b 1
-            Projects
+            Project
           %li.bullet-item
             %b 7,500
             Errors per day
           %li.cta-button
-            %a.button.success.round{:href => "#", "data-reveal-id" => "chargeCard"} Upgrade Now
+            -if user_signed_in?
+              %a.button.success.round{:href => "#", "data-reveal-id" => "chargeCard"}
+                Upgrade Now
+            -else
+              %a.button.success.round{href: signup_path}
+                Sign Up Now

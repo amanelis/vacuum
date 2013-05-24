@@ -1,14 +1,17 @@
-- if user_signed_in?
+%section.top-bar-section
   %ul.right
-    - if current_user.needs_to_pay?
+    - if user_signed_in?
+      - if current_user.needs_to_pay?
+        %li
+          %a.cta{href: pricing_path} Upgrade
       %li
-        %a.cta{href: pricing_path} Upgrade
-    %li
-      %a{href: projects_path} My Projects
-    %li
-      %a{href: account_path} Account
-    %li
-      %a{href: logout_path} Logout
-- else
-  #login-link
-    %a.button.round.faint{href: login_path} Login
+        %a{href: projects_path} My Projects
+      %li
+        %a{href: account_path} Account
+      %li
+        %a{href: logout_path} Logout
+    -else
+      %li
+        %a{href: pricing_path} Pricing
+      %li
+        %a{href: login_path} Login
