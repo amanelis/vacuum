@@ -70,6 +70,9 @@ class User
     
     # False if they have not paid and they have added at least one project
     return false if self.subscription.nil? && self.projects.count >= 1
+    
+    # False if they have not paid
+    return false if self.subscription.nil?
     return true
   end
   

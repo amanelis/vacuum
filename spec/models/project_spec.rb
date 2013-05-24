@@ -28,4 +28,14 @@ describe Project do
     it { should validate_presence_of :name }
     it { should validate_presence_of :url }
   end
+  
+  describe '#to_js' do
+    let(:project) { Fabricate(:project) }
+    
+    subject {
+      project.to_js
+    }
+    
+    it { should_not be_nil }
+  end
 end

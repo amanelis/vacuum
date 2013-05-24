@@ -57,7 +57,78 @@ describe User do
     end
   end
 
-  describe '#send_welcome_email' do
-    pending "BUILD THIS FEATURE"
+  describe '#create_project?' do
+    let(:user) { Fabricate(:user) }
+    let(:admin) { Fabricate(:user, admin: true) }
+    
+    context 'if the user is an admin, they can create a project' do
+      subject {
+        admin.create_project?
+      }
+      
+      it { should be_true }
+      it { should_not be_nil }
+    end
+    
+    context 'if the user is not an admin' do
+      context 'and they have a valid and presently paid subscription object' do
+        subject {
+          user.create_project?
+        }
+        
+        it { should be_false }
+        it { should_not be_nil }
+      end
+      
+      context 'and they do not have a valid and presently paid subscription object' do
+        subject {
+          user.create_subscription(paid: true, subscribed_on: Time.now, stripe_token: SecureRandom.hex(25)[0...20], stripe_customer_id:  SecureRandom.hex(25)[0...20])
+          user.create_project?
+        }
+        
+        it { should be_true }
+        it { should_not be_nil }
+      end
+    end
+  end
+  
+  describe '#needs_to_pay?' do
+    let(:user) { Fabricate(:user) }
+    let(:admin) { Fabricate(:user, admin: true) }
+    
+    context 'if the user is an admin, they don\' ever have to pay' do
+      subject {
+        admin.needs_to_pay?
+      }
+      
+      it { should be_false }
+      it { should_not be_nil }
+    end
+    
+    context 'if the user is not an admin' do
+      context 'and they have a valid and presently paid subscription object' do
+        subject {
+          user.needs_to_pay?
+        }
+        
+        it { should be_true }
+        it { should_not be_nil }
+      end
+      
+      context 'and they do not have a valid and presently paid subscription object' do
+        subject {
+          user.create_subscription(paid: true, subscribed_on: Time.now, stripe_token: SecureRandom.hex(25)[0...20], stripe_customer_id:  SecureRandom.hex(25)[0...20])
+          user.needs_to_pay?
+        }
+        
+        it { should be_false }
+        it { should_not be_nil }
+      end
+    end
   end
 end
+
+
+
+
+
