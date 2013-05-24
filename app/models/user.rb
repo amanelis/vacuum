@@ -18,7 +18,6 @@ class User
   field :identifier,  :type => String
   field :active,      :type => Boolean, :default => true
   field :admin,       :type => Boolean, :default => false
-  field :paid,        :type => Boolean, :default => false
   
   ## Recoverable
   field :reset_password_token,   :type => String
@@ -70,20 +69,20 @@ class User
     return true if self.admin? # admin always true
     
     # False if they have not paid and they have added at least one project
-    return false if !self.paid? && self.projects.count >= 1
+    return false if self.subscription.nil? && self.projects.count >= 1
     return true
   end
   
-  # has_paid?
+  # needs_to_pay?
   # If the admin is present or user has paid, payment is not required.
   def needs_to_pay?
     return false if self.admin? # admin always true
     
     # 30 days, really needs to pay
-    return true if !self.paid? && 30.days.ago > self.created_at 
+    return true if self.subscription.nil? && 14.days.ago > self.created_at 
     
     # False if they need to pay their bill
-    return true if !self.paid?
+    return true if self.subscription.nil?
     return false
   end
 end
