@@ -12,24 +12,33 @@
     %a.close-reveal-modal ×
 
   #chargeCard.reveal-modal{:class => "[expand, xlarge, large, medium, small]"}
-    %h2 Enter credit card
+    %h2 Upgrade to Vacuum Pro
+    %p We're excited to have you begin cleaning up your Javascript messes. Complete the form below to get going.
+    .row
+      .large-4.columns
+        %dl
+          %dt Total
+          %dd $150.00
+      .large-4.columns
+        %img{src: 'http://cdn.creditcardimagelogos.com/logos/new/credit_card_logos_31.gif'}
     %p
       %span.payment-errors
-      = form_tag billing_index_path, :id => "charge_form", :method => :post, :remote => true do 
+      = form_tag billing_index_path, :id => "charge_form", :method => :post, :remote => true do
         = label_tag(:card_number, "Card Number")
-        = text_field_tag 'card_number'
-        
-        = label_tag(:card_cvc, "CVC")
-        = text_field_tag 'card_cvc', nil, :size => 5
-        
-        = label_tag(:expiry_month, "Expiration Month")
-        = text_field_tag 'expiry_month', nil, :size => 10
-        
-        = label_tag(:expiry_year, "Expiration Year")
-        = text_field_tag 'expiry_year', nil, :size => 10
-        
+        = text_field_tag 'card_number', '', placeholder: 'xxxx-xxxx-xxxx-xxxx'
+        .row
+          .large-4.columns
+            = label_tag(:card_cvc, "CVC")
+            = text_field_tag 'card_cvc', nil, :size => 5
+          .large-4.columns
+            = label_tag(:expiry_month, "Expiration Month")
+            = text_field_tag 'expiry_month', nil, :size => 10, placeholder: 'MM'
+          .large-4.columns
+            = label_tag(:expiry_year, "Expiration Year")
+            = text_field_tag 'expiry_year', nil, :size => 10, placeholder: 'YY'
+
         = hidden_field_tag 'user_id', current_user.id
-        
+
         = submit_tag "Upgrade", class: "button round success"
     %a.close-reveal-modal ×
 
