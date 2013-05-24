@@ -1,0 +1,4 @@
+- $user = {current_user_uuid: '', current_user_email: ''}
+- if user_signed_in?
+  - $user[:current_user_uuid]  = current_user.identifier
+  - $user[:current_user_email] = current_user.email
