@@ -44,7 +44,7 @@
                             %td= notifier.name
                             %td= notifier.email
                             %th
-                              .small.button.round{:href => "#", data: {dropdown: 'config-dropdown'}}
+                              .small.button.round.dropdown{:href => "#", data: {dropdown: 'config-dropdown'}}
                                 Configuration
                               %ul#config-dropdown.f-dropdown{data: {dropdown_content: true}}
                                 %li
@@ -78,14 +78,14 @@
                           %tr
                             %td= collaborator.email
                             %th
-                              .small.button.dropdown.round{:href => "#"}
+                              .small.button.round.dropdown{:href => "#", data: {dropdown: 'config-dropdown'}}
                                 Configuration
-                                %ul
-                                  %li
-                                    %a{:href => edit_project_collaborator_path(@project, collaborator)} Edit
-                                  %li.divider
-                                  %li
-                                    = link_to "Delete", project_collaborator_path(@project, collaborator), :method => :delete, :confirm => "Are you sure?"
+                              %ul#config-dropdown.f-dropdown{data: {dropdown_content: true}}
+                                %li
+                                  %a{:href => edit_project_collaborator_path(@project, collaborator)} Edit
+                                %li.divider
+                                %li
+                                  = link_to "Delete", project_collaborator_path(@project, collaborator), :method => :delete, :confirm => "Are you sure?"
             %p
               #notifications_error
               %div{:align => 'left'}
