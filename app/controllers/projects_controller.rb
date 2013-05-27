@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   include ProjectsHelper
   before_filter :authenticate_user!
-  before_filter :load_project, :only => [:index, :show, :update, :destroy]
+  before_filter :load_project, :only => [:show, :update, :destroy]
   
   rescue_from CanCan::AccessDenied do |exception|
     flash[:alert] = exception.message
@@ -9,6 +9,7 @@ class ProjectsController < ApplicationController
   end
   
   def index
+    @projects = current_user.projects.paginate(page: params[:page], per_page: 15)
     authorize! :read, Project, message: project_read_deny
   end
   

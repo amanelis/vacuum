@@ -43,14 +43,7 @@ module ProjectsHelper
   end
   
   def load_project
-    if params[:action] == "index"
-      @projects = current_user.projects.paginate(page: params[:page], per_page: 15)
-      current_user.collaborators.each do |collab|
-        @projects << collab.project
-      end
-    else
-      @project = Project.find(params[:id])
-    end
+    @project = current_user.projects.find(params[:id])
   end
   
   def project_read_deny
