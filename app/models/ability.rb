@@ -10,11 +10,11 @@ class Ability
     else
       ### Projects ###
       can :create, Project if user.create_project?
-      can [:read, :update], Project do |project|
+      can [:read], Project do |project|
         project.user_id == user.id || project.collaborators.collect { |c| c.user_id == user.id }.any?
       end
 
-      can [:resolve, :destroy], Project do |project|
+      can [:destroy, :resolve, :update], Project do |project|
         project.user_id == user.id
       end
 
