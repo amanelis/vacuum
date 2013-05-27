@@ -56,6 +56,7 @@ class User
   validates :encrypted_password,  :presence => true
   
   ### Associations
+  has_many :collaborators, autosave: true, :dependent => :destroy
   has_many :projects, autosave: true, :dependent => :destroy
   has_one  :subscription, autosave: true, :dependent => :destroy
   

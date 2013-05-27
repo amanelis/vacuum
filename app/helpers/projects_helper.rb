@@ -44,14 +44,17 @@ module ProjectsHelper
   
   def load_project
     if params[:action] == "index"
-      @projects = current_user.projects.paginate(page: params[:page], per_page: 10)
+      @projects = current_user.projects.paginate(page: params[:page], per_page: 15)
+      current_user.collaborators.each do |collab|
+        @projects << collab.project
+      end
     else
       @project = Project.find(params[:id])
     end
   end
   
   def project_read_deny
-    "Permission denied to view that project(s)."
+    "Permission denied."
   end
   
   def project_create_deny(current_user)

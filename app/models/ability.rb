@@ -10,8 +10,8 @@ class Ability
     else
       ### Projects ###
       can :create, Project if user.create_project?
-      can [:read, :update, :destroy], Project do |project|
-        project.user_id == user.id || project.collaborators.collect { |c| BSON::ObjectId(c.user_id).to_s == user.id.to_s }.any?
+      can [:read, :update], Project do |project|
+        project.user_id == user.id || project.collaborators.collect { |c| c.user_id == user.id }.any?
       end
 
       can [:resolve, :destroy], Project do |project|
@@ -24,7 +24,7 @@ class Ability
       end
 
       can [:read], Error do |error|
-        error.project.user_id == user.id || error.project.collaborators.collect { |c| BSON::ObjectId(c.user_id).to_s == user.id.to_s }.any?
+        error.project.user_id == user.id || error.project.collaborators.collect { |c| c.user_id == user.id }.any?
       end
     end
   end
