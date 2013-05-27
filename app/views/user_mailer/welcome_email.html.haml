@@ -1,11 +1,16 @@
-.row
-  .panel
-    %p
-      Hello,
-      %br
-      %br
-      Glad we could have you sign up for our service. You can get started by creating your first project. Try it out and let us know
-      what you think.
-      %br
-      %br
-      %a.button.protrude.round.large{href: new_project_url(ref: 'email')} Create Project
+Hello,
+
+%br/
+%br/
+
+Glad we could have you sign up for our service. You can get started by creating your first project. Try it out and let us know
+what you think.
+
+%br/
+%br/
+
+%table
+  %tr
+    %td.button-cell.button-cell-success
+      %a{href: new_project_url(ref: 'email')} Create Project
+    %td &nbsp;

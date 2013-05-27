@@ -1,15 +1,24 @@
-.row
-  .panel
-    .eleven.columns
-      %h1= "New [#{@error.level}] error for #{@error.project.name}"
-      %h4= "Received on #{@error.created_at}"
-    .one.columns
-      %br
-      .panel.radius.right.count
-        %h5= @error.occurrences.count
-        occurrences
-    %hr
-    %p
-      Vacuum just received an error for your application. Please login to view the data collected.
-    %p
-      %a.button.protrude.round{href: project_error_url(@error.project, @error)} View Error
+%table{cellspacing: '15'}
+  %tr
+    %td
+      %h3.h3= "New [#{@error.level}] error for #{@error.project.name}"
+      %h6.h6= "Received on #{@error.created_at}"
+    %td.panel{valign: 'top'}
+      %table.count
+        %tr
+          %td.panel-inner
+            %br/
+            %h5= @error.occurrences.count
+            occurrences
+%hr
+
+Vacuum just received an error for your application. Please login to view the data collected.
+
+%br/
+%br/
+
+%table
+  %tr
+    %td.button-cell
+      %a{href: project_error_url(@error.project, @error)} View Error
+    %td &nbsp;
