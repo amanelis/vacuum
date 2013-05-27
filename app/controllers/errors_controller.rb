@@ -31,6 +31,7 @@ class ErrorsController < ApplicationController
   def resolve
     authorize! :resolve, @project
     @error.update_attributes!(resolved: params[:error][:resolved])
+    render nothing: true
   end
 
   private
