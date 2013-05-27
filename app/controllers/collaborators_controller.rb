@@ -14,7 +14,7 @@ class CollaboratorsController < ApplicationController
     if @user.sign_in_count == 0
       # Send the temp password
       @user.update_attributes!(password: password, password_confirmation: password)
-      UserMailer.delay.temp_password(@user, temp)
+      UserMailer.delay.temp_password(@user, password)
     end
     
     @collaborator   = @project.collaborators.build(email: @user.email, user_id: @user.id)
