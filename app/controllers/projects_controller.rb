@@ -10,6 +10,7 @@ class ProjectsController < ApplicationController
   
   def index
     @projects = current_user.projects.paginate(page: params[:page], per_page: 15)
+    current_user.collaborators.collect { |c| @projects << c.project }
     authorize! :read, Project, message: project_read_deny
   end
   
