@@ -9,8 +9,8 @@
   %td= project.errors.unresolved.count
   %td= project.errors.count
   %th
-    .small.button.dropdown.round{href:  "#", data: {dropdown: 'config-dropdown'}} Configuration
-    %ul#config-dropdown.f-dropdown{data: {dropdown_content: true}}
+    .small.button.dropdown.round{href:  "#", data: {dropdown: "config-dropdown-#{project.id}"}} Configuration
+    %ul.f-dropdown{id: "config-dropdown-#{project.id}", data: {dropdown_content: true}}
       %li
         %a{href: project_path(project, anchor: 'setup')} Setup
       %li

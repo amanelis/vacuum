@@ -66,7 +66,7 @@
                     = error.level
                 %td= image_tag "/assets/#{error.occurrences.collect(&:human_agent).uniq.first}.png", width: '16px', height: '16px'
                 %td
-                  %a{href: project_error_path(@project, error)}= error.message
+                  %a.error-name{href: project_error_path(@project, error)}= error.message
                   %br
                   %em= error.occurrences.last.try(:file) + ':' + error.occurrences.last.try(:line)  unless error.occurrences.last.try(:line).nil?
                 %td= error.occurrences.count

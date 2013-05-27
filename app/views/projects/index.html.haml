@@ -14,8 +14,7 @@
             %th Total
             %th{width: 150}
           %tbody
-            - @projects.each do |project|
-              = render partial: 'projects/index_row', locals: {project: project}
+            = render @projects
       %div{align: 'left'}
         %a.success.button.round{href: new_project_path}
           %i.foundicon-plus
