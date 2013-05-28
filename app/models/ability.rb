@@ -9,18 +9,19 @@ class Ability
       can :manage, :all
     else
       ### Projects ###
-      can :create, Project if user.create_project?
+      can [:create], Project if user.create_project?
+      
       can [:read], Project do |project|
         project.user_id == user.id || project.collaborators.collect { |c| c.user_id == user.id }.any?
       end
 
-      can [:destroy, :resolve, :update], Project do |project|
+      can [:destroy, :update], Project do |project|
         project.user_id == user.id
       end
 
       ### Errors ###
-      can :create, Error do |error|
-        error.project.user_id = user.id
+      can [:create, :resolve], Error do |error|
+        error.project.user_id == user.id
       end
 
       can [:read], Error do |error|
