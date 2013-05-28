@@ -2,17 +2,18 @@
   .large-8.columns
     %h2 #{@occurrences.last.error.message}
   .large-2.columns
-    =form_for [@project, @error], html: {id: 'resolve-error'} do |error_form|
-      %h6.pull-left Status:
-      .switch.tiny.round
-        =error_form.radio_button :resolved, 'false'
-        =error_form.label :resolved_false, onclick: true do
-          Unresolved
-        =error_form.radio_button :resolved, 'true'
-        =error_form.label :resolved_true, onclick: true do
-          %i.icon-ok
-          Resolved
-        %span
+    = form_for [@project, @error], html: {id: 'resolve-error'} do |error_form|
+      - if can? :resolve, @error
+        %h6.pull-left Status:
+        .switch.tiny.round
+          =error_form.radio_button :resolved, 'false'
+          =error_form.label :resolved_false, onclick: true do
+            Unresolved
+          =error_form.radio_button :resolved, 'true'
+          =error_form.label :resolved_true, onclick: true do
+            %i.icon-ok
+            Resolved
+          %span
   .large-2.columns
     .panel.radius.count
       %h5= @occurrences.count

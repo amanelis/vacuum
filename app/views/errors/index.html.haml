@@ -72,6 +72,10 @@
                 %td= error.occurrences.count
                 %td= time_ago_in_words(error.updated_at)
 .row
+  .large-6.columns
+    %div{align: 'left'}
+      %a.button.small.round{href: projects_path} < Back
+
   .large-6.push-6.columns
     %div{align: 'right'}
       = will_paginate(@errors)

@@ -36,7 +36,7 @@ class ErrorsController < ApplicationController
 
   private
     def load_project
-      @project = current_user.projects.find(params[:project_id])
+      @project = Project.find(params[:project_id])
     end
 
     def load_error
