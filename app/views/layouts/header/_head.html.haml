@@ -1,5 +1,5 @@
 %head
-  %title Vacuum
+  %title= content_for?(:title) ? content_for(:title) : "Vacuum.io | Clean up your Javascript messes with front-end error tracking."
   %meta{content: 'yes', name: 'apple-mobile-web-app-capable'}
   %meta{content: 'black', name: 'apple-mobile-web-app-status-bar-style'}
   %meta{content: $meta[:viewport][:content], name: $meta[:viewport][:name]}
