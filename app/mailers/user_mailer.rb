@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "Vacuum.io <reporter@vacuum.io>"
+  default from: "Vacuum.io <support@vacuum.io>"
   layout 'mail'
   
   def welcome_email(user)

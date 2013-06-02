@@ -1,5 +1,5 @@
 class ErrorMailer < ActionMailer::Base
-  default from: "Vacuum.io <reporter@vacuum.io>"
+  default from: "Vacuum.io <support@vacuum.io>"
   layout 'mail'
   
   def report_error(error)
