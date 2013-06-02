@@ -7,7 +7,7 @@ Delayed::Worker.delay_jobs          = !Rails.env.test?
 
 if Rails.env.production?
   DelayedJobWeb.use Rack::Auth::Basic do |username, password|
-    username == 'manelis' && password == 'testmonster'
+    username == 'vacuum' && password == 'burritos123'
   end
   
   # Optional but recommended for less future surprises.
