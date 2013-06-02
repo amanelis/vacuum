@@ -12,9 +12,9 @@ class User::RegistrationsController < DeviseController
   def create
 
     if SETTINGS[:require_invite_code]
-      if params[:invite_code] != 'iwantin'
+      if params[:invite_code] != 'iwantin' || params[:invite_code].nil? || params[:invite_code] == ''
         flash[:error] = 'That invite code was incorrect. We have your email now and will notify when we open up to the public.'
-        redirect_to root_path
+        redirect_to signup_path
         return false
       end
     end
