@@ -37,6 +37,8 @@ describe BillingController do
             post 'create', stripeToken: card_hash
           }
 
+          # This test will fail and return false if there are no present
+          # Stipe customers in the system.
           it { should be_redirect }
         end
         
