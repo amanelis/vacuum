@@ -13,7 +13,7 @@ class User::RegistrationsController < DeviseController
 
     if SETTINGS[:require_invite_code]
       if params[:invite_code] != 'iwantin' || params[:invite_code].nil? || params[:invite_code] == ''
-        flash[:error] = 'That invite code was incorrect. We have your email now and will notify when we open up to the public.'
+        flash[:error] = 'That invite code was incorrect. We will notify you when Vacuum is open for public sign ups.'
         redirect_to signup_path
         return false
       end
