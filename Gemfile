@@ -6,6 +6,9 @@ ruby '1.9.3'
 # Rails
 gem 'rails', '3.2.13'
 
+# AWS
+gem 'aws-s3', :require => 'aws/s3'
+
 # Database
 gem 'bson'
 gem 'bson_ext'
@@ -16,8 +19,8 @@ gem 'haml'
 gem 'devise'
 gem 'cancan'
 gem 'stripe'
-gem 'premailer-rails'
 gem 'mail_view'
+gem 'premailer-rails'
 gem 'delayed_job_web'
 gem 'devise-encryptable'
 gem 'delayed_job_mongoid'

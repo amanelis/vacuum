@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+require 'yaml'
+require 'aws/s3'
 
 # Check if user has closure-compiler installed
 has_closure = system('which closure-compiler')
@@ -15,4 +17,36 @@ version = File.open('VERSION', &:readline)
 
 # Now compile the javascript to vacuum.js
 system("closure-compiler --js public/lib/vacuum-#{version}.js --js_output_file public/vacuum.js")
-print "Compiled to public/vacuum.js"
+puts "Compiled to public/vacuum.js"
+puts ""
+puts "Uploading to s3"
+
+file = 'public/vacuum.js'
+buck = 'vacuum'
+mime = 'text/javascript'
+base = File.basename(file)
+
+# Never store credentials in repository
+credentials = YAML.load_file('.aws-credentials.yml')
+unless credentials
+  puts "Create a YAML file '.aws-credentials.yml' and replace with Signifyd's AWS keys."
+  puts ""
+  puts "  aws:"
+  puts "    key: YOUR-AWS-SIGNIFYD-KEY"
+  puts "    secret: YOUR-AWS-SIGNIFYD-SECRET"
+  return 
+end
+
+AWS::S3::Base.establish_connection!(
+  :access_key_id     => credentials['aws']['key'],
+  :secret_access_key => credentials['aws']['secret']
+)
+
+result = AWS::S3::S3Object.store(
+  base,
+  File.open(file),
+  buck,
+  :content_type => mime,
+  :access => :public_read
+)
+puts result.response.code == "200" ? "Uploaded [#{file}] to S3 successfully" : "Error uploading [#{file}] to S3. [#{result.response.code} #{result.response.body}]" 
