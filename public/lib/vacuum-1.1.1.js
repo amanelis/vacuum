@@ -37,7 +37,7 @@
       , /** @const */ ENQUEUE_REQUESTS = !USE_XHR && (userAgent.indexOf('MSIE') == -1)
       , /** @const */ API_KEY          = _vacuum[0][1]
       , /** @const */ DEBUG_MODE       = _vacuum[2][0]
-      , /** @const */ API_URL          = document.location.hostname == 'localhost' ? HTTP_PROTOCOL + 'localhost:3000/api/v1/errors' : HTTP_PROTOCOL + 'vacuum.io/api/v1/errors'
+      , /** @const */ API_URL          = document.location.hostname == 'localhost' ? HTTP_PROTOCOL + 'localhost:3000/api/v1/errors' : HTTP_PROTOCOL + 'www.vacuum.io/api/v1/errors'
       , /** @const */ FLA_TIMEOUT      = 5
       , /** @const */ VACUUM_ERROR_ARR = new Object()
       , /** @const */ CURRENT_DOMAIN   = document.location.host
