@@ -23,7 +23,7 @@ class Project
   before_create :set_identifier, :set_api_key
 
   def to_js
-    host = Rails.env.development? || Rails.env.test? ? 'localhost:3000' : 'vacuum.io'
+    # host = Rails.env.development? || Rails.env.test? ? 'localhost:3000' : 'vacuum.io'
     script = "<script type=\"text/javascript\">" +
       "var _vacuum = _vacuum || []; " +
       "_vacuum.push(['_setKey', '"+self.api_key+"']);" +
@@ -31,7 +31,7 @@ class Project
       "_vacuum.push(['debug', false]);" +
       "(function() {" +
         "var vs = document.createElement('script'); vs.type = 'text/javascript'; vs.async = true;" +
-        "vs.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + '#{host}/vacuum.js';" +
+        "vs.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + '#{SETTINGS[:cloudfront_url]}/vacuum.js';" +
         "var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(vs, s);" +
       "})();" +
       "</script>"
