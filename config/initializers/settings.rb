@@ -8,5 +8,5 @@ SETTINGS[:show_upgrade_modal] = false
 SETTINGS[:require_invite_code] = true
 
 # Where we will host our vacuum.js file from
-SETTINGS[:cloudfront_url] = 'd3a5uksi9c4op0.cloudfront.net'
+SETTINGS[:cloudfront_url]   = 'd3a5uksi9c4op0.cloudfront.net'
 SETTINGS[:cloudfront_alias] = 'static.vacuum.io'
