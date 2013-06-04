@@ -31,7 +31,7 @@ class Project
       "_vacuum.push(['debug', false]);" +
       "(function() {" +
         "var vs = document.createElement('script'); vs.type = 'text/javascript'; vs.async = true;" +
-        "vs.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + '#{SETTINGS[:cloudfront_url]}/vacuum.js';" +
+        "vs.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + '#{SETTINGS[:cloudfront_alias]}/vacuum.js';" +
         "var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(vs, s);" +
       "})();" +
       "</script>"
