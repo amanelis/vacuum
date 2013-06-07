@@ -35,6 +35,12 @@
      */
     this.setCurrentUser();
     
+    /**
+     * Call methods neccessary for tracking
+     */
+    this.initializeVisitEvent({});
+    this.initializeClickEvent({});
+    
     if (this.config.debug) {
       this.logger("Tracker[initialized][#{MIXPANEL_TOKEN}]");
       this.logger("Tracker[identified][" + this.getCookie(this.vacuum_uuid_val) + "]")
@@ -168,6 +174,68 @@
       _tracker.vacuum_current_user_uuid_val  = $('body').data('user-uuid');
       _tracker.vacuum_current_user_email_val = $('body').data('user-email');
     }
+  };
+  
+  Tracker.prototype.initializeVisitEvent = function(options) {
+    var _tracker  = this
+       , _location = document.location.pathname + document.location.search + document.location.hash
+       , _title    = document.title
+       , _referrer = document.referrer == "" ? "direct" : document.referrer;
+
+     var _mixpanel = mixpanel
+       , _entities = _tracker.TRACKABLE_ENTITIES
+       , _options  = options || {}
+       , _vacuum_uuid_cookie = _tracker.getCookie(_tracker.VACUUM_UUID_KEY)
+       , _desc     = "Vist";
+
+     var _data     = {
+       'Referrer'    : _referrer,
+       'Title'       : _title,
+       'Url'         : _location,
+       'Cookie uuid' : _vacuum_uuid_cookie,
+       'User uuid'   : _tracker.vacuum_current_user_uuid_val,
+       'User email'  : _tracker.vacuum_current_user_email_val
+     };
+
+     if (_entities['hrefs'].indexOf(_location) >= 0 && _mixpanel) {
+       _mixpanel.track(_desc, _data, function() {
+         _tracker.logger(_desc);
+       });
+     }
+  };
+  
+  Tracker.prototype.initializeClickEvent = function(options) {
+    var _tracker  = this
+      , _location = document.location.pathname + document.location.search + document.location.hash
+      , _title    = document.title
+      , _referrer = document.referrer == "" ? "direct" : document.referrer;
+
+    var _mixpanel = mixpanel
+      , _options  = options || {}
+      , _vacuum_uuid_cookie = _tracker.getCookie(_tracker.VACUUM_UUID_KEY);
+      
+    $('a').click(function() {
+      var _self  = $(this);
+      var _text  = _self.text()
+        , _desc  = 'Click';
+      var _data  = {
+    	    'Id'          : _self.attr('id'),
+    	    'Class'       : _self.attr('class'),
+    	    'Href'        : _self.attr('href'),
+    	    'Rel'         : _self.attr('rel'),
+    	    'Text'        : _text,
+          'Referrer'    : _referrer,
+          'Title'       : _title,
+          'Url'         : _location,
+          'Cookie uuid' : _vacuum_uuid_cookie,
+          'User uuid'   : _tracker.vacuum_current_user_uuid_val,
+          'User email'  : _tracker.vacuum_current_user_email_val
+    	};
+
+      _mixpanel.track(_desc, _data, function() {
+        _tracker.logger(_desc);
+      });
+    });
   };
   
   /**
