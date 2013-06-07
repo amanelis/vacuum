@@ -26,25 +26,24 @@
      * itself.
      */
     this.config = _config;
+    
+    // /**
+    //  * Small initialization debugging
+    //  */
+    // this.logger("Tracker[initialized][#{MIXPANEL_TOKEN}]");
+    // this.logger("Tracker[uuid_cookie][" + this.getCookie(this.VACUUM_UUID_KEY) + "]")
 
     /**
-     * Sets the currently logged in user's email and uuid into if it
-     * is available in the DOM from the <body> tag. 
-     * this.vacuum_current_user_uuid_val
-     * this.vacuum_current_user_email_val
+     * Sets the user and identifies within Mixpanel.
      */
     this.setCurrentUser();
+    this.identifyUser();
     
     /**
-     * Call methods neccessary for tracking
+     * Call methods neccessary for tracking.
      */
     this.initializeVisitEvent({});
     this.initializeClickEvent({});
-    
-    if (this.config.debug) {
-      this.logger("Tracker[initialized][#{MIXPANEL_TOKEN}]");
-      this.logger("Tracker[identified][" + this.getCookie(this.vacuum_uuid_val) + "]")
-    }
   };
   
   /**
@@ -102,7 +101,7 @@
   
   /**
    * Generate long uuids
-   * @return {string} Hex/decimal string for _signifyd_uuid cookie value.
+   * @return {string} Hex/decimal string for _vacuum_uuid cookie value.
    */
   Tracker.prototype.generateUuid = function() {
     return Math.floor((1 + Math.random()) * 0x100000000).toString(16);
@@ -158,7 +157,7 @@
     }
 
     // Continue and set new uuid() cookie, if none are available and return that value.
-    return _this_cookie = _tracker.setCookie(_tracker.VACUUM_UUID_KEY, _tracker.generateUuid());
+    return _tracker.setCookie(_tracker.VACUUM_UUID_KEY, _tracker.generateUuid());
   };
   
   /**
@@ -176,6 +175,38 @@
     }
   };
   
+  /**
+   * Have tracker try and identify the user. This is the highest level of where 
+   * we configure mixpanel to identify the user that is creating events.
+   * @params {object} A hash containing certain settings.
+   */
+  Tracker.prototype.identifyUser = function(options) {
+    var _tracker  = this;
+    var _mixpanel = mixpanel
+      , _referrer = document.referrer == "" ? "direct" : document.referrer
+      , _options  = options || {}
+      , _cookie   = _tracker.getCookie(_tracker.VACUUM_UUID_KEY);
+
+    if (_cookie && _mixpanel) {
+      _mixpanel.identify(_cookie);
+      _tracker.logger("Mixpanel[identified][" + _cookie + "]");
+
+      if (_tracker.vacuum_current_user_email_val && _tracker.vacuum_current_user_uuid_val) {
+        _mixpanel.name_tag(_tracker.vacuum_current_user_email_val);
+        _mixpanel.register({'Email': _tracker.vacuum_current_user_email_val})
+        _mixpanel.people.set({
+          $email      : _tracker.vacuum_current_user_email_val,
+          $referrer   : _referrer
+        });
+        _tracker.logger("Mixpanel[people]: " + _tracker.vacuum_current_user_email_val);
+      }
+    }
+  };
+  
+  /**
+   * Track all visit events as a 'Visit' and attach properties.
+   * @params {object} A hash containing certain settings.
+   */
   Tracker.prototype.initializeVisitEvent = function(options) {
     var _tracker  = this
        , _location = document.location.pathname + document.location.search + document.location.hash
@@ -204,6 +235,10 @@
      }
   };
   
+  /**
+   * Track all click events as a 'Click' and attach properties.
+   * @params {object} A hash containing certain settings.
+   */
   Tracker.prototype.initializeClickEvent = function(options) {
     var _tracker  = this
       , _location = document.location.pathname + document.location.search + document.location.hash
