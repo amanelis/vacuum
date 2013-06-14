@@ -12,6 +12,9 @@
             = f.label :username
             = f.text_field :username
 
+            Email Subscribed: 
+            = f.select(:subscribed, options_for_select([true, false], resource.subscribed))
+            
           .large-6.columns
             = f.label :password do
               Password
