@@ -59,6 +59,8 @@ $ ->
       exp_month:  $("#expiry_month").val()
       exp_year:   $("#expiry_year").val()
     , stripeResponseHandler
+    
+    _this.children(":input[value=\"\"]").attr "disabled", "disabled"
 
   stripeResponseHandler = (status, response) ->
     if response.error

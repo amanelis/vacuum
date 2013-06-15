@@ -16,7 +16,7 @@ class NotificationsController < ApplicationController
       flash[:alert] = "There was an error, please try again later."
     end
   
-    redirect_to project_path(@project, anchor: 'notification')
+    redirect_to project_path(@project, anchor: 'notifications')
   end
   
   def destroy
@@ -29,6 +29,6 @@ class NotificationsController < ApplicationController
       flash[:alert] = "Ooops, #{@notification.errors.messages.collect { |k,v| "#{k.upcase} #{v.first}" }.join(',').gsub(',', ', ')}"
     end
     
-    redirect_to project_path(@project, anchor: 'notification')
+    redirect_to project_path(@project, anchor: 'notifications')
   end
 end

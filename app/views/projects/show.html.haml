@@ -119,7 +119,6 @@
                   = link_to project_path(@project), :method => :delete, confirm: "Are you sure you want to delete the '#{@project.name}' project?" do
                     %i.icon-ban-circle
                     Delete project
-
     %a.button.round.small{href: project_errors_path(@project)} < Back to logs
 
 - content_for :modals do
