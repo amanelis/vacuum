@@ -12,14 +12,4 @@ describe HomeController do
       it { should_not be_nil }
     end
   end
-  
-  describe '#errors' do
-    context 'it should be present' do
-      subject {
-        get :errors
-      }
-      
-      it { should_not be_nil }
-    end
-  end
 end

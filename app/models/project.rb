@@ -19,9 +19,6 @@ class Project
   validates :name, :presence => true, :uniqueness => { :scope => :user_id }
   validates :url,  :presence => true, :uniqueness => { :scope => :user_id }
 
-  ### Callbacks
-  before_create :set_identifier, :set_api_key
-
   def to_js
     # host = Rails.env.development? || Rails.env.test? ? 'localhost:3000' : 'vacuum.io'
     script = "<script type=\"text/javascript\">" +

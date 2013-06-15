@@ -5,6 +5,10 @@ describe Ability do
   let(:user) { Fabricate(:user) }
   let(:admin) { Fabricate(:admin) }
   
+  before {
+    user.projects << Fabricate(:project)
+  }
+  
   context 'when user is an admin' do
     let(:ability) { Ability.new(admin) }
     

@@ -61,6 +61,10 @@ describe User do
     let(:user) { Fabricate(:user) }
     let(:admin) { Fabricate(:user, admin: true) }
     
+    before {
+      user.projects << Fabricate(:project)
+    }
+    
     context 'if the user is an admin, they can create a project' do
       subject {
         admin.create_project?
@@ -71,7 +75,7 @@ describe User do
     end
     
     context 'if the user is not an admin' do
-      context 'and they have a valid and presently paid subscription object' do
+      context 'and they do not have a valid and presently paid subscription object'  do
         subject {
           user.create_project?
         }
@@ -80,7 +84,7 @@ describe User do
         it { should_not be_nil }
       end
       
-      context 'and they do not have a valid and presently paid subscription object' do
+      context  'and they have a valid and presently paid subscription object' do
         subject {
           user.create_subscription(paid: true, subscribed_on: Time.now, stripe_token: SecureRandom.hex(25)[0...20], stripe_customer_id:  SecureRandom.hex(25)[0...20])
           user.create_project?

@@ -28,6 +28,7 @@ describe ProjectsController do
     
     context "when logged in" do
       before {
+        user.projects << Fabricate(:project)
         sign_in user
       }
       
@@ -110,6 +111,8 @@ describe ProjectsController do
     
     context 'when logged in' do
       before {
+        user.projects << Fabricate(:project)
+        person.projects << Fabricate(:project)
         sign_in user
       }
       
@@ -137,6 +140,11 @@ describe ProjectsController do
     let(:user) { Fabricate(:user) }
     let(:project) { user.projects.first }
     let(:person) { Fabricate(:user) }
+    
+    before {
+      user.projects << Fabricate(:project)
+      person.projects << Fabricate(:project)
+    }
     
     context 'when logged in' do
       context 'and the user owns the projes' do

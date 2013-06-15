@@ -25,6 +25,12 @@ class BillingController < ApplicationController
       redirect_to root_path
       return false
     end
+    
+    if customer.try(:id).nil?
+      flash[:error] = "There was an error saving your subscription."
+      redirect_to root_path
+      return false
+    end
 
     # Update a few attributes
     current_user.subscription.update_attributes!(paid: true, subscribed_on: Time.now, stripe_token: params[:stripeToken], stripe_customer_id: customer.id)

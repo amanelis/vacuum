@@ -3,6 +3,6 @@ class HomeController < ApplicationController
   end
   
   def errors
-    render nothing: true
+    head :ok
   end
 end
