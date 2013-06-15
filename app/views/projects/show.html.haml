@@ -10,7 +10,7 @@
             %p
               Add this snippet directly after the
               %code= "<head>"
-              tag in your application and before any other javascript code/dependencies are loaded. The code in this script will only ever be initiated
+              tag in your application and before any other javascript code/dependencies are loaded. The code in this script will only ever be instantiated
               on an error. Therefore you are only just loading in the size of the script. When an error is triggered, this code will run.
               %br
               %br
@@ -19,7 +19,7 @@
               object amongst your application and in our listener.
               %br
               %br
-              %textarea{:cols => "50", :rows => "4", :id => 'codebox'}= @project.to_js
+              %textarea{:cols => "50", :rows => "6", :id => 'codebox'}= @project.to_js
             %div{align: 'right'}
               = link_to "I've completed this step", project_errors_path(@project), :class => 'success button round'
 
@@ -114,6 +114,11 @@
 
                 %h2 API Identifier
                 %p= @project.identifier
+                
+                %p
+                  = link_to project_path(@project), :method => :delete, confirm: "Are you sure you want to delete the '#{@project.name}' project?" do
+                    %i.icon-ban-circle
+                    Delete project
 
     %a.button.round.small{href: project_errors_path(@project)} < Back to logs
 
