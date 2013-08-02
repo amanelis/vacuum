@@ -1,15 +1,20 @@
-Vacuum
-============
+# Vacuum
+--------
 
-Setup
------------
+Everything that enables Vacuum to capture and report errors lives here in this repo. The CDN that holds the JS people copy onto their site lives in Cloudfront. Getting vacuum setup locally is fairly simple. Just follow the steps below.
 
-To get started with the application make sure you have mongodb installed and running.
+# Setup
+-------
 
-1) Clone the repository and `bundle` with ruby 1.9.3
+Start with a clone and a bundle install to get going, be sure mongo is installed.
 
-2) Should not have to run any migrations of any sort to get going. Start your server:
+	$ bundle exec rake db:drop db:create db:migrate db:seed
+	
+For production data, you will need to first have access to the heroku application.
 
-	rails s
+	$ heroku mongo:pull --app vacuumup
+	
+Run the application with either rails server or foreman. If you use foreman, it will start mongo for you.
 
-
+	$ foreman start
+	
