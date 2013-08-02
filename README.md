@@ -1,11 +1,7 @@
 # Vacuum
---------
-
 Everything that enables Vacuum to capture and report errors lives here in this repo. The CDN that holds the JS people copy onto their site lives in Cloudfront. Getting vacuum setup locally is fairly simple. Just follow the steps below.
 
 # Setup
--------
-
 Start with a clone and a bundle install to get going, be sure mongo is installed.
 
 	$ bundle exec rake db:drop db:create db:migrate db:seed
