@@ -68,4 +68,15 @@ Vacuum::Application.configure do
   config.middleware.use ExceptionNotifier,
     sender_address: 'amanelis@gmail.com',
     ignore_exceptions: ExceptionNotifier.default_ignore_exceptions
+    
+  # Mailer
+  config.action_mailer.delivery_method ||= :smtp
+  config.action_mailer.smtp_settings = {
+    :address        => 'email-smtp.us-east-1.amazonaws.com',
+    :port           => '587',
+    :authentication => :plain,
+    :user_name      => 'AKIAJ5SBLAFSPLD4GW2Q',
+    :password       => 'AmxRqmgxHTUYvYGv/TmHc8xMkBl5q5ex1GRqvYsxlaHS',
+    :domain         => 'vacuum.io'
+  }
 end

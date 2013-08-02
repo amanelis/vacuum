@@ -13,4 +13,3 @@ For production data, you will need to first have access to the heroku applicatio
 Run the application with either rails server or foreman. If you use foreman, it will start mongo for you.
 
 	$ foreman start
-	
