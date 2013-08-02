@@ -12,6 +12,7 @@ gem 'aws-s3', :require => 'aws/s3'
 # Database
 gem 'bson'
 gem 'bson_ext'
+gem 'mongo'
 gem 'mongoid'
 
 # Other

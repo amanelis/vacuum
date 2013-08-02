@@ -145,6 +145,8 @@ GEM
       tilt
     method_source (0.8.1)
     mime-types (1.23)
+    mongo (1.8.6)
+      bson (~> 1.8.6)
     mongoid (3.1.4)
       activemodel (~> 3.2)
       moped (~> 1.4)
@@ -305,6 +307,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   mail_view
+  mongo
   mongoid
   mongoid-rspec
   premailer-rails
