@@ -20,12 +20,12 @@ gem 'haml'
 gem 'devise'
 gem 'cancan'
 gem 'stripe'
+gem 'kaminari'
 gem 'mail_view'
 gem 'premailer-rails'
 gem 'delayed_job_web'
 gem 'devise-encryptable'
 gem 'delayed_job_mongoid'
-gem 'will_paginate_mongoid'
 gem 'exception_notification'
 
 # Assets
