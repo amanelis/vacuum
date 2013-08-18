@@ -20,13 +20,16 @@ gem 'haml'
 gem 'devise'
 gem 'cancan'
 gem 'stripe'
-gem 'kaminari'
 gem 'mail_view'
+gem 'turbolinks'
 gem 'premailer-rails'
 gem 'delayed_job_web'
 gem 'devise-encryptable'
 gem 'delayed_job_mongoid'
 gem 'exception_notification'
+
+gem 'will_paginate'
+gem 'will_paginate_mongoid'
 
 # Assets
 group :assets do

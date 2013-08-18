@@ -12,7 +12,6 @@ class CollaboratorsController < ApplicationController
     @user     = User.find_or_create_by(email: params[:collaborator][:email])
     
     if @user.sign_in_count == 0
-      # Send the temp password
       @user.update_attributes!(password: password, password_confirmation: password)
       UserMailer.delay.temp_password(@user, password)
     end
