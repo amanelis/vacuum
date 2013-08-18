@@ -8,7 +8,7 @@ Start with a clone and a bundle install to get going, be sure mongo is installed
 	
 For production data, you will need to first have access to the heroku application.
 
-	$ heroku mongo:pull --app vacuumup
+	$ heroku mongo:pull --app vacuumhq
 	
 Run the application with either rails server or foreman. If you use foreman, it will start mongo for you.
 
