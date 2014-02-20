@@ -1,5 +1,5 @@
 class Api::V1::ErrorsController < Api::V1::ApiController  
-  before_filter :clean_params,    :only => [:index, :create]
+  before_filter :clean_params,    :only => [:create]
   
   def create        
     # Locate the project
