@@ -6,11 +6,12 @@ class ErrorObserver < Mongoid::Observer
   end
 
   def after_create(error)
+    return false if error.nil?
     return false if error.project.nil?
     return false if error.project.user.nil?
     
     error.project.notifications.each { |notifier| 
-      next if error.nil? || notifier.nil?
+      next if notifier.nil?
       ErrorMailer.delay.report_error(error, notifier) 
     }
   end
