@@ -76,8 +76,8 @@ Vacuum::Application.configure do
     :address        => 'email-smtp.us-east-1.amazonaws.com',
     :port           => '587',
     :authentication => :plain,
-    :user_name      => 'AKIAJ5SBLAFSPLD4GW2Q',
-    :password       => 'AmxRqmgxHTUYvYGv/TmHc8xMkBl5q5ex1GRqvYsxlaHS',
+    :user_name      => nil,
+    :password       => nil,
     :domain         => 'vacuum.io'
   }
 end
