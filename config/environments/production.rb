@@ -48,14 +48,14 @@ Vacuum::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
-  
+
   # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => 'vacuum.io' }
+  config.action_mailer.default_url_options = { host: 'vacuum.io' }
 
   # Enable threaded mode
   # config.threadsafe!
-  config.action_mailer.delivery_method = :smtp 
-  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.raise_delivery_errors = false
   config.action_mailer.perform_deliveries = false
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
@@ -64,12 +64,12 @@ Vacuum::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
-  
+
   # Error exception notifier
   config.middleware.use ExceptionNotifier,
     sender_address: 'amanelis@gmail.com',
     ignore_exceptions: ExceptionNotifier.default_ignore_exceptions
-    
+
   # Mailer
   config.action_mailer.delivery_method ||= :smtp
   config.action_mailer.smtp_settings = {
